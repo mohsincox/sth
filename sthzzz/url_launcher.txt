@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
 
 _launchURL() {
   // const url = 'https://www.cylog.org/headers/';
-  const url = 'http://202.51.177.67:8034/ig';
+  const url = 'https://www.cylog.org/headers/';
   launch(
     url,
     forceSafariVC: true,
@@ -53,7 +53,7 @@ void main() {
         // appBar: AppBar(title: Text("My App")),
         body: SafeArea(
           child: WebView(
-            initialUrl: "http://202.51.177.67:8034/ig",
+            initialUrl: "http:/ig",
             javascriptMode: JavascriptMode.unrestricted,
           ),
         ),
