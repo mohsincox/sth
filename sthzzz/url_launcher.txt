@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
 
 _launchURL() {
   // const url = 'https://www.cylog.org/headers/';
-  const url = 'https://www.cylog.org/headers/';
+  const url = 'http://gg';
   launch(
     url,
     forceSafariVC: true,
