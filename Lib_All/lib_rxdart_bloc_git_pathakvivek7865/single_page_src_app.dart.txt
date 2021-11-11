@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:rxdart/rxdart.dart';
+
+class CounterBloc extends Object with Counter {
+  final Counter _counter = Counter();
+
+  // StreamController for counting feature
+  final _counterController = BehaviorSubject<int>();
+
+  // Retrieve data from the Stream
+  Stream<int> get counterStream => _counterController.stream;
+
+  void incrementCounter() {
+    _counter.increment();
+    // Add data to the stream
+    _counterController.sink.add(_counter.count);
+  }
+
+  void decrementCounter() {
+    _counter.decrement();
+    // Add data to the stream
+    _counterController.sink.add(_counter.count);
+  }
+
+  dispose() {
+    _counterController.close();
+  }
+}
+
+class Counter {
+  int count = 0;
+
+  int increment() => count++;
+  int decrement() => count--;
+}
+
+class Provider extends InheritedWidget {
+  final counterbloc = CounterBloc();
+
+  Provider({Key key, Widget child}) : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) {
+    return true;
+  }
+
+  static CounterBloc of(BuildContext context) {
+    // return (context.inheritFromWidgetOfExactType(Provider) as Provider)
+    //     .counterbloc;                                                        // inheritFromWidgetOfExactType    deprecated
+
+    return context.dependOnInheritedWidgetOfExactType<Provider>().counterbloc;
+  }
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final counterBloc = Provider.of(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Counter BLoC"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "You pressed the button this many times",
+              textScaleFactor: 1.2,
+            ),
+            StreamBuilder(
+              stream: counterBloc.counterStream,
+              initialData: '0',
+              builder: (context, snapshot) {
+                return Text(
+                  snapshot.data.toString(),
+                  textScaleFactor: 4,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            tooltip: "Increment",
+            onPressed: () {
+              counterBloc.incrementCounter();
+            },
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.remove),
+            tooltip: "Decrement",
+            onPressed: () {
+              counterBloc.decrementCounter();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

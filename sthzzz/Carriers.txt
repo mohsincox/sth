@@ -1,0 +1,359 @@
+if the value of EXTEN is 95551212, ${EXTEN:1} equals 5551212
+
+94169671111
+we can extract the following digit strings using the ${EXTEN:x:y} construct:
+${EXTEN:1:3} would contain 416.
+${EXTEN:4:7} would contain 9671111.
+${EXTEN:-4:4} would start four digits from the end, and return four digits, giving us 1111.
+${EXTEN:1} would give us everything after the first digit, 4169671111 (if the number of digits to return is left blank, it will return the entire remaining string).
+
+918005551234.
+exten => _9X.,1,Set(number=${EXTEN:-4})
+//1234
+exten => _9X.,1,Set(number=${EXTEN:5:3})
+//555
+exten => _9X.,1,Set(number=${EXTEN:-7:3})
+//555
+
+
+Carrier ID:	SIPEXAMPLE
+
+Carrier Name:	TEST SIP carrier example
+
+Carrier Description:	
+
+Admin User Group:	---ALL---
+
+Registration String:	register => testcarrier:test@10.10.10.15:5060
+
+Template ID:	--NONE--
+
+Account Entry:	
+	[testcarrier]
+	disallow=all
+	allow=ulaw
+	type=friend
+	username=testcarrier
+	secret=test
+	host=dynamic
+	dtmfmode=rfc2833
+	context=trunkinbound
+
+Protocol:	SIP
+
+Globals String:	TESTSIPTRUNK = SIP/testcarrier
+
+Dialplan Entry:	
+	exten => _91999NXXXXXX,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _91999NXXXXXX,2,Dial(${TESTSIPTRUNK}/${EXTEN:2},,To)
+	exten => _91999NXXXXXX,3,Hangup
+
+Server IP:	10.10.10.15
+
+Active:	N
+
+#########   Comparison   #########################   Comparison   ##############################
+
+Carrier ID:	SIPEXAMPLE
+Carrier ID:	IGLOOADN
+
+Carrier Name:	TEST SIP carrier example
+Carrier Name:	IGLOOADN
+
+Carrier Description:
+Carrier Description:	IGLOO ADN TRUNK	
+
+Admin User Group:	---ALL---
+Admin User Group:	---ALL---
+
+Registration String:	register => testcarrier:test@10.10.10.15:5060
+Registration String:	Register =>9610007008:e3qcijrf@103.251.120.244:5060/9610007008
+
+Template ID:	--NONE--
+Template ID:	--NONE--
+
+Account Entry:	
+	[testcarrier]
+	disallow=all
+	allow=ulaw
+	type=friend
+	username=testcarrier
+	secret=test
+	host=dynamic
+	dtmfmode=rfc2833
+	context=trunkinbound
+Account Entry:	
+	[IGLOOADN]
+	disallow=all
+	type=friend
+	dtmfmode=rfc2833
+	context=trunkinbound
+	qualify=yes
+	insecure=port,invite
+	nat=force_rport,comedia
+	host=103.251.120.244
+	username=9610007008
+	secret=e3qcijrf
+	allow=gsm
+	allow=alaw
+	allow=ulaw
+
+Protocol:	SIP
+Protocol:	SIP
+
+Globals String:	TESTSIPTRUNK = SIP/testcarrier
+Globals String:
+
+Dialplan Entry:	
+	exten => _91999NXXXXXX,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _91999NXXXXXX,2,Dial(${TESTSIPTRUNK}/${EXTEN:2},,To)
+	exten => _91999NXXXXXX,3,Hangup
+Dialplan Entry:	
+	exten => _88X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _88X.,n,SET(CALLERID(num)=9610016556)
+	exten => _88X.,n,Dial(SIP/${EXTEN:2}@IGLOOADN,,tTo)
+	exten => _88X.,n,Hangup
+
+Server IP:	10.10.10.15
+Server IP:	202.51.177.156
+
+Active:	N
+Active:	N
+
+
+############################################################
+
+Carrier ID:	IGLOOADN
+Carrier Name:	IGLOOADN
+
+Carrier Description:	IGLOO ADN TRUNK
+
+Admin User Group:	---ALL---
+
+Registration String:	Register =>9610007008:e3qcijrf@103.251.120.244:5060/9610007008
+
+Template ID:	--NONE--
+
+Account Entry:	
+	[IGLOOADN]
+	disallow=all
+	type=friend
+	dtmfmode=rfc2833
+	context=trunkinbound
+	qualify=yes
+	insecure=port,invite
+	nat=force_rport,comedia
+	host=103.251.120.244
+	username=9610007008
+	secret=e3qcijrf
+	allow=gsm
+	allow=alaw
+	allow=ulaw
+
+Protocol:	SIP
+
+Globals String:	
+
+Dialplan Entry:	
+	exten => _88X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _88X.,n,SET(CALLERID(num)=9610016556)
+	exten => _88X.,n,Dial(SIP/${EXTEN:2}@IGLOOADN,,tTo)
+	exten => _88X.,n,Hangup
+
+Server IP:	202.51.177.156
+
+Active:	N
+
+############################################################
+
+Carrier ID:	NESTLEDID71
+
+Carrier Name:	NESTLE DID  9610161271
+
+Carrier Description:	NESTLE DID 9610161271
+
+Admin User Group:	---ALL---
+
+Registration String:	register => 9610161271:teyv1rr@103.251.120.244:5060/9610161271
+
+Template ID:	--NONE--
+
+Account Entry:	
+	[NESTLEDID71]
+	disallow=all
+	allow=gsm
+	type=friend
+	dtmfmode=rfc2833
+	context=trunkinbound
+	qualify=yes
+	insecure=port,invite
+	nat=force_rport,comedia
+	host=103.251.120.244
+	username=9610161271
+	secret=teyv1rr
+	allow=ulaw
+	allow=alaw
+
+Protocol:	SIP
+
+Globals String:	
+
+Dialplan Entry:	
+	exten => _913X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _913X.,2,SET(CALLERID(num)=9610161271)
+	exten => _913X.,3,Dial(SIP/${EXTEN:3}@NESTLEDID71,,tTor)
+	exten => _913X.,4,Hangup
+
+Server IP:	202.51.177.70
+
+Active:	Y
+
+############################################################
+
+Carrier ID:	NESTLEDID72
+
+Carrier Name:	NESTLEDID72
+
+Carrier Description:	NESTLE DID  9610161272
+
+Admin User Group:	---ALL---
+
+Registration String:	register => 9610161272:c5zqdkap@103.251.120.244:5060/9610161272
+
+Template ID:	--NONE--
+
+Account Entry:	
+	[TOLLFREETRUNK]
+	disallow=all
+	allow=gsm
+	allow=ulaw
+	type=friend
+	dtmfmode=rfc2833
+	context=trunkinbound
+	qualify=yes
+	insecure=port,invite
+	nat=force_rport,comedia
+	host=103.251.120.244
+	username=9610161272
+	secret=c5zqdkap
+	allow=alaw
+
+Protocol:	SIP
+
+Globals String:	
+
+Dialplan Entry:	
+	exten => _929013X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929013X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929013X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929013X.,4,Hangup
+
+	exten => _929014X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929014X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929014X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929014X.,4,Hangup
+
+	exten => _929015X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929015X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929015X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929015X.,4,Hangup
+
+	exten => _929016X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929016X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929016X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929016X.,4,Hangup
+
+	exten => _929017X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929017X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929017X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929017X.,4,Hangup
+
+	exten => _929018X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929018X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929018X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929018X.,4,Hangup
+
+	exten => _929019X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _929019X.,2,SET(CALLERID(num)=9610161272)
+	exten => _929019X.,3,Dial(SIP/${EXTEN:3}@TOLLFREETRUNK,,tTor)
+	exten => _929019X.,4,Hangup
+
+	exten => _92988X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _92988X.,n,SET(CALLERID(num)=9610161272)
+	exten => _92988X.,n,Dial(SIP/${EXTEN:5}@TOLLFREETRUNK,,tTor)
+	exten => _92988X.,n,Hangup
+
+Server IP:	202.51.177.70
+
+Active:	Y
+
+############################################################
+
+Carrier ID:	NESTLELTFS
+
+Carrier Name:	NESTLELTFS
+
+Carrier Description:	NESTLELTFS
+
+Admin User Group:	---ALL---
+
+Registration String:	register => 8000161271:bo2syx@103.251.120.244:5060/8000161271
+
+Template ID:	--NONE--
+
+Account Entry:	
+	[NESTLELTFS]
+	disallow=all
+	allow=alaw
+	allow=ulaw
+	allow=gsm
+	type=friend
+	dtmfmode=rfc2833
+	context=trunkinbound
+	qualify=yes
+	insecure=port,invite
+	nat=force_rport,comedia
+	host=103.251.120.244
+	username=8000161271
+	secret=bo2syx
+
+Protocol:	SIP
+
+Globals String:	
+
+Dialplan Entry:	
+	exten => _919X.,1,AGI(agi://127.0.0.1:4577/call_log)
+	exten => _919X.,2,SET(CALLERID(num)=8000161271)
+	exten => _919X.,3,Dial(SIP/${EXTEN:3}@NESTLELTFS,,tTor)
+	exten => _919X.,4,Hangup
+
+Server IP:	202.51.177.70
+
+Active:	Y
+
+############################################################
+
+
+
+register => 9610223344:wvpz4c@103.251.120.244:5060/9610223344
+
+register => 09678777903:myout903@203.76.96.85:5060/09678777903
+
+Call Rejected: CHANUNAVAIL
+Cause: 1 - Unallocated (unassigned) number.
+SIP: 404 - Not Found)
+
+
+exten => _X.,1,AGI(agi://127.0.0.1:4577/call_log)
+exten => _X.,n,AGI(agi-NVA_recording.agi,BOTH------Y---Y---Y)
+exten => _X.,n,SET(CALLERID(num)=9610223344)
+exten => _X.,n,Progress()
+exten => _X.,n,Dial(SIP/${EXTEN}@MYOLPBX,,tTo)
+exten => _X.,n,Hangup
+
+exten => _+88X.,1,AGI(agi://127.0.0.1:4577/call_log)
+exten => _+88X.,n,AGI(agi-NVA_recording.agi,BOTH------Y---Y---Y)
+exten => _+88X.,n,SET(CALLERID(num)=9610223344)
+exten => _+88X.,n,Progress()
+exten => _+88X.,n,Dial(SIP/${EXTEN:3}@MYOLPBX,,tTo)
+exten => _+88X.,n,Hangup

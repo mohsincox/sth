@@ -1,0 +1,17 @@
+Tvicibox9:/ # service mysql stop
+Tvicibox9:/ # mysqld_safe --skip-grant-tables &
+
+Tvicibox9:/ # mysql -u root
+
+MariaDB [(none)]> use mysql;
+
+
+MariaDB [mysql]> update user set password=PASSWORD("newpassword") where user='root';
+
+MariaDB [mysql]> quit
+Bye
+
+Tvicibox9:/ # service mysql stop
+Tvicibox9:/ # service mysql start
+Tvicibox9:/ # mysql -u root -pnewpassword
+

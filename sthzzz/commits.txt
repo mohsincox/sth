@@ -1,0 +1,8 @@
+
+Commits on Aug 3
+Merge branch 'walid-signup' into develop
+Merge branch 'develop'
+Merge branch 'develop'
+Sign up done
+
+https://www.youtube.com/watch?v=aTlKkKsYjtI&ab_channel=NewbieSolutions

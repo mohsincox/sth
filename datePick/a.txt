@@ -1,0 +1,4 @@
+$('#start_date').datepicker({
+            format:'yyyy-mm-dd',
+            "autoclose": true
+        }).datepicker("setDate",'now');

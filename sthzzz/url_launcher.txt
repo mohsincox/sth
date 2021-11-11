@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: _launchURL(),
+    );
+  }
+}
+
+_launchURL() {
+  // const url = 'https://www.cylog.org/headers/';
+  const url = 'http://202.51.177.67:8034/ig';
+  launch(
+    url,
+    forceSafariVC: true,
+    forceWebView: true,
+    enableJavaScript: true,
+  );
+}
+
+
+
+
+
+import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        // appBar: AppBar(title: Text("My App")),
+        body: SafeArea(
+          child: WebView(
+            initialUrl: "http://202.51.177.67:8034/ig",
+            javascriptMode: JavascriptMode.unrestricted,
+          ),
+        ),
+      ),
+    ),
+  );
+}

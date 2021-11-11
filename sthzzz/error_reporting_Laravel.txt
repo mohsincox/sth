@@ -1,0 +1,35 @@
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    // Ignores notices and reports all other kinds... and warnings
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
+
+https://github.com/moove-it/react-native-template
+
+https://github.com/thecodingmachine/react-native-boilerplate
+
+SELECT * FROM `profiles` WHERE `division_id`=3 AND kids_age IS NOT NULL AND `consumer_age`='31-35 years'
+SELECT * FROM `profiles` WHERE `division_id`=3 AND child1_DOB IS NOT NULL AND `consumer_age`='31-35 years'
+
+
+// move_on=0;
+// alert_box("<?php //echo _QXZ("PLEASE SELECT PAUSE TO DO MANUAL DIAL!!"); ?>");
+
+NeWManuaLDiaLCalLSubmiTfast();
+
+
+
+YOU MUST ENTER A PHONE NUMBER AND DIAL CODE TO USE FAST DIAL
+
+
+
+NeWManuaLDiaLCalL
+
+AutoDial_ReSume_PauSe
+
+AutoDial_ReSume_PauSe
+
+
+https://github.com/talhaekhlas/antd-redux
+
+https://github.com/talhaekhlas/freshApiPractice

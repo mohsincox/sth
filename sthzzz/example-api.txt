@@ -1,0 +1,265 @@
+**********
+POST	http://localhost/example-api/public/api/register
+
+Headers
+KEY				VALUE
+Accept			application/json
+Content-Type	application/json
+
+Body Row:
+{"name": "John", "email": "john.doe@toptal.com", "password": "toptal123", "password_confirmation": "toptal123"}
+
+
+Response
+{
+    "data": {
+        "name": "John",
+        "email": "john.doe@toptal.com",
+        "updated_at": "2021-06-06 06:23:01",
+        "created_at": "2021-06-06 06:23:01",
+        "id": 12,
+        "api_token": "GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC"
+    }
+}
+
+Status: 201 Created
+
+$ curl -X POST http://localhost:8000/api/register \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ -d '{"name": "John", "email": "john.doe@toptal.com", "password": "toptal123", "password_confirmation": "toptal123"}'
+
+
+
+**********
+POST 	http://localhost/example-api/public/api/login
+
+Headers
+KEY				VALUE
+Accept			application/json
+Content-Type	application/json
+
+Body Row:
+{"email": "admin@test.com", "password": "toptal"}
+
+Response
+{
+    "data": {
+        "id": 1,
+        "name": "Administrator",
+        "email": "admin@test.com",
+        "created_at": "2021-06-06 05:36:44",
+        "updated_at": "2021-06-06 09:45:35",
+        "api_token": "nR9b7hhO4sijmw3q7oPvDKC5csDtW9umXsxYBKfdkJA29bM1yW87eBnsabnI"
+    }
+}
+
+Status: 200 OK
+
+$ curl -X POST localhost:8000/api/login \
+  -H "Accept: application/json" \
+  -H "Content-type: application/json" \
+  -d "{\"email\": \"admin@test.com\", \"password\": \"toptal\" }"
+
+
+
+**********
+POST    http://localhost/example-api/public/api/logout
+
+Headers
+KEY             VALUE
+Authorization   Bearer nR9b7hhO4sijmw3q7oPvDKC5csDtW9umXsxYBKfdkJA29bM1yW87eBnsabnI
+
+Response
+{
+    "data": "User logged out."
+}
+
+
+
+**********
+GET		http://localhost/example-api/public/api/articles
+
+Headers
+KEY				VALUE
+Authorization	Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+
+Response
+[
+    {
+        "id": 1,
+        "title": "Veniam eum laborum molestias enim dolores.",
+        "body": "Odio porro quae at adipisci omnis. Non eveniet aut et at. Alias qui voluptate ea repellendus.",
+        "created_at": "2021-06-06 05:36:42",
+        "updated_at": "2021-06-06 05:36:42"
+    },
+    ...
+    {
+        "id": 50,
+        "title": "Quod ipsum voluptate dolores et pariatur velit.",
+        "body": "Itaque dolores voluptas voluptatum aliquid. Sunt ipsum dolores ipsum ut repellat. Harum iusto repellendus eos ducimus suscipit sunt non.",
+        "created_at": "2021-06-06 05:36:42",
+        "updated_at": "2021-06-06 05:36:42"
+    }
+]
+
+Status: 200 OK
+
+
+
+**********
+GET		http://localhost/example-api/public/api/articles/5
+
+Headers
+KEY				VALUE
+Authorization	Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+Response
+{
+    "id": 5,
+    "title": "Mollitia nostrum reiciendis quos consequuntur fugit rerum.",
+    "body": "Id eos ea quo minus est tenetur. Doloribus occaecati quibusdam consequatur mollitia. Ea suscipit unde aut.",
+    "created_at": "2021-06-06 05:36:42",
+    "updated_at": "2021-06-06 05:36:42"
+}
+
+Status: 200 OK
+
+
+
+**********
+POST	http://localhost/example-api/public/api/articles
+
+Headers
+KEY				VALUE
+Authorization	Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+Body Row:
+{"title": "Lorem", "body": "Ipsum"}
+
+Response
+{
+    "title": "Lorem",
+    "body": "Ipsum",
+    "updated_at": "2021-06-06 08:47:49",
+    "created_at": "2021-06-06 08:47:49",
+    "id": 51
+}
+
+Status: 200 OK
+
+
+
+**********
+PUT 	http://localhost/example-api/public/api/articles/51
+
+Headers
+KEY				VALUE
+Authorization	Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+Body Row:
+{"title": "Lorem Test", "body": "Ipsum Test"}
+
+Response
+{
+    "id": 51,
+    "title": "Lorem Test",
+    "body": "Ipsum Test",
+    "created_at": "2021-06-06 08:47:49",
+    "updated_at": "2021-06-06 09:00:16"
+}
+
+Status: 200 OK
+
+
+
+**********
+DELETE	http://localhost/example-api/public/api/articles/40
+
+Headers
+KEY				VALUE
+Authorization	Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+Response
+1
+
+Status: 204 No Content
+
+
+
+**********
+GET     http://localhost/example-api/public/api/user
+
+Headers
+KEY             VALUE
+Authorization   Bearer GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC
+
+Response
+{
+    "id": 12,
+    "name": "John",
+    "email": "john.doe@toptal.com",
+    "created_at": "2021-06-06 06:23:01",
+    "updated_at": "2021-06-06 06:23:01",
+    "api_token": "GcAHLmP6Ch5kuQXlsRAkvTMfbzre4vrc0CcvN8g3N929lVVpTw7KFkPm6bsC"
+}
+
+Status: 200 OK
+
+
+--OR--
+
+Headers
+KEY             VALUE
+Authorization   Bearer nR9b7hhO4sijmw3q7oPvDKC5csDtW9umXsxYBKfdkJA29bM1yW87eBnsabnI
+
+Response
+{
+    "id": 1,
+    "name": "Administrator",
+    "email": "admin@test.com",
+    "created_at": "2021-06-06 05:36:44",
+    "updated_at": "2021-06-06 09:45:35",
+    "api_token": "nR9b7hhO4sijmw3q7oPvDKC5csDtW9umXsxYBKfdkJA29bM1yW87eBnsabnI"
+}
+
+Status: 200 OK
+
+
+in User Model: generateToken
+
+class User extends Authenticatable
+{
+    ...
+    public function generateToken()
+    {
+        $this->api_token = str_random(60);
+        $this->save();
+
+        return $this->api_token;
+    }
+}
+
+
+
+https://www.toptal.com/laravel/restful-laravel-api-tutorial
+
+Auth::guard('api')->user(); // instance of the logged user
+Auth::guard('api')->check(); // if a user is authenticated
+Auth::guard('api')->id(); // the id of the authenticated user
+
+
+
+response()->json()
+
+200: OK. The standard success code and default option.
+201: Object created. Useful for the 'store' actions.
+204: No content. When an action was executed successfully, but there is no content to return.
+206: Partial content. Useful when you have to return a paginated list of resources.
+400: Bad request. The standard option for requests that fail to pass validation.
+401: Unauthorized. The user needs to be authenticated.
+403: Forbidden. The user is authenticated, but does not have the permissions to perform an action.
+404: Not found. This will be returned automatically by Laravel when the resource is not found.
+500: Internal server error. Ideally you're not going to be explicitly returning this, but if something unexpected breaks, this is what your user is going to receive.
+503: Service unavailable. Pretty self explanatory, but also another code that is not going to be returned explicitly by the application.

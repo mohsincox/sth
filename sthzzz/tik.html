@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+
+<html >
+
+<head>
+
+  <meta charset="UTF-8">  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css">
+
+
+
+
+<!--<link rel='stylesheet prefetch' href='https://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,100,500'>
+<link rel='stylesheet prefetch' href='https://www.google.com/fonts#UsePlace:use/Collection:Roboto+Slab:400,700,300,100'>-->
+
+<link rel='stylesheet prefetch' href='../bootstrap/css/bootstrap.min.css'>
+
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+    <script async defer
+    
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTmFQD7pTG98MDWNoq-RMGJ5u9jHqIULk">
+            
+            
+            
+            
+//            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHgPl3TqU2QyhEvQKjIbUpRB41AJI1gf8">
+    </script>
+
+
+<script type="text/javascript" >     
+window.onload = getLocation;      
+var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */    
+var timerInterval = null;
+function getLocation() 
+{       
+
+    if( geo ) 
+	{    
+    geo.getCurrentPosition( displayLocation );       
+    } 
+
+    else  
+	{ 
+	alert( "Oops, Geolocation API is not supported");        
+    }  
+	
+	
+  stop();
+  value = 0;
+  timerInterval = setInterval(changeValue, 1000);   
+  
+
+if (navigator.geolocation) 
+{
+    navigator.geolocation.getCurrentPosition(function (p) {
+        var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+	
+        var mapOptions = {
+            center: LatLng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+        var marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            title: "You are here!!"
+        });
+        google.maps.event.addListener(marker, "click", function (e) {
+            var infoWindow = new google.maps.InfoWindow();
+            infoWindow.setContent(marker.title);
+            //infoWindow.open(map, marker);
+        });
+    });
+	
+	
+ 
+
+	
+	
+	
+} 
+else 
+{
+    alert('Geo Location feature is not supported in this browser.');
+}
+
+}  
+  
+        
+
+
+
+
+function changeValue() 
+{
+  
+  document.getElementById("demo").innerHTML = ++value;
+  document.getElementById("sur").value = ++value;
+  
+}
+
+var stop = function() 
+{
+  clearInterval(timerInterval );
+}
+
+
+/*     This function displays the latitude and longitude when the browser has a location.     */   
+
+
+
+    function displayLocation( position ) 
+
+	{   
+	         
+
+        var latitude = position.coords.latitude;        
+
+        var longitude = position.coords.longitude;            
+
+		document.getElementById('msg').value = latitude;
+
+		document.getElementById('msg2').value = longitude;
+		
+
+	    var lat = parseFloat(document.getElementById("msg").value);
+
+            var lng = parseFloat(document.getElementById("msg2").value);
+
+            var latlng = new google.maps.LatLng(lat, lng);
+
+            var geocoder = geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    if (results[1]) {
+
+                       // alert("Location: " + results[1].formatted_address);
+                       document.getElementById('msg22').value = results[1].formatted_address;
+                    }
+
+                }
+
+            });
+	
+
+    } 
+
+								
+
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+
+$(".submit_button").click(function() {
+
+var location = $("#msg").val();
+
+var location2 = $("#msg2").val();
+
+var location22 = $("#msg22").val();
+
+var guard_name = $("#guard_name").val();
+
+var guard_id = $("#guard_id").val();
+
+var available = $("#available").val();
+
+var what_is_doing = $("#what_is_doing").val();
+
+var survey = $("#sur").val();
+var survey =  survey -1;
+
+//var inspector = $("#inspector").val();
+
+
+
+var dataString = 'location='+ location +'&guard_name='+guard_name +'&guard_id='+guard_id +'&available='+available +'&what_is_doing='+what_is_doing +'&location2='+location2+'&location22='+location22+'&survey='+survey;
+
+if(location=='')
+
+{
+
+alert("Please turn on Geo location and click on refresh icon!!");
+
+$("#msg").focus();
+
+}
+
+
+
+if(location2=='')
+
+{
+
+alert("Please turn on Geo location and click on refresh icon!!");
+
+$("#msg2").focus();
+
+}
+
+
+
+if(location22=='')
+
+{
+
+alert("Please turn on Geo location and click on refresh icon!!");
+
+$("#msg22").focus();
+
+}
+
+
+
+if(guard_name=='')
+
+{
+
+alert("Guard name missing !!");
+
+$("#guard_name").focus();
+
+}
+
+
+
+if(guard_id=='')
+
+{
+
+alert("Guard id missing!!");
+
+$("#guard_id").focus();
+
+}
+
+
+
+if(available=='')
+
+{
+
+alert("Availablity missing !!");
+
+$("#available").focus();
+
+}
+
+
+
+if(what_is_doing=='')
+
+{
+
+alert("Please check the last field !!");
+
+$("#what_is_doing").focus();
+
+}
+
+
+
+
+
+else
+
+{
+
+$("#flash").show();
+
+$("#flash").fadeIn(10).html('<span class="load" ><img src="wait.gif" style="width:130px;height:40px"> </span>');
+
+$.ajax({
+
+type: "POST",
+
+url: "http://116.68.195.60/securex_login/action.php",
+
+data: dataString,
+
+cache: true,
+
+success: function(html){
+
+$("#show").after(html);
+
+document.getElementById('msg').value='';
+
+document.getElementById('msg2').value='';
+
+document.getElementById('msg22').value='';
+
+document.getElementById('guard_name').value='';
+
+document.getElementById('guard_id').value='';
+
+document.getElementById('available').value='';
+
+document.getElementById('what_is_doing').value='';
+
+document.getElementById('sur').value='0';
+
+$("#flash").hide();
+
+$("#content").focus();
+
+}  
+
+});
+
+}
+
+return false;
+
+});
+
+});
+
+</script>
+  
+
+</head>
+
+
+
+<body>
+ <div style="position:fixed;top:0px;color: #FFFFFF;
+			width: 100%;-webkit-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-moz-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-ms-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);font-family: 'Roboto', Helvetica, Arial, sans-serif;font-size:16px;text-align:center;height:35px;z-index:10001;padding-top:3px;" >
+<span style="float:left;font-weight:bold;">&nbsp;&nbsp;&nbsp;Duration  <label id="demo" style="color:#FF6666;">0</label>&nbsp;Sec</span> <span style="float:right;"><a href="tik.html"><img src="refresh.png" style="width:30px;height:28px;"></a>&nbsp;&nbsp;&nbsp;<a href="leave.html"><img src="leave.png" style="width:30px;height:30px;"></a>&nbsp;&nbsp;&nbsp;<a href="notice.html"><img src="notice.png" style="width:30px;height:30px;"></a>&nbsp;&nbsp;&nbsp;<a href="../index.html"><img src="logout.png" style="width:28px;height:28px;"></a>&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<div id="dialog" class="dialog dialog-effect-in">
+
+  <div class="dialog-front">
+
+    <div class="dialog-content">
+
+      <form id="login_form" class="dialog-form" action="" method="POST">
+
+        <fieldset>
+
+          <legend>Geo location </legend>
+
+         
+
+	    <div class="form-group">
+		
+            <div id="dvMap" style="width: 100%; height: 150px;border-radius:8px;"></div>
+		  <br>
+
+          <!--  <label for="user_username" class="control-label">Inspector location </label>  --->
+
+            <input type="hidden" id="msg" class="form-control" name="msg" autofocus readonly="" style="color:#0000FF;font-weight:bolder;" required="required" value=""/>
+
+            <input type="hidden" id="msg2" class="form-control" name="msg2" autofocus readonly="" style="color:#0000FF;font-weight:bolder;" required="required" value=""/>
+            <input type="hidden" id="sur" class="form-control" name="sur" autofocus readonly="" style="color:#0000FF;font-weight:bolder;" required="required" value=""/>
+
+            <input type="text" id="msg22" class="form-control" name="msg22" autofocus readonly="" style="color:#FFFFFF;font-weight:bolder;" required="required" placeholder="Press the location refresh icon"/>
+
+        </div>
+
+		 
+
+		  <div class="form-group">
+
+           <!-- <label for="user_username" class="control-label">Guard name</label>-->
+
+            <input type="text" id="guard_name" class="form-control" name="guard_name" autofocus style="color:#FFFFFF;font-weight:bolder;" placeholder="Write Guard name"/>
+
+          </div>
+
+          <div class="form-group">
+
+         <!--   <label for="user_password" class="control-label">Guard ID</label> --->
+
+			<div>
+
+            <input type="text" id="guard_id" class="form-control" name="guard_id" style="color:#FFFFFF;font-weight:bolder;" placeholder="Write Guard ID"/>
+
+			</div>
+
+          </div>
+
+		  <div class="form-group">
+
+          <!--  <label for="user_password" class="control-label">On the spot</label>-->
+
+          <div>  <select name="available"  class="form-control" id="available" style="color:#FFFFFF;font-weight:bolder;"/>          
+
+			 <option value="" selected="selected" >-On the spot-</option>
+
+			 <option>YES</option>
+
+			 <option>NO</option>
+
+			</select>
+
+			</div>
+
+          </div>
+
+		  <div class="form-group">
+
+          <!--  <label for="user_password" class="control-label">What is he doing</label>-->
+
+        <div>    
+		<select name="what_is_doing"  class="form-control" id="what_is_doing" style="color:#FFFFFF;font-weight:bolder;"/>        
+
+			<option value="" selected="selected" >-Curruntly doing-</option>
+
+			<option>Sleeping</option>
+
+			<option>Gosipping</option>
+
+			<option>Doing his Job</option>
+
+			</select> </div>
+
+          </div>
+
+		  
+
+
+
+          <div class="form-group">
+
+            <input type="submit" value="SUBMIT" name="submit" class="submit_button" style="color: #FFFFFF;background-color: #3399FF;
+			width: 100%;border: 1px solid #3399FF;border-radius: 2px;-webkit-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-moz-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-ms-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);font-family: 'Roboto', Helvetica, Arial, sans-serif;font-size:16px;text-align:center;height:35px;" onClick="stop();"/>
+
+          </div>
+
+
+
+        </fieldset>
+
+      </form>
+
+	  
+
+	  <div class="space" align="center"></div>
+
+      <div id="flash" align="center"></div>
+
+      <div id="show" align="center"></div>
+
+	  
+
+    </div>
+
+  </div>
+
+ 
+
+ 
+
+
+
+ </div>
+
+ <div align="center" style="position:fixed;bottom:0px;color: #FFFFFF;background-color: #333333;
+			width: 100%;-webkit-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-moz-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);-ms-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);font-family: Verdana, Arial, Helvetica, sans-serif;font-size:10px;text-align:center;height:20px;z-index:10001;padding-top:3px;" >
+Securex © 2017 All Rights Reserved.
+</div>
+
+  <script src='js/jquery.js'></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+
+
+    
+
+</body>
+
+</html>
+

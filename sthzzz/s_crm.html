@@ -1,0 +1,49 @@
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style><div align="center" style="border:1px solid;border-color:#000066;height:400px;width:950px;background-color:#FFFFFF;">
+<?php
+$lead_id = $_GET['lead_id'];
+$vendor_id = $_GET['vendor_id'];
+$phone_number = $_GET['phone_number'];
+
+
+if(strlen($phone_number) < 11)
+{
+$phone_number = '0'.$phone_number;
+}
+
+
+$security_phrase = $_GET['security_phrase'];
+$user = $_GET['user'];
+$campaign = $_GET['campaign'];
+$phone_login = $_GET['phone_login'];
+$SQLdate = $_GET['SQLdate'];
+$agent = $_GET['agent'];
+
+echo "<br><br>Call landing time :$SQLdate<br><hr>";
+echo "Call id : $lead_id<br><hr>";
+echo "Vendor id : $vendor_id<br><hr>";
+echo "Phone number :$phone_number<br><hr>";
+echo "Security phrase :$security_phrase<br><hr>";
+echo "User id :$user<br><hr>";
+echo "Full name :$agent<br><hr>";
+echo "User soft phone :$phone_login<br><hr>";
+echo "Campaign info :$campaign<br><hr>";
+
+?>
+
+<div align="center"><a target="_blank" href="https://admin.sheba.xyz/order/create?lead_id=<?php echo $lead_id;?>&vendor_id=<?php echo $vendor_id;?>&mobile=<?php echo $phone_number;?>&security_phrase=<?php echo $security_phrase;?>&agent_user_name=<?php echo $user;?>&campaign_name=<?php echo $campaign;?>&user_soft_phone=<?php echo $phone_login;?>&call_landing_time=<?php echo $SQLdate;?>&agent_full_name=<?php echo $agent;?>">SEND DATA</a></div>
+</div>

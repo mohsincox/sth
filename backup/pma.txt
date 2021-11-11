@@ -1,0 +1,93 @@
+Q04+o%?(!!f^
+
+
+Create a video Chat Application with Laravel & ReactJS (based on WebRTC)
+
+Youtube
+
+
+react-native:debug/debugger-ui
+
+
+SELECT COUNT(closecallid), status FROM vicidial_closer_log GROUP BY status
+ML@@420
+2222
+
+
+iptables _nL
+
+uptime
+
+passwd
+
+
+
+192.168.100.68\SQLEXPRESS
+
+myadmin!@#
+
+
+
+#49 * * * * curl  http://192.168.100.9/transcomticket/index.php/status-wise-mail
+
+1 1 * * * curl  http://192.168.100.12/attendance/check-in-out-insert-yesterday
+
+* * * * * curl  http://192.168.100.29/admin/sms-send-from-call-menu
+
+147995444
+
+
+
+1. On the way to depot
+2. Order collected from depot
+3. On the way for order deliver
+4. Order delivered
+
+
+01729710738  for Nestle profile data show
+
+npm start -- --reset-cache
+
+https://medium.com/dailyjs/offline-notice-in-react-native-28a8d01e8cd0
+
+
+
+import {Container, Content, Button, Icon} from 'native-base';
+import React, {Component} from 'react-native';
+​
+export default class IconButtonExample extends Component {
+    render() {
+        return (
+            <Container>
+                <Content>
+                    <Button primary>
+                        <Icon name="ios-home" />
+                        Home
+                    </Button>
+
+                    <Button success iconRight>
+                        Next
+                        <Icon name="ios-arrow-forward" />
+                    </Button>
+
+                    <Button info>
+                        Previous
+                        <Icon name="ios-arrow-back" />
+                    </Button>
+
+                    <Button warning>
+                        <Icon name="ios-star" />
+                    </Button>
+
+                    <Button danger>
+                        <Icon name="android-cancel" />
+                    </Button>
+
+                    <Button style={{backgroundColor: '#384850'}} >
+                        <Icon name="ios-search-strong" style={{color: '#00c497'}}/>
+                    </Button>
+                </Content>
+            </Container>
+        );
+    }
+}

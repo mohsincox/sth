@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quantity Price</title>
+	<!-- <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div>
+                    <div>
+                        <input type="hidden" id="price" value="100">
+                        <label>Quantity</label>
+                        <p>
+                            <a class="btn btn-dark mr-2 minus-qty">-</a>
+                            <input min="1" value="1" id="qty" type="number">
+                            <a class="btn btn-info ml-2 plus-qty">+</a>
+                        </p>
+                    </div>
+                    <div>
+                        <label>Total Price:</label>
+                        <p class="form-control" id="total-price">100 TK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+      	$(document).ready(function() {
+
+	        // clicking on modal plus btn
+	        $(document).on('click', '.plus-qty', function () {
+	          	const price = parseFloat($('#price').val())
+	          	const qu = (Number($('#qty').val())+1);
+	          	const newPrice = (price * qu)
+	          	$('#qty').val(qu);
+	          	$('#total-price').text(newPrice+" TK");
+	        });
+
+	        // clicking on modal minus btn
+	        $(document).on('click', '.minus-qty', function () {
+	          	const price = parseFloat($('#price').val())
+	          	const qu = (Number($('#qty').val())-1);
+	          	if(qu > 0) {
+	            	const newPrice = (price * qu);
+	            	$('#qty').val(qu);
+	            	$('#total-price').text(newPrice + " TK");
+	          	}
+	        });
+
+	        // on change
+	        $(document).on('change', '#qty', function () {
+	          	const price = parseFloat($('#price').val());
+	          	const qu = Number($('#qty').val());
+	          	const newPrice = (price * qu);
+	          	$('#total-price').text(newPrice+" TK");
+	        });
+
+	        // on key press
+	        $(document).on('keyup', '#qty', function () {
+	          	const price = parseFloat($('#price').val())
+	          	const qu = Number($('#qty').val());
+	          	const newPrice = (price * qu);
+	          	$('#total-price').text(newPrice+" TK");
+	        });
+
+      	});
+    </script>
+</body>
+</html>

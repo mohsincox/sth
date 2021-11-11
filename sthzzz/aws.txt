@@ -1,0 +1,88 @@
+MyoLtest
+myoltest.com
+2december2019
+WHM: root
+WHM: MyoL@123
+whm.myoltest.com
+whm.myoltest
+MyoL@123456
+
+
+
+C:\Users\Mohsin\Downloads>ssh -i 2december2019.pem centos@3.136.153.12						//
+The authenticity of host '3.136.153.12 (3.136.153.12)' can't be established.
+ECDSA key fingerprint is SHA256:NG0XH5IFSGMDF4xr1ow8RMNNJP7xsN5lYDuwLqmrfFw.
+Are you sure you want to continue connecting (yes/no)? yes									//
+Warning: Permanently added '3.136.153.12' (ECDSA) to the list of known hosts.
+Last login: Thu Jun 27 19:18:09 2019 from hou-2.nat.cptxoffice.net
+[centos@ip-172-31-23-236 ~]$ sudo su                                                        //
+[root@ip-172-31-23-236 centos]# passwd                                                      //
+Changing password for user root.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[root@ip-172-31-23-236 centos]#
+
+
+
+
+WHM: https://3.136.153.12/test.php
+
+Laravel: http://18.218.33.188/
+or
+http://laravelsimpleblog-env.ffmmdr7aqp.us-east-2.elasticbeanstalk.com/
+
+MyoLtest
+
+Elastic IP address associated.
+Elastic IP address 3.136.153.12
+
+https://3.136.153.12/test.php
+
+
+https://hubstaff.com/
+
+
+
+
+https://www.w3jar.com/react-js-php-mysqli-crud-application-with-react-context-api/
+
+
+
+
+
+componentDidMount() {
+        this.timer = setInterval(() => this.getAlertWeb(), 1000);
+    }
+
+    async getAlertWeb() {
+        // 01829630335 mak 01710920153
+        // return fetch(`http://192.168.100.83/iglooapp/user-edit/ticket/${this.props.navigation.state.params.JSON_ListView_Clicked_Item}`)
+        return fetch(`contacts.php`)
+            .then(response => response.json())
+            .then(responseJson => {     
+                this.setState({
+                    contacts: responseJson.contacts,
+                }, function() {
+                    //comment
+                });
+                console.log(this.state.contacts)
+            })
+            .catch(error => {
+                null;
+            });
+    }
+
+
+
+
+
+    componentDidMount() {
+    fetch('contacts.php')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ contacts: data })
+      console.log(this.state.contacts)
+    })
+    .catch(console.log)
+  }

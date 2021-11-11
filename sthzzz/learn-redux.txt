@@ -1,0 +1,185 @@
+00:00:00 - 00:20:00
+
+// src/index.js
+
+import { createStore } from 'redux';
+
+//STORE -> GLOBALIZED STATE
+
+//ACTION INCREMENT
+const increment = () => {
+    return {
+        type: 'INCREMENT'
+    }
+}
+
+const decrement = () => {
+    return {
+        type: 'DECREMENT'
+    }
+}
+
+//REDUCER
+const counter = (state = 0, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+    }
+}
+
+let store = createStore(counter);
+
+//Display it in the console
+store.subscribe(() => console.log(store.getState()));
+
+//DISPATCH
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(decrement());
+
+
+
+00:20:00 - 00:30:00
+
+// src/index.js
+
+import { createStore } from 'redux';
+import allReducer from './reducers';
+
+const store = createStore(
+    allReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+// src/reducers/index.js
+
+import counterReducer from './counter';
+import loggedReducer from './isLogged';
+import { combineReducers } from 'redux';
+
+const allReducers = combineReducers({
+    counter: counterReducer,
+    isLogged: loggedReducer
+})
+
+export default allReducers;
+
+
+// src/reducers/counter.js
+
+const counterReducer = (state = 0, action) => {
+    switch(action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case "DECREMENT":
+            return state - 1;
+        default: 
+            return state;
+    }
+}
+
+export default counterReducer;
+
+
+// src/reducers/isLogged.js
+
+const loggedReducer = (state = false, action) => {
+    switch(action.type) {
+        case 'SIGN_IN':
+            return !state;
+        default:
+            return state;
+    }
+};
+
+export default loggedReducer;
+
+
+38:00
+
+// src/index.js
+
+import { createStore } from 'redux';
+import allReducer from './reducers';
+import { Provider } from 'react-redux';
+
+const store = createStore(
+    allReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root')
+);
+
+
+// src/App.js
+
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from './actions';
+
+function App() {
+  const counter = useSelector(state => state.counter);
+  const isLogged = useSelector(state => state.isLogged);
+  const dispatch = useDispatch();
+  return (
+    <div className="App">
+      <h1>Counter {counter}</h1>
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      {isLogged ? <h3>Valuable Information I shouldn't see</h3> : ''}
+    </div>
+  );
+}
+
+
+// src/actions/index.js
+
+export const increment = () => {
+    return {
+        type: 'INCREMENT'
+    };
+};
+
+export const decrement = () => {
+    return {
+        type: 'DECREMENT'
+    };
+};
+
+
+38      // increment by 5
+
+// src/App.js
+
+<button onClick={() => dispatch(increment(5))}>+</button>
+
+// src/actions/index.js
+export const increment = nr => {
+    return {
+        type: 'INCREMENT',
+        payload: nr
+    };
+};
+
+
+// src/reducers/counter.js
+
+const counterReducer = (state = 0, action) => {
+    switch(action.type) {
+        case 'INCREMENT':
+            return state + action.payload;
+        case "DECREMENT":
+            return state - 1;
+        default: 
+            return state;
+    }
+}
+
+export default counterReducer;

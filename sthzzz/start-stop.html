@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<form action="/action_page.php">
+	<input type="number" id="input" />
+	<input id="stop" type="button" value="stop"/>
+	<input id="start" type="button" value="start"/>
+	<input type="reset" value="Reset">
+</form>
+</body>
+<script type="text/javascript">
+	var timer = null, 
+    interval = 1000,
+    value = 0;
+
+	$("#start").click(function() {
+	  if (timer !== null) return;
+	  timer = setInterval(function () {
+	      value = value+1;
+	      $("#input").val(value);
+	  }, interval); 
+	});
+
+	$("#stop").click(function() {
+	  clearInterval(timer);
+	  timer = null
+	});
+</script>
+</html>

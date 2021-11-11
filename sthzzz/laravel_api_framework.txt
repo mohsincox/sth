@@ -1,0 +1,150 @@
+**********
+POST	http://localhost/laravel_api_framework/public/api/register
+
+Body 	x-www-form-urlencoded
+KEY						VALUE
+name					John Doe
+email					john@doe.com
+password 				johndoe
+password_confirmation 	johndoe
+//type 					1 or 2 default 0
+
+Response
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWMyMThkYTI1ODdkZDNiMTc0MTg5NDk2YWNhZjJhMzI4MWQ3MGJjNmNmMjMxODUzY2MzYWUzOTM4NTY2NjliNjU0MDhkYjAwZTFkNzlkNDIiLCJpYXQiOjE2MjMwNTY0MzYsIm5iZiI6MTYyMzA1NjQzNiwiZXhwIjoxNjU0NTkyNDM2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CoeLLIpHGV2QSLeBN1P9n9GFW_u_pD_yON1SKiwv_8ZP__ibhkHKeUxMXSxi2nWjoxGTFDxPDlsDC_0JNFVDmwW7uRVvBXRfi6CzuANRkS5o4eTzFjrnM00FCHsG8nnA-Ov-NxVxiZjQHwBmfQzQGkpISQ6qrU8lbom5Mxl63YyitV67IQfeCIUZRh8atzBCTICwFoFbfT256CecQdLtmgpUR6oUZ-rDTzCiDBgdPKpiQ5EiZ-9uDKU4ktwTpCOuMU-CBDkfllf-nvQKbtozUrvdlyenllGoDeRgcKPaBErRRr0eiYtgALLzmmPqB10nFV0SGo-rLvkz-kgYNzaXdyJzf0ZGxI2n9t55GXxRLKIM8m-QkSoipCYLsNnOtsTIht-sXOXF63Q-1TwNNVyUek9Z-vAM6u_mfQwzhFwPEwiGMnkLRT5N_X7_ev8kCdhKwJ4efZLjDRuk2Wbc7f7RPlUzAv8Rb9yX6ycoJtqvqR2gt-FygkIVarCuGHgw23sbx-ED6zqJC2E3i5nEUJzywGaPr6bc5WMO9weh_UMDMDeo1B3CGJm0oBUvfeTjpitUSiBwjGmNgjr0FHzNdZmtmCaBgtgJDDrIfKlfNK0Y3GHLOnvLOOFiuuaPQ7hF1R3vqxIHIqA-6-hc285fg2gimgPzEiZAv0uGHdrH7drNbsM"
+}
+
+Status: 200 OK
+
+
+
+**********
+POST	http://localhost/laravel_api_framework/public/api/login
+
+Body 	x-www-form-urlencoded
+KEY						VALUE
+email					john@doe.com
+password 				johndoe
+password_confirmation 	johndoe
+
+
+Response
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTYxYjY2MTk5OGNlYzY3MmE0ZjE4NDlmNjA0OGM1MWEzMzhmYjJmYTExMmJiY2Y1NjNjYTQ3N2E1YTk4ZjFhOGZlOTIzYzYxOTkzZjE1NTYiLCJpYXQiOjE2MjMwNTc4OTAsIm5iZiI6MTYyMzA1Nzg5MCwiZXhwIjoxNjU0NTkzODkwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.aUXJj32sGyYLWXhef9JEfMH5oTr---rAITdnWfpwS77-_0MNoWAikik7a76Cf9wr4xhnOjkchHzuOkOISkcULpKokkHQj6LAH0RhjYfvcV29CT8Yn9dGY-Jo2NXQNgdCYF-DZxrS3_Z8QjICmugAjgSiiZq-nD6YyBox_gM0wcjYoqD7YS_pXQnrQdq2_Nb58S-rJlt65ORbzRT2xGPmPDJPf6zJrH2EJEdY3VLW02dU3CekLXuKVNdO9esWDtXRD_1ZmAJnscbiJyBoTyXPoiw0WiH6-oz_qi3uDYmkHcb8MQjO43Oh41z6oCqDwx1GS91hNm95YlT1i0SISvS_tqPHp5eBanFP4zRSDHIZM1n4_bfh9IYpildGjHxAJ53zmYRteNtLduRq9U3_QOti11jEoAQ4V2s-prwuVe9A2B1DS-0xHKxSIEStBujGbai7imUtP8C_gJ5XjBRLTOmWSPRM-yWgmMLeKy6tx5VJoduWoSKm-dVHmUcDt2EX1uQfv5nl3dSPFwzVgQrXyLJ9Q3rsKAUAGQ9gN7gaoVEXaQxfY-cMSJ0xNNGIXXsj7vc3vxOubSiDh2EYuyfm4Eyp5aj8SiL8bl_m0h7juWPU445EKS-RlaBApPUSEkNlzjp29Di4N2dKLxXNMrxrlFyVo3OcMU5tywTZRBAceD4bmIE"
+}
+
+Status: 200 OK
+
+
+
+**********
+GET		http://localhost/laravel_api_framework/public/api/user
+
+
+Authorization
+
+Type: Bearer Token
+
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTYxYjY2MTk5OGNlYzY3MmE0ZjE4NDlmNjA0OGM1MWEzMzhmYjJmYTExMmJiY2Y1NjNjYTQ3N2E1YTk4ZjFhOGZlOTIzYzYxOTkzZjE1NTYiLCJpYXQiOjE2MjMwNTc4OTAsIm5iZiI6MTYyMzA1Nzg5MCwiZXhwIjoxNjU0NTkzODkwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.aUXJj32sGyYLWXhef9JEfMH5oTr---rAITdnWfpwS77-_0MNoWAikik7a76Cf9wr4xhnOjkchHzuOkOISkcULpKokkHQj6LAH0RhjYfvcV29CT8Yn9dGY-Jo2NXQNgdCYF-DZxrS3_Z8QjICmugAjgSiiZq-nD6YyBox_gM0wcjYoqD7YS_pXQnrQdq2_Nb58S-rJlt65ORbzRT2xGPmPDJPf6zJrH2EJEdY3VLW02dU3CekLXuKVNdO9esWDtXRD_1ZmAJnscbiJyBoTyXPoiw0WiH6-oz_qi3uDYmkHcb8MQjO43Oh41z6oCqDwx1GS91hNm95YlT1i0SISvS_tqPHp5eBanFP4zRSDHIZM1n4_bfh9IYpildGjHxAJ53zmYRteNtLduRq9U3_QOti11jEoAQ4V2s-prwuVe9A2B1DS-0xHKxSIEStBujGbai7imUtP8C_gJ5XjBRLTOmWSPRM-yWgmMLeKy6tx5VJoduWoSKm-dVHmUcDt2EX1uQfv5nl3dSPFwzVgQrXyLJ9Q3rsKAUAGQ9gN7gaoVEXaQxfY-cMSJ0xNNGIXXsj7vc3vxOubSiDh2EYuyfm4Eyp5aj8SiL8bl_m0h7juWPU445EKS-RlaBApPUSEkNlzjp29Di4N2dKLxXNMrxrlFyVo3OcMU5tywTZRBAceD4bmIE
+
+
+Response
+{
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@doe.com",
+    "email_verified_at": null,
+    "created_at": "2021-06-07T09:00:36.000000Z",
+    "updated_at": "2021-06-07T09:00:36.000000Z",
+    "type": 0
+}
+
+
+
+**********
+GET		http://localhost/laravel_api_framework/public/api/articles
+
+
+Authorization
+
+Type: Bearer Token
+
+Token: ...
+
+
+Response
+{
+    "message": "Permission Denied"
+}
+
+
+Status: 401 Unauthorized
+
+/*
+<?php
+namespace App\Http\Middleware;
+use Closure;
+use Illuminate\Support\Facades\Auth;
+class AdminAuth
+{
+    public function handle($request, Closure $next)
+    {
+        if (Auth::guard('api')->check() && $request->user()->type >= 1) {		<<<<<<-----------
+            return $next($request);
+        } else {
+            $message = ["message" => "Permission Denied"];						<<<<<<-----------
+            return response($message, 401);
+        }
+    }
+}
+*/
+
+
+user()->type 0 to 1 then
+
+Response
+{
+    "message": "article index"
+}
+
+
+Status: 200 OK
+
+
+
+
+**********
+POST	http://localhost/laravel_api_framework/public/api/logout
+
+
+Authorization
+
+Type: Bearer Token
+
+Token: ...
+
+
+Response
+{
+    "message": "You have been successfully logged out!"
+}
+
+Status: 200 OK
+
+
+
+********** After logout
+GET		http://localhost/laravel_api_framework/public/api/user
+
+
+Authorization
+
+Type: Bearer Token
+
+Token: ... same Token
+
+
+Response
+{
+    "message": "Unauthenticated."
+}

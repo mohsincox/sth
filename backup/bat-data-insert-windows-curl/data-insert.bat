@@ -1,0 +1,1 @@
+php "D:\xampp\htdocs\testing\insert.php"

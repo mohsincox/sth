@@ -1,0 +1,63 @@
+https://stackoverflow.com/questions/36249828/how-to-search-json-array-in-mysql		[]
+SELECT * FROM `inv_products` WHERE JSON_CONTAINS(vehicle_model, '3', '$');
+
+https://www.digitalocean.com/community/tutorials/working-with-json-in-mysql			lara
+
+https://stackoverflow.com/questions/42435694/match-multiple-dates-in-between-two-date-columns-in-mysql
+
+Assuming that bookingfrom AND bookingtill are DATE fields:
+
+SELECT * 
+FROM booking 
+WHERE userid='67' 
+AND '".date('Y-m-d', strtotime($date))."' BETWEEN bookingfrom AND bookingtill
+AND service='test'
+AND status='0'
+
+With "date('Y-m-d', strtotime($date))" you set the format to make comparison in MySql.
+
+SELECT * FROM booking WHERE userid='67' AND bookingfrom <= $data AND bookingtill >= $data AND service='test' AND status='0'
+
+
+SELECT * FROM `inv_products` WHERE DATE('2013-03-22') BETWEEN mfg_year AND exp_year;
+
+(date_end >= CURRENT_DATE() OR date_end IS NULL)
+
+SELECT * FROM `inv_products` WHERE EXTRACT(YEAR FROM '2012-11-21') BETWEEN mfg_year AND IF(exp_year IS NOT NULL, exp_year, YEAR(CURRENT_DATE()));
+
+SELECT * FROM `inv_products` WHERE '2012' BETWEEN mfg_year AND IF(exp_year IS NOT NULL, exp_year, YEAR(CURRENT_DATE()));
+
+SELECT * FROM `inv_products` WHERE JSON_CONTAINS(vehicle_model, '3', '$') AND '2012' BETWEEN mfg_year AND IF(exp_year IS NOT NULL, exp_year, YEAR(CURRENT_DATE()));
+
+http://202.51.176.44:8098/download-apk/ms_demo.apk
+
+
+igloo ip:
+http://223.27.93.37:8080/
+
+880292222
+
+
+
+
+At line:1 char:30
++ mysql -u root -p iglooticket < "D:\iglooticket (3).sql"
++                              ~
+The '<' operator is reserved for future use.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : RedirectionNotSupported
+
+
+
+flutter build apk --build-name=1.0.3 --build-number=3
+
+SELECT lead_id, first_name, last_name, address1 FROM vicidial_list WHERE phone_number = 1711009040 order by lead_id desc LIMIT 1
+
+sidebar-mini layout-footer-fixed control-sidebar-slide-open layout-navbar-fixed
+
+Using flutter webview as home and pressing back button closes Application
+https://stackoverflow.com/questions/57878887/using-flutter-webview-as-home-and-pressing-back-button-closes-application
+
+In webview_flutter, back buttom exit the app #39645
+https://github.com/flutter/flutter/issues/39645
+https://stackoverflow.com/questions/49356664/how-to-override-the-back-button-in-flutter/49356916#49356916

@@ -1,0 +1,141 @@
+#style-switcher h3 {
+	color: #fff;
+	font-size: 13px;
+	margin: 10px 0;
+	font-weight: 500;
+	text-transform: none;
+	letter-spacing: 0
+}
+#style-switcher {
+	background: #333;
+	width: 180px;
+	position: fixed;
+	top: 145px;
+	z-index: 9999;
+	left: -180px;
+	border-radius: 0 0 3px
+}
+#style-switcher ul {
+	list-style: none;
+	padding: 0
+}
+#style-switcher div {
+	padding: 6px 18px
+}
+#style-switcher h2 {
+	background: #282828;
+	color: #fff;
+	font-size: 14px;
+	line-height: 46px;
+	padding: 0 0 0 20px;
+	margin-top: 0
+}
+#style-switcher h2 a {
+	background-color: #282828;
+	display: block;
+	height: 46px;
+	position: absolute;
+	right: -46px;
+	top: 0;
+	width: 46px;
+	border-radius: 0 3px 3px 0;
+	font-size: 22px;
+	color: #fff;
+	text-align: center
+}
+#style-switcher h2 a i {
+	position: relative;
+	top: -1px
+}
+.colors {
+	list-style: none;
+	margin: 0 0 10px;
+	overflow: hidden
+}
+.colors li {
+	float: left;
+	margin: 4px 2px 0
+}
+.colors li a {
+	display: block;
+	width: 32px;
+	height: 32px;
+	cursor: pointer
+}
+div.layout-style {
+	padding: 0!important
+}
+.layout-style select {
+	width: 164px;
+	padding: 7px;
+	color: #aaa;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 2px 0 25px;
+	background-color: #505050;
+	border: 0;
+	min-height: auto
+}
+.default {
+	background: #d71c67
+}
+.green {
+	background: #34bc55
+}
+.blue {
+	background: #274abb
+}
+.orange {
+	background: #ce4624
+}
+.yellow {
+	background: #ffcb08
+}
+.peach {
+	background: #fcab55
+}
+.purple {
+	background: #c357c7
+}
+.olive {
+	background: #b3c211
+}
+.red {
+	background: #ef3f6b
+}
+.bridge {
+	background: #6F9A37
+}
+.cyan {
+	background: #35d3b7
+}
+.darkred {
+	background: #a00e0f
+}
+.liteblue {
+	background: #41c6f2
+}
+.colors li a.active {
+	box-shadow: 0 0 0 2px #fff inset
+}
+.colors li a {
+	border-radius: 3px
+}
+#reset {
+	margin: -5px 0 15px
+}
+#reset a.button {
+	padding: 7px 14px;
+	font-weight: 700;
+	font-size: 13px
+}
+#reset a.button:hover {
+	color: #333;
+	background-color: #fff
+}
+ @media only screen and (max-width:767px) {
+ #style-switcher {
+ display: none
+}
+}

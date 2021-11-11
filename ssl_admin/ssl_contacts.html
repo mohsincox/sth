@@ -1,0 +1,988 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>iSMS</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="description" content="isms SSLCARE - SMS Push Pull Services">
+<meta name="author" content="SSL Wireless Limited">
+<meta name="csrf-token" content="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+
+<link rel="icon" href="https://ismsplus.sslwireless.com/assets/images/favicon.png" type="image/x-icon">
+<!-- VENDOR CSS -->
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/daterangepicker.css"/>
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+      href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+<link rel="stylesheet"
+      href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/animate-css/animate.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/font-awesome.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/chartist/css/chartist.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/chatapp.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/main.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/color_skins.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/bootstrap-toggle.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/custom/css/custom.css">
+
+<!-- Styles -->
+
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/sweet-alert/sweetalert2.min.css">
+<!--For Display the show more or less option-->
+<style>
+    .morecontent span {
+        display: none;
+    }
+
+
+</style>
+    <style>
+        .pending_contact_group_card {
+            pointer-events: none;
+            opacity: 0.4;
+            border-style: solid;
+            border-color: #0000ff;
+            animation: blinker 1.5s linear infinite;
+            margin-right: 5px;
+        }
+        .uploading_contact_group_card {
+            pointer-events: none;
+            opacity: 0.4;
+            border-style: solid;
+            border-color: #ff8000;
+            animation: blinker 1.5s linear infinite;
+            margin-right: 5px;
+        }
+        @keyframes  blinker {
+            60% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="theme-blue">
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="https://ismsplus.sslwireless.com/assets/images/thumbnail.png" width="48" height="48" alt="Mplify">
+        </div>
+        <p>Please wait...</p>
+    </div>
+</div><!-- Overlay For Sidebars -->
+<div class="overlay" style="display: none;"></div>
+
+<div id="wrapper">
+    
+    <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-brand">
+            <a href="https://ismsplus.sslwireless.com">
+                <img src="https://ismsplus.sslwireless.com/assets/images/logo-icon.svg" alt="SSLCare Logo" class="img-responsive logo">
+                <span class="name">sslcare</span>
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <ul class="list-unstyled clearfix mb-0">
+                <li>
+                    <div class="navbar-btn btn-toggle-show">
+                        <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu icon-grid"></i></button>
+                    </div>
+                    <a href="javascript:void(0);" class="btn-toggle-fullwidth btn-toggle-hide"><i class="lnr lnr-menu icon-grid"></i></a>
+                </li>
+
+                <li>
+                    <div id="navbar-menu">
+                        <ul class="nav navbar-nav">
+
+                                                                                    <li class="available-sms">
+
+                                <div class="add-balance icon-menu text-primary">
+                                    <i class="text-white icon-wallet"></i>
+                                    <strong class="hidden-sm ml-1">Prepaid</strong>
+
+
+                                </div>
+                                
+
+                            <li class="mr-3">
+                                                                <a class="create_new icon-menu badge-success text-white" href="https://ismsplus.sslwireless.com/purchase-balance/create"><i class="text-white icon-plus"></i> <span class="hidden-sm ml-1">Add Balance</span>
+                                </a>
+                                                                                            </li>
+                            
+                            <li class="quick-sms-fab">
+                                                            </li>
+                            <li class="dropdown">
+                                <a href="https://ismsplus.sslwireless.com/user/profile" class="py-0 dropdown-toggle icon-menu" data-toggle="dropdown">
+                                                                                                                    <img alt=" No Logo" class="rounded-circle h-w-50" src="https://ismsplus.sslwireless.com/uploaded_files/company/logo/com-logo-1611390605.png" width="45" alt="">
+                                                                                                            </a>
+                                <div class="dropdown-menu animated flipInY user-profile">
+                                    <a href="https://ismsplus.sslwireless.com/user/profile">
+                                        <div class="d-flex p-3 align-items-center">
+
+                                            <div class="drop-right">
+                                                <h4>
+                                                    <div class="drop-left d-inline-block">
+                                                        <div id="profileImage"></div>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                            <div class="drop-right">
+                                                Abdul Momen Ltd
+                                                <p class="user-name">laizu.brand@amlbd.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                    
+
+                                        <div class="bg-success d-flex p-3 align-items-center">
+
+                                            <div class="drop-right">
+                                                <h4>
+                                                    <div class="drop-left d-inline-block">
+                                                        <div id="">
+                                                            <img id="profileImage" src="http://hris.sslwireless.com/employee-doc/image/thumbnail/1009-1567930750_907.jpg">
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                            <div class="drop-right">
+                                                KAM: Quazi Ahsanul Kabir
+                                                <p class="user-name">ahsanul.kabir@sslwireless.com</p>
+                                                <p>01615801216</p>
+                                            </div>
+                                        </div>
+
+                                    
+                                    <div class="m-t-10 p-3 drop-list">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="isms::Panel#smallModal" data-toggle="modal"
+                                                   data-target="#smallModal">
+                                                    <i class="icon-key"></i>
+                                                    Change Password
+                                                </a>
+
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <div>
+                                                    <a href="https://ismsplus.sslwireless.com/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                        <i class="icon-power"></i> Logout
+                                                    </a>
+
+                                                    <form id="logout-form" action="https://ismsplus.sslwireless.com/logout" method="POST"
+                                                          style="display: none;">
+                                                        <input type="hidden" name="_token" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div id="leftsidebar" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav id="leftsidebar-nav" class="sidebar-nav">
+            <ul id="main-menu" class="metismenu">
+
+                <li class="nav-item dashboard"><a href="https://ismsplus.sslwireless.com"><i
+                            class="icon-home"></i><span>Dashboard</span></a></li>
+
+
+                                <li class="nav-item send-sms">
+                    <a href="https://ismsplus.sslwireless.com/customer/send-sms/create">
+                        <i class="icon-note"></i>
+                        <span>Send SMS</span>
+                    </a>
+                </li>
+                                                <li class="nav-item send-sms-im">
+                    <a href="https://ismsplus.sslwireless.com/im-send-sms/create">
+                        <i class="icon-envelope-open"></i>
+                        <span>Send Social SMS</span>
+                    </a>
+                </li>
+                                                <li class="nav-item send-sms-voice">
+                    <a href="https://ismsplus.sslwireless.com/customer/send-sms-voice/create">
+                        <i class="icon-envelope-open"></i>
+                        <span>Send Voice SMS</span>
+                    </a>
+                </li>
+                
+                                
+                                <li class="nav-item send-sms-au">
+                    <a href="https://ismsplus.sslwireless.com/customer/client-sms-authentication">
+                        <i class="icon-lock-open"></i>
+                        <span>SMS Authentication</span>
+                    </a>
+                </li>
+                                
+                                                <li class="nav-item sms-template"><a href="https://ismsplus.sslwireless.com/customer/sms-template">
+                        <i class="icon-picture"></i><span>SMS Template</span></a></li>
+                                                <li class="nav-item contact"><a href="https://ismsplus.sslwireless.com/customer/contacts">
+                        <i class="icon-users"></i><span>Contact Book</span></a></li>
+                                                <li class="nav-item sms-list send-sms-status">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-docs"></i><span>SMS Lists</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse sms-list-submenu">
+
+                                                <li class="nav-item im-send-sms">
+                            <a href="https://ismsplus.sslwireless.com/im-send-sms">
+                                <span>Social Campaign List</span>
+                            </a>
+                        </li>
+                                                                        <li class="nav-item schedule">
+                            <a href="https://ismsplus.sslwireless.com/customer/schedule">
+                                <span>SMS Campaign List</span>
+                            </a>
+                        </li>
+                                                                        <li class="nav-item send-sms-voice-list">
+                            <a href="https://ismsplus.sslwireless.com/customer/send-sms-voice">
+                                <span>Voice Campaign List</span>
+                            </a>
+                        </li>
+                        
+                                                <li class="nav-item quick_sms">
+                            <a href="https://ismsplus.sslwireless.com/customer/quick-sms">
+                                <span>Quick SMS</span>
+                            </a>
+                        </li>
+                                            </ul>
+                </li>
+                
+                
+
+                
+                    <li class="nav-item balance-management">
+                        <a href="#" class="has-arrow">
+                            <i class="icon-wallet"></i><span>Balance Management</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse balance-management-submenu">
+                                                                                    
+                            
+                                                        <li class="nav-item balance-history">
+                                <a href="https://ismsplus.sslwireless.com/admin/balance-history">
+                                    <span>Balance History</span>
+                                </a>
+                            </li>
+                            
+                                                        <li class="nav-item transfer-balance">
+                                <a href="https://ismsplus.sslwireless.com/admin/transfer-balance">
+                                    <span>Transfer History</span>
+                                </a>
+                            </li>
+                            <li class="nav-item transfer-balance-create">
+                                <a href="https://ismsplus.sslwireless.com/admin/transfer-balance/create">
+                                    <span>Transfer Balance</span>
+                                </a>
+                            </li>
+                            
+
+                            
+                                                        <li class="nav-item purchase-balance"><a href="https://ismsplus.sslwireless.com/purchase-balance">
+                                    <span>Purchase Balance</span></a></li>
+                                                    </ul>
+
+
+                    </li>
+
+                
+
+                
+
+
+                                <li class="nav-item report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>SMS Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse report-submenu">
+
+                        
+                                                <li class="report_stakeholder"><a href="https://ismsplus.sslwireless.com/report/stakeholder-wise-report">Stakeholder Report</a>
+                        </li>
+                        
+                                                <li class="report_intelco"><a href="https://ismsplus.sslwireless.com/report/intelco-report">IN Telco Report</a></li>
+                        
+                                                <li class="report_outtelco"><a href="https://ismsplus.sslwireless.com/report/outtelco-report">Out Telco Report</a></li>
+                        
+
+                                                <li class="daily_report"><a href="https://ismsplus.sslwireless.com/report/daily-report">Daily Report</a></li>
+                        
+                    <!--                        
+
+                        -->
+
+
+                                                <li class="failed_report"><a href="https://ismsplus.sslwireless.com/report/failed-report">Failed Report</a></li>
+                        
+                                                <li class="details_report"><a href="https://ismsplus.sslwireless.com/report/details-report">Details Report</a></li>
+                                                                        <li class="monthly_report"><a href="https://ismsplus.sslwireless.com/report/monthly-report">Monthly Report</a></li>
+                                                                        
+                                             </ul>
+                </li>
+                
+                                <li class="nav-item im-report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>Social Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse im-report-submenu">
+                                                <li class="im_details_report"><a href="https://ismsplus.sslwireless.com/im-report/details-report">Details Report</a></li>
+                                                                        <li class="im_summary_report"><a href="https://ismsplus.sslwireless.com/im-report/summary-report">Summary Report</a></li>
+                                                                                                                    </ul>
+                </li>
+                
+                                <li class="nav-item voice-report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>Voice Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse voice-report-submenu">
+                                                <li class="voice_details_report"><a href="https://ismsplus.sslwireless.com/voice-sms/details-report">Details Report</a></li>
+                                                                        <li class="voice_summary_report"><a href="https://ismsplus.sslwireless.com/voice-sms/summary-report">Summary Report</a></li>
+                                                                                                <li class="voice_campaign_report"><a href="https://ismsplus.sslwireless.com/voice-sms/campaign-report">Campaign Report</a></li>
+                                            </ul>
+                </li>
+                
+                
+
+                
+                    <li class="nav-item client-management">
+                        <a href="#" class="has-arrow">
+                            <i class="icon-user-follow"></i><span>Client Management</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse client-management-submenu">
+
+                                                                                    
+                                                        <li class="nav-item user-management">
+                                <a href="https://ismsplus.sslwireless.com/admin/user-management">
+                                    <span>User Management</span>
+                                </a>
+                            </li>
+                                                         
+                                                    </ul>
+                    </li>
+                                
+
+                                                <li class="nav-item sms-history">
+                    <a href="https://ismsplus.sslwireless.com/report/sms-care">
+                        <i class="icon-speech"></i>
+                        <span>Customer Care</span>
+                    </a>
+                </li>
+                                            </ul>
+        </nav>
+    </div>
+</div>
+        <div id="main-content">
+        <div id="app1">
+                            <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">
+                    <h2>Contact Book</h2>
+
+                </div>
+                <div class="col-lg-7 col-md-4 col-sm-12 text-right">
+                    <ul class="breadcrumb justify-content-end">
+                        <li class="breadcrumb-item"><a href="https://ismsplus.sslwireless.com/home"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item active">Contact Group</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="w_social3">
+    <ul class="nav clearfix">
+
+        <li class="col-lg-2 col-md-4 col-6 nav-item">
+            <a class="nav-link add-group">
+                <div class="card bg-primary text-white font-13" data-toggle="modal"
+                     data-target="#addNewContactGroupModal">
+                    <div class="icon"><i class="fa-2x icon icon-plus "></i></div>
+                    <div class="content">
+                        <div class="text">Create New Group</div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+        <li class="col-lg-2 col-md-4 col-6 nav-item mb-3">
+            <a href="#all" class="group_id nav-link  group_id active show" data-toggle="tab" data-id=""
+               data-text="All Contact">
+
+                <div class="card bg-light font-13">
+                    <div class="icon"><i class="fa-2x icon icon-user-following"></i></div>
+                    <div class="content">
+                        <div class="text">All Contact</div>
+                        <div class="small number">0 Contacts</div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+                                            </ul>
+    
+</div>
+
+        <div class="card">
+    <div class="card-header">
+        <h5>Contact List <small class="group-name"> - All Contact</small></h5>
+    </div>
+    <div class="body">
+        <div class="clearfix">
+            <div class="pull-left">
+                <a href="https://ismsplus.sslwireless.com/customer/contacts/export" class="btn btn-success m-b-15 contact_csv">
+                    <i class="icon icon-cloud-download"></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
+            <div class="pull-right">
+                                <button class="btn btn-primary mr-1" type="button" data-toggle="modal"
+                        data-target="#addContact">
+                    <i class="icon icon-plus"></i>
+                    Add New Contact
+                </button>
+                                                <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
+                        data-target="#uploadModal">
+                    <i class="icon icon-cloud-upload"></i>
+                    Upload Bulk Contact
+                </button>
+                            </div>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped" id="list">
+                <thead>
+                <tr>
+                    <th class="border-top-0">Mobile No.</th>
+                    <th class="border-top-0">Name</th>
+                    <th class="border-top-0">Designation</th>
+                    <th class="border-top-0">Organizations</th>
+                    <th class="border-top-0">Email</th>
+                    <th class="border-top-0">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    <div class="modal fade" id="addNewContactGroupModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="https://ismsplus.sslwireless.com/customer/contact-group" accept-charset="UTF-8" class="show_form_submit_loader" enctype="multipart/form-data"><input name="_token" type="hidden" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+            <div class="modal-header">
+                <h6 class="title">Create Group</h6>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input class="form-control" required="" placeholder="Group Name" name="name" type="text">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Details" name="details" type="text">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Who Can Use</label>
+                            <br>
+                            <label class="fancy-radio">
+                                <input type="radio" name="allow_for_other_users" value="" required="" checked>
+                                <span><i></i>Only Me</span>
+                            </label>
+                            <label class="fancy-radio">
+                                <input type="radio" name="allow_for_other_users" value="1">
+                                <span><i></i>Others User</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr class="w-100">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="file" name="excel_file" class="form-control-file"
+                                   aria-describedby="fileHelp">
+                            <small id="fileHelp" class="form-text text-muted"> Upload bulk contacts, CSV,TXT,XLS,XLSX
+                                files are allowed to upload
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <a href="https://ismsplus.sslwireless.com/sample/contacts.xlsx" class="downloadSample"> <i class="icon-doc"></i> Download Sample File</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary text-capitalize">Create</button>
+                <button type="button" class="btn btn-outline-secondary text-capitalize" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>    <!-- Group Modal-->
+<div class="modal fade" id="uploadModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="https://ismsplus.sslwireless.com/customer/contacts/import" accept-charset="UTF-8" class="show_form_submit_loader" enctype="multipart/form-data"><input name="_token" type="hidden" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title">Upload Contact book</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix"> 
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="file" name="excel_file" class="form-control-file"
+                                       aria-describedby="fileHelp" required>
+                                <small id="fileHelp2" class="form-text text-muted">Upload bulk contacts, CSV,TXT,XLS,XLSX
+                                    files are allowed to upload
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <a href="https://ismsplus.sslwireless.com/sample/contacts.xlsx" class="downloadSample"> <i class="icon-doc"></i> Download Sample File</a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Select Group</label>
+                                <select class="select-group select2 contactUploadGroupId" required name="group_id"><option selected="selected" value="">Select Group</option></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary text-capitalize" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary text-capitalize">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>    <!-- Group Modal-->
+<div class="modal fade" id="addContact" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="https://ismsplus.sslwireless.com/customer/contacts" accept-charset="UTF-8" class="show_form_submit_loader"><input name="_token" type="hidden" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Create Contact</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" value="" name="name" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Mobile No.</label>
+                                <input type="text" value=""  name="mobile_no" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value=""  name="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Designation</label>
+                                <input type="text" value=""  name="designation" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Organizations</label>
+                                <input type="text" value=""  name="organization" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Select Group</label>
+                                <select class="select-group selectTwo" multiple="multiple" required name="group_id[]"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary text-capitalize" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary text-capitalize">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Group Modal-->
+<div class="modal fade" id="editContact" role="dialog">
+    <div class="modal-dialog" role="document" >
+        
+    </div>
+</div>        </div>
+    </div>
+
+</div>
+
+    <div class="modal fade" id="notice-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">বিজ্ঞপ্তি</h4>
+            </div>
+          <div class="modal-wrap">
+           
+            <div class="modal-body">
+              <h4>সম্মানিত গ্রাহক,</h4>
+              <p>
+                বিটিআরসি প্রদত্ত বিজ্ঞপ্তি অনুযায়ী যে কোনো পণ্য অথবা সেবা বিষয়ক
+                সতর্কতামূলক, নির্দেশনা, প্রচার ও প্রচারণামূলক এসএমএস বাংলা ভাষায়
+                পাঠানোর জন্য কঠোরভাবে নির্দেশনা দেয়া হয়েছে।
+              </p>
+              <p>
+                আমরা বিশ্বাস করি আপনি এবং আপনার প্রতিষ্ঠান আইনের প্রতি
+                শ্রদ্ধাশীল থাকবেন এবং অনতিবিলম্বে এটি কার্যকর করবেন।
+              </p>
+              <p>
+                উপরোক্ত নির্দেশনা সম্পর্কে আরো বিস্তারিত তথ্য জানতে যোগাযোগ করুন
+                আপনার সেবায় নিযুক্ত আমাদের বিক্রয় প্রতিনিধির সাথে অথবা সাপোর্ট
+                সেন্টারে।
+              </p>
+              <ul>
+                <li>কল করুন: + 880 9612 226969</li>
+                <li>
+                  ই মেইল:
+                  <a href="mailto:support@sslwireless.com"
+                    >support@sslwireless.com</a
+                  >
+                </li>
+              </ul>
+              <h4>ধন্যবাদান্তে</h4>
+              <h5>সফটওয়্যার শপ লিমিটেড (এস এস এল ওয়্যারলেস)</h5>
+            </div>
+          </div>
+          <div class="modal-wrap">
+            <div class="modal-header">
+              <h4 class="modal-title">Notice</h4>
+            </div>
+            <div class="modal-body">
+              <h4>Dear Concern,</h4>
+              <p>
+                As per the circular of BTRC it has been instructed to all public
+                and private organizations to send any kind of SMS notifications/
+                alerts/ promotions in Bangla language to the Mobile Subscribers.
+              </p>
+              <p>
+                We believe that you and your company will be respectful to laws
+                of the land and comply with this immediately.
+              </p>
+              <p>
+                To know more regarding aforementioned circulation, you are
+                hereby requested to contact to our sales representative or
+                customer care representative.
+              </p>
+              <ul>
+                <li>Call: +880 9612 226969</li>
+                <li>
+                  Email:
+                  <a href="mailto:support@sslwireless.com"
+                    >support@sslwireless.com</a>
+                </li>
+              </ul>
+              <h4>Regards</h4>
+              <h5>Software Shop Limited (SSL Wireless)</h5>
+            </div>
+          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CLOSE</button>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>   
+
+
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <form method="POST" action="https://ismsplus.sslwireless.com/change-password" accept-charset="UTF-8" class="show_form_submit_loader"><input name="_token" type="hidden" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+                <label for="current_password">Current Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" required="" placeholder="Current Password" name="current_password" type="password" value="" id="current_password">
+
+                </div>
+                <label for="password">New Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" id="noid" required placeholder="New Password" name="password" type="password" value="">
+                    <span class="text-danger font-12">(Length 8-32 with capital and small alpha numeric and special character !$%&_+-.@#)</span>
+                </div>
+                <label for="password_confirmation">Confirm Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" required="" placeholder="Confirm Password" name="password_confirmation" type="password" value="" id="password_confirmation">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">SAVE CHANGES</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CLOSE</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Javascript -->
+<script src="https://ismsplus.sslwireless.com/js/app.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/libscripts.bundle.js"></script>
+<script type="text/javascript" src="https://ismsplus.sslwireless.com/assets/dump-cdn-link/moment.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/vendorscripts.bundle.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/js/pages/masonry/masonry.pkgd.min.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/bundles/easypiechart.bundle.js"></script> <!-- easypiechart Plugin Js -->
+<script src="https://ismsplus.sslwireless.com/assets/vendor/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
+
+<script src="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/datatablescripts.bundle.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/jquery-datatable.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/mainscripts.bundle.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/js/pages/ui/dialogs.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jQuery-datetime/jquery.datetimepicker.js"></script>
+<script src="https://ismsplus.sslwireless.com/js/highlight-nav.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/dump-cdn-link/bootstrap-toggle.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/avro/avro-v1.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ismsplus.sslwireless.com/assets/js/index.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/jquery-loading/loadingoverlay.min.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/loading_gif.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/common.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/show_more_less.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/show_more_less.js" type="text/javascript"></script>
+<script>
+function getAppBaseUrl() {
+    return 'https://ismsplus.sslwireless.com/';
+}
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+<script>
+    $(".selectTwo").select2();
+    $(".shortcode").select2({
+        placeholder: 'Select shortcode',
+        allowClear: true
+    });
+    $(".hotkey").select2({
+        placeholder: 'Select hotkey',
+        allowClear: true
+    });
+    $(".inbound-operator").select2({
+        placeholder: 'Inbound Operator',
+        allowClear: true
+    });
+    $(".outbound-operator").select2({
+        placeholder: 'Outbound Operator',
+        allowClear: true
+    });
+
+
+</script>
+<script>
+    $('.selectDate').attr("autocomplete", "off");
+    $('.selectDate').datepicker({
+        timepicker: false,
+        format: 'dd-mm-yyyy',
+        autocomplete: false
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var name = "Abdul Momen Ltd".toUpperCase();
+        var intials = name.charAt(0) + name.charAt(name.length - 1);
+        var profileImage = $('#profileImage').text(intials);
+    });
+</script>
+
+
+<script src="https://ismsplus.sslwireless.com/assets/sweet-alert/sweetalert2.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/sweet-alert/show-hide-sweet-alert.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/jquery-loading/loadingoverlay.min.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/loading_gif.js" type="text/javascript"></script>
+
+<script>
+    $('.delete-warning').click(function () {
+        event.preventDefault();
+        var form = $(this).parents('form');
+        showConfirmSweetAlert(form);
+    });
+</script>
+<script>
+    $(document).delegate('.delete-link','click',function (e) {
+        e.preventDefault();
+         var link = $(this).attr('href');
+        Swal.fire({
+            title: 'Are you sure ?',
+            text: "You won't be able to revert this !",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = link;
+            } else {
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
+<!-- Scripts for vue.js -->
+
+
+
+    <script>
+        $(function () {
+            highlight_nav('contact', 'contact');
+                                            });
+
+        function checkUploadingStatusGroupAndReload(id, status) {
+            var url = getAppBaseUrl() + 'check-contact-group-upload-status/' + id + '/' + status;
+            $.get(url, function (data, status) {
+                if (data == 'reload') {
+                    location.reload();
+                }
+                // alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
+    </script>
+
+    <script>
+        /**
+         * Data Table Server-side Processing
+         */
+        $(function() {
+
+            var group_id = '';
+
+            
+            var dTable = $('#list').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: 'https://ismsplus.sslwireless.com/customer/contacts/list',
+                    method: 'post',
+                    data: function (d) {
+                        d._token = "lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw";
+                        d.group_id = group_id;
+                    }
+                },
+                columns: [
+                    { data: 'mobile_no', name: 'mobile_no' },
+                    { data: 'name', name: 'name' },
+                    { data: 'designation', name: 'designation' },
+                    { data: 'organization', name: 'organization' },
+                    { data: 'email', name: 'email' },
+                    { data: 'actions', name: 'actions', searchable: false, orderable : false}
+                ]
+            });
+
+            $('#list').on('click','.contact-edit',function () {
+                $('#editContact .modal-dialog').html('');
+                $.get("/customer/contacts/" + $(this).data('id') + "/edit", function(data){
+                    $('#editContact .modal-dialog').html(data);
+                    $('#editContact .select-group').select2();
+                });
+                $('#editContact').modal('show');
+                hideLoader();
+
+            });
+
+            $('.group_id').on('click',function () {
+
+                displayLoader();
+                group_id = $(this).data('id');
+                
+                $('.contact_csv').attr("href", "https://ismsplus.sslwireless.com/customer/contacts/export?group_id=" + group_id);
+                $('.contact_csv span').html( 'Download CSV -' + $(this).data('text'));
+
+                dTable.ajax.reload();
+                $('.group-name').html( ' - ' + $(this).data('text'));
+                hideLoader();
+            });
+
+            $('.uploadGroupContact').on('click',function () {
+               $('.contactUploadGroupId').val($(this).data('group-id'));
+               $('.select2').select2();
+               return true;
+            });
+        });
+    </script>
+
+        <script>
+
+        
+
+        
+    </script>
+<script> 
+
+
+    
+   </script>
+</body>
+</html>

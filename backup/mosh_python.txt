@@ -1,0 +1,539 @@
+
+00:00:00 Introduction
+00:01:49 Installing Python
+00:06:10 Your First Python Program
+00:08:11 How Python Code Gets Executed 
+00:11:24 How Long It Takes To Learn Python 
+00:13:03 Variables
+00:18:21 Receiving Input
+00:22:16 Python Cheat Sheet
+00:22:46 Type Conversion
+00:29:31 Strings
+00:37:36 Formatted Strings
+00:40:50 String Methods
+00:48:33 Arithmetic Operations
+00:51:33 Operator Precedence
+00:55:04 Math Functions
+00:58:17 If Statements
+01:06:32 Logical Operators
+01:11:25 Comparison Operators
+01:16:17 Weight Converter Program 
+01:20:43 While Loops
+01:24:07 Building a Guessing Game
+01:30:51 Building the Car Game
+01:41:48 For Loops
+01:47:46 Nested Loops
+01:55:50 Lists
+02:01:45 2D Lists
+02:05:11 My Complete Python Course 
+02:06:00 List Methods
+02:13:25 Tuples
+02:15:34 Unpacking
+02:18:21 Dictionaries
+02:26:21 Emoji Converter
+02:30:31 Functions
+02:35:21 Parameters
+02:39:24 Keyword Arguments 
+02:44:45 Return Statement
+02:48:55 Creating a Reusable Function 
+02:53:42 Exceptions
+02:59:14 Comments
+03:01:46 Classes
+03:07:46 Constructors
+03:14:41 Inheritance
+03:19:33 Modules
+03:30:12 Packages
+03:36:22 Generating Random Values
+03:44:37 Working with Directories 
+03:50:47 Pypi and Pip
+03:55:34 Project 1: Automation with Python
+04:10:22 Project 2: Machine Learning with Python 
+04:58:37 Project 3: Building a Website with Django﻿
+
+
+print(10 / 3)
+# 3.3333...
+
+print(10 // 3)
+# 3
+
+print(10 ** 3) # 10^3
+# 1000
+
+# Operator Precedence
+# parenthesis
+# exponentiation 2 ** 3
+# mul or div
+# add or subt
+
+print(round(2.9))
+# 3
+
+print(abs(-2.9))
+# 2.9	# absolute always returns a positive number
+
+import math
+print(math.ceil(2.9))
+# 3
+print(math.floor(2.9))
+# 2
+
+hot = True
+cold = False
+if hot:
+	print("hot")
+	print("weather")
+elif cold:
+	print("cold")
+	print("weather")
+else:
+	print("nice")
+	print("weather")
+
+
+# & |
+if hot and cold:
+	print("")
+if hot or cold:
+	print("")
+# !
+if hot and not cold:
+	print("")
+if hot or not cold:
+	print("")
+
+String length f(): len("Mohsin")
+# 6
+
+# ------ input() function always return String ------
+
+weight = int(input("Weight: "))
+unit = input("(L)bs or (K)g: ")
+if unit.upper() == "L":
+    converted = weight * 0.45
+    print(f"You are {converted} kilos")
+elif unit.upper() == "K":
+    converted = weight / 0.45
+    print(f"You are {converted} pounds")
+else:
+    print("wrong input")
+
+i = 0
+while i < 5:
+	print('*' * i)
+	i = i + 1
+
+guess_count = 1
+while guess_count <= 3:
+    weight = int(input("Weight: "))
+    if weight == 9:
+        print("You are Win")
+        break
+    guess_count = guess_count + 1
+
+
+# Car Game
+action = True		# diff from Mosh
+started = False
+
+while action:
+    action_name = input("Action Name: ").lower()
+    if action_name == "start":
+        if started:
+            print("Already Started")
+        else:
+            started = True
+            print('Started')
+    elif action_name == "stop":
+        if not started:
+            print("Already Stopped")
+        else:
+            started = False
+            print("Stopped")
+    elif action_name == "help":
+        print("""
+start - to start the car
+stop - to stop the car
+quit - to quit the car
+        """)
+    elif action_name == "quit":
+        action = False
+    else:
+        print("don't understand")
+
+# 01:41:48 For Loops	---------------------
+# 1:41:55 for loop
+# Collection can be String, List, Object that has multiple item
+for item in 'Python':
+	print(item)
+for item in ['Mosh', 'John', 'Sarah']:
+	print(item)
+for item in [1, 2, 3, 4]:
+	print(item)
+for item in range(10):
+	print(item)
+for item in range(5, 10):
+	print(item)		# 5, 6, 7, 8, 9
+for item in range(5, 10, 2):
+	print(item)		# 5, 7, 9
+
+
+numbers = [5, 2, 5, 2, 2]
+
+for x_count in numbers:
+    output = ''
+    for count in range(x_count):
+        output += '*'
+    print(output)
+*****
+**
+*****
+**
+**
+
+# Maximum number in a List
+numbers = [3, 6, 2, 8, 4, 10, 9]
+max = numbers[0];
+for number in numbers:
+    if number > max:
+        max = number
+print(max)
+
+# 02:06:00 List Methods 	--------------------------
+numbers = [5, 2, 1, 7, 4]
+numbers.append(20)
+numbers.insert(0'index position', 10)
+numbers.remove(5)
+numbers.clear()
+numbers.pop()	# last item remove
+numbers.index(5)
+print(50 in numbers)	# False
+numbers.count(5)
+numbers.sort()	# None (Python Obj)
+print(numbers)	# Sorted List
+numbers.reverse()
+numbers.copy()
+
+# Unique Number in a List:
+numbers = [3, 6, 2, 8, 2, 4, 10, 6]
+new_numbers = []
+for number in numbers:
+    if number not in new_numbers:
+        new_numbers.append(number)
+print(new_numbers)
+
+# 02:13:25 Tuples 	-------------------
+# Tuple: Tuples are similar to lists, so we can use them to store a list of items. But unlike lists we can not modify them, we cannot add new items, we cannot remove existing items, we say tuples are immutable. We cannot mutate or change them.
+# 2:14:15-------------
+numbers = (3, 6, 2, 8, 2, 4, 10, 6)
+numbers[0]	# 3
+numbers[0] = 10	# TypeErrpr: 'tuple' obj not support ...	(Tuple used for not change)
+
+# Unpacking:
+coordinates = (1, 2, 3)
+x, y, z = coordinates	# short form of Unpacking 3 variable	# x or coordinates[0] = 1, y = 2, z = 3
+
+coordinates = [1, 2, 3]
+x, y, z = coordinates	# short form of Unpacking 3 variable	# x or coordinates[0] = 1, y = 2, z = 3
+
+Dictionary: Dictionary is used to store information that comes as key value pairs
+customer = {
+	"name": "John Doe",
+	"age": 30,
+	"is_verified": True
+}
+print(customer["name"])		# John Doe
+print(customer.get("name"))	# John Doe
+print(customer["Name"])		# Error
+print(customer.get("Name"))	# None obj
+print(customer.get("birthday", "Jan 1 1980"))	# Jan 1 1980
+customer["gender"] = "Male"		# add to Dictionary
+customer["name"] = "John Smith"	# update to Dictionary
+
+phone = input("Phone: ")
+digits = {
+    "1": "One",
+    "2": "Two",
+    "3": "Three",
+    "4": "Four"
+}
+str = ""
+for ch in phone:
+    # str += digits[ch] + " "
+    str += digits.get(ch, "!") + " "
+print(str)
+
+# Emoji for Windows 10: "WindowsKey + ."
+message = input(">")
+words = message.split(' ')
+emojis = {
+    ":)": "😊",
+    ":(": "😒"
+}
+output = ""
+for word in words:
+    output += emojis.get(word, word) + " "
+print(output)
+
+# func() define & call
+
+# greet_user()	# Error, it's not define anywhere, so always define first then call
+def greet_user():
+    print('Hi there!')
+    print('Welcome aboard')
+
+
+print('Start')
+greet_user()
+print('Finish')
+
+# passing parameter
+def greet_user(name):	# name is parameter
+    print(f'Hi {name}!')
+    print('Welcome aboard!')
+
+
+print('Start')
+greet_user('John')	# John and Doe are arguments 
+greet_user('Doe')
+print('Finish')
+
+# Parameters are the holes or placeholders that we define in our function for receiving information.
+# Arguments are the actual pieces of information that we supply to these functions.
+
+# 02:39:24 Keyword Arguments 	-------------------------
+
+def greet_user(first_name, last_name):
+    print(f'Hi {first_name} {last_name}!')
+    print('Welcome aboard!')
+
+
+print('Start')
+greet_user(last_name='Doe', first_name='John')
+print('Finish')
+
+
+greet_user('John', last_name='Doe') # Not Error keyword argument is aftet positional argument 	CORRECT
+greet_user(first_name='John', 'Doe') # Error positional argument is aftet keyword argument 		ERROR
+
+def square(number):
+    return number * number 		# output 9
+    # print(number * number)	# output 9 None # By default all func()s in Python return None
+
+
+print(square(3))
+
+# 02:48:55 Creating a Reusable Function 	---------------
+
+def emoji_converter(message):
+    words = message.split(' ')
+    emojis = {
+        ":)": "😊",
+        ":(": "😒"
+    }
+    output = ""
+    for word in words:
+        output += emojis.get(word, word) + " "
+    # print(output) #or
+    return output
+
+
+msg = input(">")
+# emoji_converter(msg)
+print(emoji_converter(msg))
+
+# 02:53:53 Exceptions	---------------------
+
+age = int(input('Age: '))
+print(age)		# 20 (inputted) -> Process finished with exit code 0
+# ValueError	# 20.5 or asd (inputted) -> ValueError: invalid literal for int() with base 10: '2.5', Process finished with exit code 1
+
+try:
+    age = int(input('Age: '))
+    print(age)
+except ValueError:
+    print('Invalid value')
+
+# Multiple Exceptions
+try:
+    age = int(input('Age: '))
+    income = 20000
+    risk = income / age 	# ZeroDivisionError: division by zero (without exception)
+    print(age)
+except ZeroDivisionError:
+    print('Age cannot be 0.')
+except ValueError:
+    print('Invalid value')
+
+# 02:59:14 Comments 	-------------------
+
+# use comments to explain whys and hows not (watch or why's)
+# One thing we need to avoid when using comments is expaining what the code does
+# print Sky is blue	#telling me ovious
+print("Sky is blue")	# print("Ocean is blue") then modify the corresponding comment
+
+# 03:01:57 Classes 	-----------------
+
+# naming convention example of class: EmailClient
+# Object is an instance of a class, a Class simply defines the blueprint or the template for creating objects, and objects are the actuatl instances based on that blue print
+# So we can have tens of hundreds of points on the screen, these are the objects or the instances.
+
+class Point:
+    def move(self):
+        print("move")
+
+    def draw(self):
+        print("draw")
+
+
+point1 = Point()
+point1.x = 10
+point1.y = 20
+print(point1.x)		# 10
+point1.draw()		# draw
+
+point2 = Point()
+print(point2.x)		# AttributeError: 'Point' object has no attribute 'x'	# so each object is a different instance of our Point class
+
+# draw() is method
+# x is attribute
+
+# 03:07:58 Constructors ------------------
+
+# A constructor is a function that gets called at the time of creating object.
+class Point:
+    def __init__(self, x, y):   # self is a reference to the current object
+        self.x = x              # self is a reference to the current object
+        self.y = y
+
+    def move(self):
+        print("move")
+
+    def draw(self):
+        print("draw")
+
+
+point = Point(10, 20)
+point.x = 11
+print(point.x)          # constructor is exactly same as point.x = 10 (previous example)
+# output 11
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def talk(self):
+        print(f"Hi, I am {self.name}")
+
+
+tester = Person("Tester Test")
+# tester.name = "John"
+tester.talk()
+print(tester.name)
+
+bob = Person("Bob Smith")
+bob.talk()
+# each object (tester or bob) is a different instance of a Person class
+
+# 03:14:53 Inheritance 	--------------------------
+
+# Inheritance is a mechanism for using code and once again
+
+class Dog:
+    def walk(self):		# duplicate
+        print("walk")
+
+
+class Cat:
+    def walk(self):		# duplicate
+        print("walk")
+# In programming we should not define something twice
+
+# Inheritance Example (child inharits parent class)
+class Mammal:
+    def walk(self):
+        print("walk")
+
+
+class Dog(Mammal):
+    pass            # Python doesn't like empty class 'pass' for python happy
+
+
+class Cat(Mammal):
+    def miaow(self):
+        print('miaowing')
+
+
+dog1 = Dog()
+dog1.walk()
+
+cat1 = Cat()
+cat1.miaow()
+cat1.walk()
+
+# 03:19:47 Modules ---------------------------
+# converters.py
+def lbs_to_kg(weight):
+    return weight * 0.45
+
+
+def kg_to_lbs(weight):
+    return weight / 0.45
+# app.py
+import converters
+print(converters.kg_to_lbs(70))
+from converters import kg_to_lbs	# for without warnning it should be placed at top of file
+print(kg_to_lbs(100))				# call directly without converters
+
+utils.py
+def find_max(numbers):
+    maximum = numbers[0]
+    for number in numbers:
+        if number > maximum:
+            maximum = number
+    return maximum
+app.py
+import utils
+print(utils.find_max([3, 6, 2, 8, 4, 10, 9]))
+
+# print(max([3, 6, 2, 8, 4, 10, 9]))	# max is build in function. Output 10
+
+# TypeError 
+max = 5
+print(max([3, 6, 2, 8, 14, 10, 9]))
+# print(max([3, 6, 2, 8, 14, 10, 9]))
+# TypeError: 'int' object is not callable
+
+# 03:30:27 Packages ------------------------------------
+
+# 03:36:36 Generating Random Values --------------------
+
+import random
+for i in range(3):
+    print(random.random())
+    print(random.randint(10, 20))
+
+members = ['John', 'Mary', 'Bob', 'Mosh']
+leader = random.choice(members)
+print(leader)
+
+# Dice Example with class
+import random
+
+
+class Dice:
+    def roll(self):
+        first = random.randint(1, 6)
+        second = random.randint(1, 6)
+        return first, second        # no need () parenthesis, python will automatically interpret is as tuple
+
+
+dice = Dice()
+print(dice.roll())
+
+# 03:44:51 Files and Directories -------------------------------
+
+# 03:50:47 Pypi and Pip
+# 03:55:34 Project 1: Automation with Python
+# 04:10:22 Project 2: Machine Learning with Python 
+# 04:58:37 Project 3: Building a Website with Django﻿

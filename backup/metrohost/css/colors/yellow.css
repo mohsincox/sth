@@ -1,0 +1,221 @@
+a {
+	color:#ffcb08;
+}
+header {
+	background: rgba(255, 203, 8, 0.5);
+}
+.top-home .top-left ul li a:hover {
+	color:#ffcb08;
+}
+.top-home .top-right ul li a:hover {
+	background:#ffcb08;
+}
+.se-domain {
+	background:#ffcb08;
+}
+.se-section .service1 i {
+	background:#ffcb08;
+}
+.se-section .se-ar {
+	border-top:20px solid #ffcb08;
+}
+.se-section .service1:hover i {
+	color:#ffcb08;
+}
+.home-plan .plan-se .plan-name {
+	border-top:6px solid #ffcb08;
+}
+.doller-price {
+	background:#ffcb08 !important;
+}
+.home-plan a .orders {
+	color:#fff;
+	background:#ffcb08;
+}
+.why-choose .why-se .choose-by i {
+	background:#ffcb08;
+}
+.why-choose .why-se .choose-by:hover .arroow-why {
+	border-right:15px solid #ffcb08;
+}
+.why-choose .why-se .choose-by-r i {
+	background:#ffcb08;
+}
+.why-choose .why-se .choose-by-r:hover .arroow-why {
+	border-left:15px solid #ffcb08;
+}
+.tesimonials .testimonials-se .testi-area {
+	border:4px solid #ffcb08;
+}
+.tesimonials .testimonials-se .client-content {
+	border:1px solid #ffcb08;
+}
+.tesimonials .testimonials-se:hover .client-content {
+	background:#ffcb08;
+}
+.footer-top {
+	background:#ffcb08;
+}
+.footer-section .footer-text ul li a:hover {
+	color:#ffcb08;
+}
+.footer-section .footer-text ul li .live-chat {
+	background:#ffcb08;
+}
+.footer-bottom .bottom-text .socail-links i:hover {
+	background:#ffcb08;
+}
+.copyright a {
+	color:#ffcb08;
+}
+.navbar-default .navbar-nav > li > a {
+	background:#ffcb08 !important;
+}
+.redq .columns h4 {
+	background-color:#FF967C;
+}
+.se-section-in .service1 i {
+	background:#ffcb08;
+}
+.se-section-in .se-ar {
+	border-top:20px solid #ffcb08;
+}
+.se-section-in .service1:hover i {
+	color:#ffcb08;
+}
+.free-domain .free-ar {
+	border-left:16px solid #ffcb08;
+}
+.free-domain .free-offers .free-se i {
+	color: #ffcb08;
+}
+.free-domain .free-offers .free-se {
+	background:#ffcb08;
+}
+.safe-host .pr-info .info-right p i {
+	color:#ffcb08;
+}
+.domain-prices h2 {
+	background:#ffcb08;
+}
+.safe-host .pr-info .info-right .read-p a {
+	border: 2px solid #ffcb08;
+}
+.safe-host .pr-info .info-right .order-p a {
+	border: 2px solid #ffcb08;
+	background:#ffcb08;
+}
+.cloud-package {
+	background:#ffcb08;
+}
+#LIGHT-BG, .box-two, .light-bg {
+	background-color:#ffcb08;
+}
+#DARK-BG, .box-one:hover, .box-three:hover, .dark-bg {
+	background:#ffcb08;
+}
+.email-price .email-se .doller-e {
+	color: #ffcb08;
+}
+.email-price .email-se .sign-e a {
+	background:#ffcb08;
+}
+.doller-micro {
+	background:#ffcb08;
+}
+.awards .awards-views:hover {
+	border:1px solid #ffcb08;
+}
+.awards .awards-views:hover h6 {
+	color:#ffcb08;
+}
+.news-up .news-section {
+	border:2px dashed #ffcb08;
+}
+.news-up .news-section .date-n {
+	background: #ffcb08;
+}
+.news-up .news-section .date-n {
+	background: #ffcb08;
+}
+.news-up .news-section a {
+	color: #ffcb08;
+	border: 2px solid #ffcb08;
+}
+.clients .clients-views:hover {
+	border:2px dashed #ffcb08;
+}
+.footer-bottom .bottom-text .payment i:hover {
+	color:#ffcb08;
+}
+.footer-section .footer-text ul li .live-chat:hover {
+	color:#ffcb08;
+}
+.serv-plan {
+	border:1px solid #ffcb08;
+}
+.serv-plan h2 {
+	background:#ffcb08;
+}
+.email-price .email-se.active {
+	background:rgba(205, 69, 35, 0.7);
+}
+.se-section .service1:hover {
+	background:#ffcb08;
+	border:1px solid #B94123;
+}
+.contact-right .submit {
+	border-bottom:3px solid #B94123;
+	background:#ffcb08;
+}
+.why-choose .why-se .choose-by .choose-options:hover {
+	background:#ffcb08;
+	border-bottom:2px solid #B94123;
+}
+.why-choose .why-se .choose-by-r .choose-op-right:hover {
+	background:#ffcb08;
+	border-bottom:2px solid #B94123;
+}
+.se-section-in .service1:hover {
+	background:#ffcb08;
+	border:1px solid #B94123;
+}
+.bulk-register .select-box h2 {
+	border-bottom: 3px solid #B94123;
+	background:#ffcb08;
+}
+.box-one:hover .order-button, .box-three:hover .order-button {
+	background:#B94123;
+}
+#LIGHT-BG, .box-two .order-button {
+	background-color:#B94123;
+}
+.cloud-package .cloud-in .cplan {
+	background:#ffcb08;
+}
+.cloud-package .cloud-in ul li {
+	background:#ffcb08;
+}
+.signup-b a {
+	background:#ffcb08;
+}
+
+@media (max-width: 991px) {
+.open-icon span {
+background:#ffcb08;
+}
+}
+.redq .columns ul a:hover {
+	background:#ffcb08;
+}
+ul.sub-menu a:hover {
+	background:#ffcb08;
+}
+@media (min-width: 768px) {
+.default-skin ul.sub-menu {
+border-top-color:#ffcb08;
+}
+.default-skin .redq .dropdown-menu {
+border-top-color:#ffcb08;
+}
+}

@@ -1,0 +1,922 @@
+// 2:35 -------------------------------------------
+
+import 'package:flutter/material.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Text('Hello World!'),);
+  }
+}
+
+
+
+// 3:18 -------------------------------------------
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  void answerQuestion() {
+    print('Answer chosen!');
+  }
+
+  Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animarl?', 
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('My First App'),
+          ),
+          body: Column(
+            children: [
+              Text('The question!'),
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: answerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  // ...
+                  print('Answer 3 chosen!');
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+// 3:23
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  void answerQuestion() {
+    print('Answer chosen!');
+  }
+
+  Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?', 
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('My First App'),
+          ),
+          body: Column(
+            children: [
+              Text(questions.elementAt(1)),             //------
+              Text(questions[0]),                       //------
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: answerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  // ...
+                  print('Answer 3 chosen!');
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+// 3:27 --------------- without state or StatelessWidget, twice click on 'Answer 1' questionIndex = 2, after reload, getting error for 2 index, existing 0, 1
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    questionIndex = questionIndex + 1;
+    print(questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?',
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('My First App'),
+          ),
+          body: Column(
+            children: [
+              Text(questions[questionIndex]),
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: answerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  // ...
+                  print('Answer 3 chosen!');
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+// 3:38 --------- StatefulWidget --- twice click on 'Answer 1' questionIndex = 2, getting error for 2 index, existing 0, 1
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
+    print(questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?',
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('My First App'),
+          ),
+          body: Column(
+            children: [
+              Text(questions[questionIndex]),
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: answerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  // ...
+                  print('Answer 3 chosen!');
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+// 4:02 -------------- import './question.dart'; ---
+
+
+// main.dart
+
+import 'package:flutter/material.dart';
+import './question.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?',
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('My Text App'),
+          ),
+          body: Column(
+            children: [
+              Question(questions[_questionIndex]),                  //----------------------
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: _answerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  // ...
+                  print('Answer 3 chosen!');
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+// question.dart
+
+import 'package:flutter/material.dart';
+
+class Question extends StatelessWidget {
+  final String questionText;
+
+  Question(this.questionText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Text(
+        questionText,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+
+4:05 // for Margin in 'answer.dart'
+
+      width: double.infinity,
+      margin: EdgeInsets.all(10),           // ------------------
+
+
+4:24 // 'answer.dart'
+
+      child: RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text('Answer 1'),
+        onPressed: selectHandler,
+      ),
+
+
+5:13 // ----------------
+
+// main.dart
+
+import 'package:flutter/material.dart';
+
+import './question.dart';
+import './answer.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    final questions = const [
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': ['Black', 'Red', 'Green', 'white']
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor?',
+        'answers': ['Max', 'Max', 'Max', 'Max']
+      },
+    ];
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Text App'),
+        ),
+        body: _questionIndex < questions.length           // -------------- no error after length exceed
+            ? Column(
+                children: [
+                  Question(
+                    questions[_questionIndex]['questionText'],
+                  ),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text('You did it!'),               // -------------- no error after length exceed
+              ),
+      ),
+    );
+  }
+}
+
+
+// answer.dart
+
+import 'package:flutter/material.dart';
+
+class Answer extends StatelessWidget {
+  final Function selectHandler;
+  final String answerText;
+
+  Answer(this.selectHandler, this.answerText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text(answerText),
+        onPressed: selectHandler,
+      ),
+    );
+  }
+}
+
+
+5:22 ------------------------------------
+
+// main.dart
+
+import 'package:flutter/material.dart';
+
+import './quiz.dart';
+import './result.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    final _questions = const [
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': ['Black', 'Red', 'Green', 'white']
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor?',
+        'answers': ['Max', 'Max', 'Max', 'Max']
+      },
+    ];
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Text App'),
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Result(),
+      ),
+    );
+  }
+}
+
+
+// question.dart
+
+import 'package:flutter/material.dart';
+
+class Question extends StatelessWidget {
+  final String questionText;
+
+  Question(this.questionText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.all(10),
+      child: Text(
+        questionText,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+
+// answer.dart
+
+import 'package:flutter/material.dart';
+
+class Answer extends StatelessWidget {
+  final Function selectHandler;
+  final String answerText;
+
+  Answer(this.selectHandler, this.answerText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text(answerText),
+        onPressed: selectHandler,
+      ),
+    );
+  }
+}
+
+
+// quiz.dart
+
+import 'package:flutter/material.dart';
+
+import './question.dart';
+import './answer.dart';
+
+class Quiz extends StatelessWidget {
+  final List<Map<String, Object>> questions;
+  final int questionIndex;
+  final Function answerQuestion;
+
+  Quiz(
+      {@required this.questions,
+      @required this.answerQuestion,
+      @required this.questionIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Question(
+          questions[questionIndex]['questionText'],
+        ),
+        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+          return Answer(answerQuestion, answer);
+        }).toList()
+      ],
+    );
+  }
+}
+
+
+// result.dart
+
+import 'package:flutter/material.dart';
+
+class Result extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('You did it!'),
+    );
+  }
+}
+
+
+5:40 ------------------------
+
+// main.dart
+
+import 'package:flutter/material.dart';
+
+import './quiz.dart';
+import './result.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+  var _totalScore = 0;
+
+  void _answerQuestion(int score) {
+    _totalScore += score;
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    final _questions = const [
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': [
+          {'text': 'Black', 'score': 10},
+          {'text': 'Red', 'score': 5},
+          {'text': 'Green', 'score': 3},
+          {'text': 'white', 'score': 1},
+        ]
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': [
+          {'text': 'Rabbit', 'score': 3},
+          {'text': 'Snake', 'score': 11},
+          {'text': 'Elephant', 'score': 5},
+          {'text': 'Lion', 'score': 9},
+        ]
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor?',
+        'answers': [
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+        ]
+      },
+    ];
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Text App'),
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Result(_totalScore),
+      ),
+    );
+  }
+}
+
+
+// quiz.dart
+
+import 'package:flutter/material.dart';
+
+import './question.dart';
+import './answer.dart';
+
+class Quiz extends StatelessWidget {
+  final List<Map<String, Object>> questions;
+  final int questionIndex;
+  final Function answerQuestion;
+
+  Quiz(
+      {@required this.questions,
+      @required this.answerQuestion,
+      @required this.questionIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Question(
+          questions[questionIndex]['questionText'],
+        ),
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
+          return Answer(() => answerQuestion(answer['score']), answer['text']);
+        }).toList()
+      ],
+    );
+  }
+}
+
+
+// result.dart
+
+import 'package:flutter/material.dart';
+
+class Result extends StatelessWidget {
+  final int resultScore;
+
+  Result(this.resultScore);
+
+  String get resultPhrase {
+    String resultText;
+    if (resultScore <= 8) {
+      resultText = 'You are awesome and innocent!';
+    } else if (resultScore <= 12) {
+      resultText = 'Pretty likeable';
+    } else if (resultScore <= 16) {
+      resultText = 'You are ... strange';
+    } else {
+      resultText = 'You are so bad';
+    }
+    return resultText;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        resultPhrase,
+        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+
+// Final --------------------------------------------------------
+
+// main.dart
+
+import 'package:flutter/material.dart';
+
+import './quiz.dart';
+import './result.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+  var _totalScore = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _answerQuestion(int score) {
+    _totalScore += score;
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
+
+  Widget build(BuildContext context) {
+    final _questions = const [
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': [
+          {'text': 'Black', 'score': 10},
+          {'text': 'Red', 'score': 5},
+          {'text': 'Green', 'score': 3},
+          {'text': 'white', 'score': 1},
+        ]
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': [
+          {'text': 'Rabbit', 'score': 3},
+          {'text': 'Snake', 'score': 11},
+          {'text': 'Elephant', 'score': 5},
+          {'text': 'Lion', 'score': 9},
+        ]
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor?',
+        'answers': [
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+          {'text': 'Max', 'score': 1},
+        ]
+      },
+    ];
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Text App'),
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Result(_totalScore, _resetQuiz),
+      ),
+    );
+  }
+}
+
+
+// quiz.dart
+
+import 'package:flutter/material.dart';
+
+import './question.dart';
+import './answer.dart';
+
+class Quiz extends StatelessWidget {
+  final List<Map<String, Object>> questions;
+  final int questionIndex;
+  final Function answerQuestion;
+
+  Quiz(
+      {@required this.questions,
+      @required this.answerQuestion,
+      @required this.questionIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Question(
+          questions[questionIndex]['questionText'],
+        ),
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
+            .map((answer) {
+          return Answer(() => answerQuestion(answer['score']), answer['text']);
+        }).toList()
+      ],
+    );
+  }
+}
+
+
+// result.dart
+
+import 'package:flutter/material.dart';
+
+class Result extends StatelessWidget {
+  final int resultScore;
+  final Function resetHandler;
+
+  Result(this.resultScore, this.resetHandler);
+
+  String get resultPhrase {
+    String resultText;
+    if (resultScore <= 8) {
+      resultText = 'You are awesome and innocent!';
+    } else if (resultScore <= 12) {
+      resultText = 'Pretty likeable';
+    } else if (resultScore <= 16) {
+      resultText = 'You are ... strange';
+    } else {
+      resultText = 'You are so bad';
+    }
+    return resultText;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Text(
+            resultPhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          FlatButton(
+            child: Text('Restart Quiz!'),
+            textColor: Colors.blue,
+            onPressed: resetHandler,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+// question.dart
+
+import 'package:flutter/material.dart';
+
+class Question extends StatelessWidget {
+  final String questionText;
+
+  Question(this.questionText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.all(10),
+      child: Text(
+        questionText,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+
+// answer.dart
+
+import 'package:flutter/material.dart';
+
+class Answer extends StatelessWidget {
+  final Function selectHandler;
+  final String answerText;
+
+  Answer(this.selectHandler, this.answerText);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text(answerText),
+        onPressed: selectHandler,
+      ),
+    );
+  }
+}

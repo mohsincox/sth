@@ -1,0 +1,2 @@
+folder $ npm init --y
+folder $ npm i express

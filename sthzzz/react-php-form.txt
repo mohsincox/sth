@@ -1,0 +1,194 @@
+// Using fetch -----------------------------------
+
+import React, { Component } from 'react';
+
+class App extends React.Component {
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+      
+        fetch('http://localhost/blog6/public/api/product/store', {
+            method: 'POST',
+            body: formData,
+        });
+    }
+  
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="username">Enter username</label>
+                <input id="username" name="username" type="text" />
+  
+                <label htmlFor="email">Enter your email</label>
+                <input id="email" name="email" type="email" />
+  
+                <label htmlFor="birthdate">Enter your birth date</label>
+                <input id="birthdate" name="birthdate" type="text" />
+  
+                <button>Send data!</button>
+            </form>
+        );
+    }
+}
+
+export default App;
+
+
+
+//  PHP: in Controller
+
+    public function store(Request $request)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Request-Headers: GET,POST,OPTIONS,DELETE,PUT");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, Accept");
+
+        $product = new Product;
+        $product->product_name = $request->username;
+        $product->sku = $request->email;
+        $product->save();
+
+        return response()->json([
+            "success" => 1,
+            "message" => "Request inserted successfully"
+        ]); 
+
+    }
+
+
+// Using axios -------------------------------------------
+
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class App extends React.Component {
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const options   = {
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+            }
+        };
+
+        axios.post(`http://localhost/blog6/public/api/product/store`, formData, options )
+        .then((res) => {
+            // console.log(res);
+            console.log(res.data);
+            console.log(res.status);
+            console.log(res.statusText);
+            console.log(res.headers);
+            console.log(res.config);
+          }, (error) => {
+            console.log(error);
+          });
+    }
+  
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="username">Enter username</label>
+                <input id="username" name="username" type="text" />
+  
+                <label htmlFor="email">Enter your email</label>
+                <input id="email" name="email" type="email" />
+  
+                <label htmlFor="birthdate">Enter your birth date</label>
+                <input id="birthdate" name="birthdate" type="text" />
+  
+                <button>Send data!</button>
+            </form>
+        );
+    }
+}
+
+export default App;
+
+
+
+// componentDidMount -------------------------------------
+
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class App extends React.Component {
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    state = {
+        persons: []
+    }
+
+    componentDidMount() {
+        axios.get(`http://localhost/blog6/public/api/product`)
+          .then(res => {
+            const persons = res.data;
+            console.log(persons)
+            this.setState({ persons });
+          })
+      }
+  
+    handleSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const options   = {
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+            }
+        };
+
+        axios.post(`http://localhost/blog6/public/api/product/store`, formData, options )
+        .then((res) => {
+            // console.log(response);
+            console.log(res.data);
+            console.log(res.status);
+            console.log(res.statusText);
+            console.log(res.headers);
+            console.log(res.config);
+          }, (error) => {
+            console.log(error);
+          });
+    }
+  
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="username">Enter username</label>
+                    <input id="username" name="username" type="text" />
+    
+                    <label htmlFor="email">Enter your email</label>
+                    <input id="email" name="email" type="email" />
+    
+                    <label htmlFor="birthdate">Enter your birth date</label>
+                    <input id="birthdate" name="birthdate" type="text" />
+    
+                    <button>Send data!</button>
+                </form>
+
+                <ul>
+                    { this.state.persons.map(person => <li key={person.id} >{person.product_name}</li>)}
+                </ul>
+            </div>
+            
+        );
+    }
+}
+
+export default App;

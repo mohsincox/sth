@@ -1,0 +1,129 @@
+import 'package:flutter/material.dart';
+
+class LocationDetail extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final locations = Location.fetchAll();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Joining Table"),
+      ),
+      body: ListView.builder(
+        itemCount: locations.length,
+        itemBuilder: (context, index) {
+          final item = locations[index];
+          List<Widget> getList() {
+            List<Widget> childs = [];
+            for (var fact in item.facts) {
+              childs.add(Column(
+                children: [
+                  Text("Fact Name: ${fact.title}"),
+                  SizedBox(height: 5),
+                  Text("Fact Text: ${fact.text}"),
+                  SizedBox(height: 10),
+                ],
+              ));
+            }
+            return childs;
+          }
+
+          return Column(
+            children: [
+              Text("Location Name: ${item.name}"),
+              // ImageBanner(item.imagePath),
+              SizedBox(height: 10),
+              Column(
+                children: getList(),
+              ),
+              SizedBox(height: 20),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+// OR   ..addAll()
+
+/*
+
+import 'package:flutter/material.dart';
+
+class LocationDetail extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final locations = Location.fetchAll();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("location.name"),
+      ),
+      body: ListView.builder(
+        itemCount: locations.length,
+        itemBuilder: (context, index) {
+          final item = locations[index];
+          return Column(
+            children: [
+              Text("Location Name: ${item.name}"),
+              // ImageBanner(item.imagePath),
+            ]..addAll(textSections(item)),
+          );
+        },
+      ),
+    );
+  }
+
+  List<Widget> textSections(Location location) {
+    return location.facts
+        .map(
+          (fact) => Column(
+            children: [
+              Text("Fact Title: ${fact.title}"),
+              Text("Fact Text: ${fact.text}"),
+            ],
+          ),
+        )
+        .toList();
+  }
+}
+
+
+*/
+
+
+/// Represents a tourism location a user can visit.
+class Location {
+  final String name;
+  final String imagePath;
+  final List<LocationFact> facts;
+
+  Location(this.name, this.imagePath, this.facts);
+
+  static List<Location> fetchAll() {
+    return [
+      Location('Arashiyama Bamboo Grove', 'assets/images/kiyomizu-dera.jpg', [
+        LocationFact('Summary',
+            'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm.'),
+        LocationFact('How to Get There',
+            'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.'),
+      ]),
+      Location('ZZZZZZ Bamboo Grove', 'assets/images/kiyomizu-dera.jpg', [
+        LocationFact('Summary ZZZZ',
+            'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm.'),
+        LocationFact('How to Get There ZZZZ',
+            'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.'),
+      ]),
+    ];
+  }
+}
+
+/// Represents some descriptive information about a [Location].
+class LocationFact {
+  final String title;
+  final String text;
+
+  LocationFact(this.title, this.text);
+}

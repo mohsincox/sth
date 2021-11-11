@@ -1,0 +1,55 @@
+ls /mnt/
+// c e f
+
+cd /mnt/e
+// go to e directory
+
+/mnt/c/users/mohsin$ ls
+// Desktop ... etc.
+
+/mnt/c/users/mohsin/Desktop$ nano testMohsin.txt
+// write sth, Ctrl+c, Y, enter
+
+/mnt/c/users/mohsin/Desktop$ cat testMohsin.txt
+// show contents of file
+
+
+
+
+
+
+
+
+
+
+
+{
+  "expo": {
+   "name": "Todo App",
+   "icon": "./logo.png",
+   "version": "1.0.0",
+   "slug": "Todo",
+   "sdkVersion": "36.0.0",
+   "android": {
+     "package": "com.myolbd.myolbd",
+     "permission": [
+       ""
+     ]
+   }
+  }
+}
+
+
+
+
+
+
+
+
+
+class App extends React.Component {
+
+  render() {
+    return <h1>Hello</h1>;
+  }
+}

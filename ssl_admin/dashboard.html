@@ -1,0 +1,1087 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>iSMS</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="description" content="isms SSLCARE - SMS Push Pull Services">
+<meta name="author" content="SSL Wireless Limited">
+<meta name="csrf-token" content="YaMiByeqHEzmB0BesU8mn6xpl90k45Zx8uuOW35a">
+
+<link rel="icon" href="https://ismsplus.sslwireless.com/assets/images/favicon.png" type="image/x-icon">
+<!-- VENDOR CSS -->
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/daterangepicker.css"/>
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+      href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+<link rel="stylesheet"
+      href="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/animate-css/animate.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/font-awesome.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/chartist/css/chartist.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/chatapp.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/main.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/css/color_skins.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/dump-cdn-link/bootstrap-toggle.min.css">
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/custom/css/custom.css">
+
+<!-- Styles -->
+
+<link rel="stylesheet" href="https://ismsplus.sslwireless.com/assets/sweet-alert/sweetalert2.min.css">
+<!--For Display the show more or less option-->
+<style>
+    .morecontent span {
+        display: none;
+    }
+
+
+</style>
+</head>
+<body class="theme-blue">
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="https://ismsplus.sslwireless.com/assets/images/thumbnail.png" width="48" height="48" alt="Mplify">
+        </div>
+        <p>Please wait...</p>
+    </div>
+</div><!-- Overlay For Sidebars -->
+<div class="overlay" style="display: none;"></div>
+
+<div id="wrapper">
+    
+    <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-brand">
+            <a href="https://ismsplus.sslwireless.com">
+                <img src="https://ismsplus.sslwireless.com/assets/images/logo-icon.svg" alt="SSLCare Logo" class="img-responsive logo">
+                <span class="name">sslcare</span>
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <ul class="list-unstyled clearfix mb-0">
+                <li>
+                    <div class="navbar-btn btn-toggle-show">
+                        <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu icon-grid"></i></button>
+                    </div>
+                    <a href="javascript:void(0);" class="btn-toggle-fullwidth btn-toggle-hide"><i class="lnr lnr-menu icon-grid"></i></a>
+                </li>
+
+                <li>
+                    <div id="navbar-menu">
+                        <ul class="nav navbar-nav">
+
+                                                                                    <li class="available-sms">
+
+                                <div class="add-balance icon-menu text-primary">
+                                    <i class="text-white icon-wallet"></i>
+                                    <strong class="hidden-sm ml-1">Prepaid</strong>
+
+
+                                </div>
+                                
+
+                            <li class="mr-3">
+                                                                <a class="create_new icon-menu badge-success text-white" href="https://ismsplus.sslwireless.com/purchase-balance/create"><i class="text-white icon-plus"></i> <span class="hidden-sm ml-1">Add Balance</span>
+                                </a>
+                                                                                            </li>
+                            
+                            <li class="quick-sms-fab">
+                                                            </li>
+                            <li class="dropdown">
+                                <a href="https://ismsplus.sslwireless.com/user/profile" class="py-0 dropdown-toggle icon-menu" data-toggle="dropdown">
+                                                                                                                    <img alt=" No Logo" class="rounded-circle h-w-50" src="https://ismsplus.sslwireless.com/uploaded_files/company/logo/com-logo-1611390605.png" width="45" alt="">
+                                                                                                            </a>
+                                <div class="dropdown-menu animated flipInY user-profile">
+                                    <a href="https://ismsplus.sslwireless.com/user/profile">
+                                        <div class="d-flex p-3 align-items-center">
+
+                                            <div class="drop-right">
+                                                <h4>
+                                                    <div class="drop-left d-inline-block">
+                                                        <div id="profileImage"></div>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                            <div class="drop-right">
+                                                Abdul Momen Ltd
+                                                <p class="user-name">laizu.brand@amlbd.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                    
+
+                                        <div class="bg-success d-flex p-3 align-items-center">
+
+                                            <div class="drop-right">
+                                                <h4>
+                                                    <div class="drop-left d-inline-block">
+                                                        <div id="">
+                                                            <img id="profileImage" src="http://hris.sslwireless.com/employee-doc/image/thumbnail/1009-1567930750_907.jpg">
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                            <div class="drop-right">
+                                                KAM: Quazi Ahsanul Kabir
+                                                <p class="user-name">ahsanul.kabir@sslwireless.com</p>
+                                                <p>01615801216</p>
+                                            </div>
+                                        </div>
+
+                                    
+                                    <div class="m-t-10 p-3 drop-list">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="isms::Panel#smallModal" data-toggle="modal"
+                                                   data-target="#smallModal">
+                                                    <i class="icon-key"></i>
+                                                    Change Password
+                                                </a>
+
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <div>
+                                                    <a href="https://ismsplus.sslwireless.com/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                        <i class="icon-power"></i> Logout
+                                                    </a>
+
+                                                    <form id="logout-form" action="https://ismsplus.sslwireless.com/logout" method="POST"
+                                                          style="display: none;">
+                                                        <input type="hidden" name="_token" value="YaMiByeqHEzmB0BesU8mn6xpl90k45Zx8uuOW35a">                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div id="leftsidebar" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav id="leftsidebar-nav" class="sidebar-nav">
+            <ul id="main-menu" class="metismenu">
+
+                <li class="nav-item dashboard"><a href="https://ismsplus.sslwireless.com"><i
+                            class="icon-home"></i><span>Dashboard</span></a></li>
+
+
+                                <li class="nav-item send-sms">
+                    <a href="https://ismsplus.sslwireless.com/customer/send-sms/create">
+                        <i class="icon-note"></i>
+                        <span>Send SMS</span>
+                    </a>
+                </li>
+                                                <li class="nav-item send-sms-im">
+                    <a href="https://ismsplus.sslwireless.com/im-send-sms/create">
+                        <i class="icon-envelope-open"></i>
+                        <span>Send Social SMS</span>
+                    </a>
+                </li>
+                                                <li class="nav-item send-sms-voice">
+                    <a href="https://ismsplus.sslwireless.com/customer/send-sms-voice/create">
+                        <i class="icon-envelope-open"></i>
+                        <span>Send Voice SMS</span>
+                    </a>
+                </li>
+                
+                                
+                                <li class="nav-item send-sms-au">
+                    <a href="https://ismsplus.sslwireless.com/customer/client-sms-authentication">
+                        <i class="icon-lock-open"></i>
+                        <span>SMS Authentication</span>
+                    </a>
+                </li>
+                                
+                                                <li class="nav-item sms-template"><a href="https://ismsplus.sslwireless.com/customer/sms-template">
+                        <i class="icon-picture"></i><span>SMS Template</span></a></li>
+                                                <li class="nav-item contact"><a href="https://ismsplus.sslwireless.com/customer/contacts">
+                        <i class="icon-users"></i><span>Contact Book</span></a></li>
+                                                <li class="nav-item sms-list send-sms-status">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-docs"></i><span>SMS Lists</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse sms-list-submenu">
+
+                                                <li class="nav-item im-send-sms">
+                            <a href="https://ismsplus.sslwireless.com/im-send-sms">
+                                <span>Social Campaign List</span>
+                            </a>
+                        </li>
+                                                                        <li class="nav-item schedule">
+                            <a href="https://ismsplus.sslwireless.com/customer/schedule">
+                                <span>SMS Campaign List</span>
+                            </a>
+                        </li>
+                                                                        <li class="nav-item send-sms-voice-list">
+                            <a href="https://ismsplus.sslwireless.com/customer/send-sms-voice">
+                                <span>Voice Campaign List</span>
+                            </a>
+                        </li>
+                        
+                                                <li class="nav-item quick_sms">
+                            <a href="https://ismsplus.sslwireless.com/customer/quick-sms">
+                                <span>Quick SMS</span>
+                            </a>
+                        </li>
+                                            </ul>
+                </li>
+                
+                
+
+                
+                    <li class="nav-item balance-management">
+                        <a href="#" class="has-arrow">
+                            <i class="icon-wallet"></i><span>Balance Management</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse balance-management-submenu">
+                                                                                    
+                            
+                                                        <li class="nav-item balance-history">
+                                <a href="https://ismsplus.sslwireless.com/admin/balance-history">
+                                    <span>Balance History</span>
+                                </a>
+                            </li>
+                            
+                                                        <li class="nav-item transfer-balance">
+                                <a href="https://ismsplus.sslwireless.com/admin/transfer-balance">
+                                    <span>Transfer History</span>
+                                </a>
+                            </li>
+                            <li class="nav-item transfer-balance-create">
+                                <a href="https://ismsplus.sslwireless.com/admin/transfer-balance/create">
+                                    <span>Transfer Balance</span>
+                                </a>
+                            </li>
+                            
+
+                            
+                                                        <li class="nav-item purchase-balance"><a href="https://ismsplus.sslwireless.com/purchase-balance">
+                                    <span>Purchase Balance</span></a></li>
+                                                    </ul>
+
+
+                    </li>
+
+                
+
+                
+
+
+                                <li class="nav-item report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>SMS Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse report-submenu">
+
+                        
+                                                <li class="report_stakeholder"><a href="https://ismsplus.sslwireless.com/report/stakeholder-wise-report">Stakeholder Report</a>
+                        </li>
+                        
+                                                <li class="report_intelco"><a href="https://ismsplus.sslwireless.com/report/intelco-report">IN Telco Report</a></li>
+                        
+                                                <li class="report_outtelco"><a href="https://ismsplus.sslwireless.com/report/outtelco-report">Out Telco Report</a></li>
+                        
+
+                                                <li class="daily_report"><a href="https://ismsplus.sslwireless.com/report/daily-report">Daily Report</a></li>
+                        
+                    <!--                        
+
+                        -->
+
+
+                                                <li class="failed_report"><a href="https://ismsplus.sslwireless.com/report/failed-report">Failed Report</a></li>
+                        
+                                                <li class="details_report"><a href="https://ismsplus.sslwireless.com/report/details-report">Details Report</a></li>
+                                                                        <li class="monthly_report"><a href="https://ismsplus.sslwireless.com/report/monthly-report">Monthly Report</a></li>
+                                                                        
+                                             </ul>
+                </li>
+                
+                                <li class="nav-item im-report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>Social Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse im-report-submenu">
+                                                <li class="im_details_report"><a href="https://ismsplus.sslwireless.com/im-report/details-report">Details Report</a></li>
+                                                                        <li class="im_summary_report"><a href="https://ismsplus.sslwireless.com/im-report/summary-report">Summary Report</a></li>
+                                                                                                                    </ul>
+                </li>
+                
+                                <li class="nav-item voice-report">
+                    <a href="#" class="has-arrow">
+                        <i class="icon-pie-chart"></i><span>Voice Report</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse voice-report-submenu">
+                                                <li class="voice_details_report"><a href="https://ismsplus.sslwireless.com/voice-sms/details-report">Details Report</a></li>
+                                                                        <li class="voice_summary_report"><a href="https://ismsplus.sslwireless.com/voice-sms/summary-report">Summary Report</a></li>
+                                                                                                <li class="voice_campaign_report"><a href="https://ismsplus.sslwireless.com/voice-sms/campaign-report">Campaign Report</a></li>
+                                            </ul>
+                </li>
+                
+                
+
+                
+                    <li class="nav-item client-management">
+                        <a href="#" class="has-arrow">
+                            <i class="icon-user-follow"></i><span>Client Management</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse client-management-submenu">
+
+                                                                                    
+                                                        <li class="nav-item user-management">
+                                <a href="https://ismsplus.sslwireless.com/admin/user-management">
+                                    <span>User Management</span>
+                                </a>
+                            </li>
+                                                         
+                                                    </ul>
+                    </li>
+                                
+
+                                                <li class="nav-item sms-history">
+                    <a href="https://ismsplus.sslwireless.com/report/sms-care">
+                        <i class="icon-speech"></i>
+                        <span>Customer Care</span>
+                    </a>
+                </li>
+                                            </ul>
+        </nav>
+    </div>
+</div>
+        <div id="main-content">
+        <div id="app1">
+                            <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <h2>Dashboard</h2>
+                    <p>Showing data for All stakeholders</p>
+                </div>
+
+                <div class="col-md-4 col-sm-12 pull-right">
+
+
+                    <form method="GET" action="https://ismsplus.sslwireless.com" accept-charset="UTF-8">
+
+                    <div class="input-group choose-stakeholder">
+
+                        <select class="border-right-0 selectTwo custom-select" name="stakeholder"><option selected="selected" value="">Select Stakeholder</option><option value="1277">IGLOO</option><option value="1278">IGLOOMARKETING</option></select>
+
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="subit"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row dashboard-left-card">
+
+
+                                    <div class="col-md-4">
+                                        <div class="dashboard-cards">
+                                            <div class="card card-flip">
+                                                <div class="header">
+                                                    <h2>Balance</h2>
+                                                    <ul class="header-dropdown">
+                                                                                                                    <li><a href="javascript:void(0);"
+                                                                   class="text-primary font-12"
+                                                                   id="all-stakholder"><i
+                                                                        class="fa fa-angle-down mr-1"></i>
+                                                                    View all</a></li>
+                                                                                                            </ul>
+                                                </div>
+
+                                                <div class="body pb-0">
+                                                    <ul class="list-unstyled list-referrals">
+                                                        <li>
+                                                            <p>
+
+
+                                                                <span class="font-18">Total Balance</span><span
+                                                                    class="font-weight-bold font-22 text-primary float-right">549805 SMS</span>
+                                                            </p>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                                                                    <div class="card-flap flap1">
+                                                        <div class="body pt-0 stakeholder-list">
+                                                            <ul class="list-unstyled list-referrals">
+
+                                                                                                                                    <li>
+
+                                                                    <span
+                                                                        class="text-muted">IGLOO (SMS)</span><span
+                                                                            class="text-muted float-right">7369 SMS</span>
+
+                                                                    </li>
+                                                                                                                                    <li>
+
+                                                                    <span
+                                                                        class="text-muted">IGLOOMARKETING (SMS)</span><span
+                                                                            class="text-muted float-right">542436 SMS</span>
+
+                                                                    </li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card-flap flap2">
+                                                            <div class="card-actions">
+                                                                <a class="" href="#">Close</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="dashboard-cards">
+                                            <div class="card card-flip">
+                                                <div class="header">
+                                                    <h2>This Month</h2>
+                                                    <ul class="header-dropdown">
+                                                                                                                    <li><a href="javascript:void(0);"
+                                                                   class="text-primary font-12"
+                                                                   id="all-stakholder"><i
+                                                                        class="fa fa-angle-down mr-1"></i>
+                                                                    View all</a></li>
+                                                                                                            </ul>
+                                                </div>
+
+                                                <div class="body pb-0">
+                                                    <ul class="list-unstyled list-referrals">
+                                                        <li>
+                                                            <p>
+
+
+                                                                <span class="font-18">Total SMS Delivered</span><span
+                                                                    class="font-weight-bold font-22 text-primary float-right">142027 SMS</span>
+                                                            </p>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                                                                    <div class="card-flap flap1">
+                                                        <div class="body pt-0 stakeholder-list">
+                                                            <ul class="list-unstyled list-referrals">
+
+                                                                                                                                    <li>
+                                                                        <p>
+                                                                        <span
+                                                                            class="text-muted">IGLOO</span><span
+                                                                                class="text-muted float-right">251 SMS</span>
+                                                                        </p>
+                                                                    </li>
+                                                                                                                                    <li>
+                                                                        <p>
+                                                                        <span
+                                                                            class="text-muted">IGLOOMARKETING</span><span
+                                                                                class="text-muted float-right">141776 SMS</span>
+                                                                        </p>
+                                                                    </li>
+                                                                
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="card-flap flap2">
+                                                            <div class="card-actions">
+                                                                <a class="btn" href="#">Close</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="dashboard-cards">
+                                            <div class="card card-flip">
+                                                <div class="header">
+                                                    <h2>This Month</h2>
+                                                    <ul class="header-dropdown">
+                                                                                                            </ul>
+                                                </div>
+
+                                                <div class="body pb-0">
+                                                    <ul class="list-unstyled list-referrals">
+                                                        <li>
+                                                            <p>
+
+
+                                                                <span class="font-18">Total Social Delivered</span><span
+                                                                    class="font-weight-bold font-22 text-primary float-right">0 SMS</span>
+                                                            </p>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                                <div class="col-md-4">
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <div class="recent-campaigns">
+                                                                                    <div class="card">
+                                                                                        <div id="bar-chart" class="ct-chart"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>-->
+
+                                </div>
+                            </div>
+                                                            <div class="col-12">
+                                    <div class="card Sales_Overview">
+                                        <div class="header">
+                                            <h2>Recent Campaigns</h2>
+                                            <ul class="header-dropdown">
+                                                                                                    <li class="dropdown">
+                                                        <a href="https://ismsplus.sslwireless.com/customer/schedule" target="_blank">
+                                                            <button class="btn btn-sm btn-outline-primary"
+                                                                    type="button">View More
+                                                            </button>
+                                                        </a>
+                                                    </li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class="body">
+                                            <table class="table table-hover m-b-0 c_list">
+                                                <thead>
+                                                <tr>
+
+                                                    <th class="border-top-0">Campaign Title</th>
+                                                    <th class="border-top-0">Stakeholder</th>
+                                                    <th class="border-top-0" width="20%">SMS Body</th>
+                                                    <th class="border-top-0">Total Number</th>
+                                                    <th class="border-top-0">Success</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                                                                                                                            <tr>
+
+                                                            <td><span>ইগলু</span></td>
+                                                            <td>
+                                                                <span>IGLOOMARKETING (IGLOO+16556)</span>
+                                                            </td>
+                                                            <td><p class="more_text">সুখবর,
+৩০০০ টাকার ইগলু আইসক্রীম কিনলে ৭ পিস কর্নেলি ক্লাসিক কোন ফ্রী।
+মেয়াদ: ফেব্রুয়ারী ১৩-২১&#039;২০২১</p>
+                                                            </td>
+                                                            <td>
+                                                                <span>4504</span>
+                                                            </td>
+                                                            <td><span>4500</span></td>
+                                                        </tr>
+                                                                                                            <tr>
+
+                                                            <td><span>ইগলু</span></td>
+                                                            <td>
+                                                                <span>IGLOOMARKETING (IGLOO+16556)</span>
+                                                            </td>
+                                                            <td><p class="more_text">সুখবর,
+৩০০০ টাকার ইগলু আইসক্রীম কিনলে ৭ পিস কর্নেলি ক্লাসিক কোন ফ্রী।
+মেয়াদ: ফেব্রুয়ারী ১৩-২১&#039;২০২১</p>
+                                                            </td>
+                                                            <td>
+                                                                <span>30999</span>
+                                                            </td>
+                                                            <td><span>30947</span></td>
+                                                        </tr>
+                                                                                                            <tr>
+
+                                                            <td><span>ইগলু</span></td>
+                                                            <td>
+                                                                <span>IGLOOMARKETING (IGLOO+16556)</span>
+                                                            </td>
+                                                            <td><p class="more_text">সুখবর, ২৮০০ টাকার ইগলু আইসক্রীম কিনলে ৩ পিস হাফ লিটার ভ্যানিলা ফ্রী। মেয়াদ: ফেব্রুয়ারী ৬-১১&#039;২০২১</p>
+                                                            </td>
+                                                            <td>
+                                                                <span>35481</span>
+                                                            </td>
+                                                            <td><span>35441</span></td>
+                                                        </tr>
+                                                                                                            <tr>
+
+                                                            <td><span>ইগলু</span></td>
+                                                            <td>
+                                                                <span>IGLOOMARKETING (IGLOO+16556)</span>
+                                                            </td>
+                                                            <td><p class="more_text">সুখবর, ২০০০ টাকার ইগলু আইসক্রীম কিনলে ২ পিস হাফ লিটার ভ্যানিলা ফ্রী। মেয়াদ: জানুয়ারি ২৭-৩১&#039;২০২১</p>
+                                                            </td>
+                                                            <td>
+                                                                <span>35477</span>
+                                                            </td>
+                                                            <td><span>35432</span></td>
+                                                        </tr>
+                                                                                                            <tr>
+
+                                                            <td><span>ইগলু</span></td>
+                                                            <td>
+                                                                <span>IGLOO (IGLOO+16556)</span>
+                                                            </td>
+                                                            <td><p class="more_text">সুখবর, ১৬০০ টাকার ইগলু আইসক্রীম কিনলে ৮ পিস চকবার ফ্রী। মেয়াদ: জানুয়ারি ১৭-২৬&#039;২০২১</p>
+                                                            </td>
+                                                            <td>
+                                                                <span>2</span>
+                                                            </td>
+                                                            <td><span>2</span></td>
+                                                        </tr>
+                                                                                                                                                    </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            
+
+                            <div class="col-12">
+                                <div class="card Sales_Overview">
+                                    <div class="header">
+                                        <h2>Recent Social Campaigns</h2>
+                                        <ul class="header-dropdown">
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="body">
+                                        <table class="table table-hover m-b-0 c_list">
+                                            <thead>
+                                            <tr>
+
+                                                <th class="border-top-0">Campaign Title</th>
+                                                <th class="border-top-0">Stakeholder</th>
+                                                <th class="border-top-0" width="20%">Body</th>
+                                                <th class="border-top-0">Total Number</th>
+                                                <th class="border-top-0">Success</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                                                                                                                                                    </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="card Sales_Overview">
+                                    <div class="header">
+                                        <h2>Overview</h2>
+                                        <ul class="header-dropdown">
+                                            <li class="dropdown">
+                                                <button class="btn btn-sm btn-outline-primary mr-1" id="0"
+                                                        type="button">Weekly
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary" id="1" type="button">
+                                                    Monthly
+                                                </button>
+                                            </li>
+                                            <li><a href="javascript:void(0);" data-toggle="cardloading"
+                                                   data-loading-effect="pulse"><i class="icon-refresh"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="body">
+                                        <canvas id="forecast" width="300" height="115"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <div class="modal fade" id="notice-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">বিজ্ঞপ্তি</h4>
+            </div>
+          <div class="modal-wrap">
+           
+            <div class="modal-body">
+              <h4>সম্মানিত গ্রাহক,</h4>
+              <p>
+                বিটিআরসি প্রদত্ত বিজ্ঞপ্তি অনুযায়ী যে কোনো পণ্য অথবা সেবা বিষয়ক
+                সতর্কতামূলক, নির্দেশনা, প্রচার ও প্রচারণামূলক এসএমএস বাংলা ভাষায়
+                পাঠানোর জন্য কঠোরভাবে নির্দেশনা দেয়া হয়েছে।
+              </p>
+              <p>
+                আমরা বিশ্বাস করি আপনি এবং আপনার প্রতিষ্ঠান আইনের প্রতি
+                শ্রদ্ধাশীল থাকবেন এবং অনতিবিলম্বে এটি কার্যকর করবেন।
+              </p>
+              <p>
+                উপরোক্ত নির্দেশনা সম্পর্কে আরো বিস্তারিত তথ্য জানতে যোগাযোগ করুন
+                আপনার সেবায় নিযুক্ত আমাদের বিক্রয় প্রতিনিধির সাথে অথবা সাপোর্ট
+                সেন্টারে।
+              </p>
+              <ul>
+                <li>কল করুন: + 880 9612 226969</li>
+                <li>
+                  ই মেইল:
+                  <a href="mailto:support@sslwireless.com"
+                    >support@sslwireless.com</a
+                  >
+                </li>
+              </ul>
+              <h4>ধন্যবাদান্তে</h4>
+              <h5>সফটওয়্যার শপ লিমিটেড (এস এস এল ওয়্যারলেস)</h5>
+            </div>
+          </div>
+          <div class="modal-wrap">
+            <div class="modal-header">
+              <h4 class="modal-title">Notice</h4>
+            </div>
+            <div class="modal-body">
+              <h4>Dear Concern,</h4>
+              <p>
+                As per the circular of BTRC it has been instructed to all public
+                and private organizations to send any kind of SMS notifications/
+                alerts/ promotions in Bangla language to the Mobile Subscribers.
+              </p>
+              <p>
+                We believe that you and your company will be respectful to laws
+                of the land and comply with this immediately.
+              </p>
+              <p>
+                To know more regarding aforementioned circulation, you are
+                hereby requested to contact to our sales representative or
+                customer care representative.
+              </p>
+              <ul>
+                <li>Call: +880 9612 226969</li>
+                <li>
+                  Email:
+                  <a href="mailto:support@sslwireless.com"
+                    >support@sslwireless.com</a>
+                </li>
+              </ul>
+              <h4>Regards</h4>
+              <h5>Software Shop Limited (SSL Wireless)</h5>
+            </div>
+          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CLOSE</button>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>   
+
+
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <form method="POST" action="https://ismsplus.sslwireless.com/change-password" accept-charset="UTF-8" class="show_form_submit_loader"><input name="_token" type="hidden" value="YaMiByeqHEzmB0BesU8mn6xpl90k45Zx8uuOW35a">
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+                <label for="current_password">Current Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" required="" placeholder="Current Password" name="current_password" type="password" value="" id="current_password">
+
+                </div>
+                <label for="password">New Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" id="noid" required placeholder="New Password" name="password" type="password" value="">
+                    <span class="text-danger font-12">(Length 8-32 with capital and small alpha numeric and special character !$%&_+-.@#)</span>
+                </div>
+                <label for="password_confirmation">Confirm Password</label>
+                <div class="input-group mb-3">
+                    <input autocomplete="off" class="form-control" required="" placeholder="Confirm Password" name="password_confirmation" type="password" value="" id="password_confirmation">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">SAVE CHANGES</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CLOSE</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Javascript -->
+<script src="https://ismsplus.sslwireless.com/js/app.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/libscripts.bundle.js"></script>
+<script type="text/javascript" src="https://ismsplus.sslwireless.com/assets/dump-cdn-link/moment.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/select2/select2.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/vendorscripts.bundle.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/js/pages/masonry/masonry.pkgd.min.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/bundles/easypiechart.bundle.js"></script> <!-- easypiechart Plugin Js -->
+<script src="https://ismsplus.sslwireless.com/assets/vendor/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
+
+<script src="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/datatablescripts.bundle.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jquery-datatable/jquery-datatable.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/bundles/mainscripts.bundle.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/js/pages/ui/dialogs.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/jQuery-datetime/jquery.datetimepicker.js"></script>
+<script src="https://ismsplus.sslwireless.com/js/highlight-nav.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/dump-cdn-link/bootstrap-toggle.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/vendor/avro/avro-v1.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ismsplus.sslwireless.com/assets/js/index.js"></script>
+
+<script src="https://ismsplus.sslwireless.com/assets/jquery-loading/loadingoverlay.min.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/loading_gif.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/common.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/show_more_less.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/show_more_less.js" type="text/javascript"></script>
+<script>
+function getAppBaseUrl() {
+    return 'https://ismsplus.sslwireless.com/';
+}
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+<script>
+    $(".selectTwo").select2();
+    $(".shortcode").select2({
+        placeholder: 'Select shortcode',
+        allowClear: true
+    });
+    $(".hotkey").select2({
+        placeholder: 'Select hotkey',
+        allowClear: true
+    });
+    $(".inbound-operator").select2({
+        placeholder: 'Inbound Operator',
+        allowClear: true
+    });
+    $(".outbound-operator").select2({
+        placeholder: 'Outbound Operator',
+        allowClear: true
+    });
+
+
+</script>
+<script>
+    $('.selectDate').attr("autocomplete", "off");
+    $('.selectDate').datepicker({
+        timepicker: false,
+        format: 'dd-mm-yyyy',
+        autocomplete: false
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var name = "Abdul Momen Ltd".toUpperCase();
+        var intials = name.charAt(0) + name.charAt(name.length - 1);
+        var profileImage = $('#profileImage').text(intials);
+    });
+</script>
+
+
+<script src="https://ismsplus.sslwireless.com/assets/sweet-alert/sweetalert2.min.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/sweet-alert/show-hide-sweet-alert.js"></script>
+<script src="https://ismsplus.sslwireless.com/assets/jquery-loading/loadingoverlay.min.js" type="text/javascript"></script>
+<script src="https://ismsplus.sslwireless.com/custom/js/loading_gif.js" type="text/javascript"></script>
+
+<script>
+    $('.delete-warning').click(function () {
+        event.preventDefault();
+        var form = $(this).parents('form');
+        showConfirmSweetAlert(form);
+    });
+</script>
+<script>
+    $(document).delegate('.delete-link','click',function (e) {
+        e.preventDefault();
+         var link = $(this).attr('href');
+        Swal.fire({
+            title: 'Are you sure ?',
+            text: "You won't be able to revert this !",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = link;
+            } else {
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
+<!-- Scripts for vue.js -->
+
+
+
+    <script>
+        $(function () {
+
+            highlight_nav('dashboard', 'dashboard');
+        });
+    </script>
+
+
+
+    <script src="https://ismsplus.sslwireless.com/assets/bundles/chartist.bundle.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var options;
+
+            var data = {
+                labels: ["GRAMEEN","TELETALK","AIRTEL","ROBI","BANGLALINK"],
+                series: [
+                    ["87772","1964","20638","46899","55627"],
+                ]
+            };
+
+            // bar chart
+            options = {
+                height: "130px",
+                axisX: {
+                    showGrid: false
+                },
+                plugins: [
+                    Chartist.plugins.tooltip({
+                        appendToBody: true
+                    }),
+                ]
+            };
+            new Chartist.Bar('#bar-chart', data, options);
+
+        });
+    </script>
+    <script type="text/javascript">
+        var chart_labels = ["Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var sms_count_dataset = ["110","103","38","61894","9000"];
+        var ctx = document.getElementById("forecast").getContext('2d');
+        var config = {
+            type: 'bar',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    type: 'bar',
+                    label: "SMS COUNT",
+                    yAxisID: "y-axis-0",
+                    fill: false,
+                    data: sms_count_dataset,
+                    backgroundColor: ["red", "blue", "green", "yellow", "olive", "purple", 'pink', 'skyblu', 'orange', 'grey', 'brown', 'cyan']
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        position: "left",
+                        "id": "y-axis-0",
+                    }]
+                }
+            }
+        };
+        var forecast_chart = new Chart(ctx, config);
+        $("#0").click(function () {
+            var data = forecast_chart.config.data;
+            data.datasets[0].data = sms_count_dataset;
+            data.labels = chart_labels;
+            forecast_chart.update();
+        });
+        $("#1").click(function () {
+            var chart_labels = ["January","February"];
+            var sms_count_dataset = [70873,142027];
+            var data = forecast_chart.config.data;
+            data.datasets[0].data = sms_count_dataset;
+            data.labels = chart_labels;
+            forecast_chart.update();
+        });
+    </script>
+    <script src="https://ismsplus.sslwireless.com/custom/js/flap.js" type="text/javascript"></script>
+    <script>
+
+        
+
+        
+    </script>
+<script> 
+
+
+             
+        
+        $(window).on('load',function(){
+                // $('#notice-modal').modal('show');
+                $('#notice-modal').modal({
+
+                    backdrop: 'static',
+
+                    keyboard: false
+
+                });
+            });
+
+    
+       showChangePasswordSweetAlert('warning', 'As a new registered user, please change your password to avoid suspicious activity. By changing your password, you are helping to make sure that only you can use your account.', 'https://ismsplus.sslwireless.com/assets/change-passwrod-hints.png');
+    </script>
+</body>
+</html>

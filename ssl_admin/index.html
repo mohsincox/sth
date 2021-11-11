@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>iSMS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="isms SSLCARE - SMS Push Pull Services">
+    <meta name="author" content="SSL Wireless Limited">
+    <meta name="csrf-token" content="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+
+    <link rel="icon" href="https://ismsplus.sslwireless.com/assets/images/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/material_icons.css">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/color_skins.css"> -->
+    <style type="text/css">
+        .theme-blue .navbar-nav .user-profile .align-items-center {
+            background: #2249a3;
+        }
+
+        .theme-blue .sidebar-nav .metismenu>li.active>a {
+            background-color: #2249a3;
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+<body class="theme-blue">
+
+    <!-- Page Loader -->
+    <!-- <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img src="https://ismsplus.sslwireless.com/assets/images/thumbnail.png" width="48" height="48" alt="Mplify">
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div> -->
+    <!-- Overlay For Sidebars -->
+
+    <!-- <div class="overlay" style="display: none;"></div> -->
+
+    <!-- <div id="wrapper"> -->
+    <div> 
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-brand">
+                    <a href="#">
+                        <img src="https://ismsplus.sslwireless.com/assets/images/logo-icon.svg" alt="SSLCare Logo" class="img-responsive logo">
+                        <span class="name">sslcare</span>
+                    </a>
+                </div>
+
+                <div class="navbar-right">
+                    <ul class="list-unstyled clearfix mb-0">
+                        <li>
+                            <div class="navbar-btn btn-toggle-show">
+                                <button type="button" class="btn-toggle-offcanvas"><i class="material-icons" style="font-size:38px;">pause_circle</i></button>
+                            </div>
+                            <a href="javascript:void(0);" class="btn-toggle-fullwidth btn-toggle-hide"><i class="material-icons" style="font-size:38px;">widgets</i></a>
+                        </li>
+
+                        <li>
+                            <div id="navbar-menu">
+                                <ul class="nav navbar-nav">
+                                    <li class="available-sms">
+                                        <div class="add-balance icon-menu text-primary">
+                                            <i class="fa fa-plus"></i>
+                                            <strong class="hidden-sm ml-1">Prepaid</strong>
+                                        </div>
+                                    </li>  
+
+                                    <li class="mr-3">
+                                        <a class="create_new icon-menu badge-success text-white" href="#">
+                                            <i class="text-white fa fa-plus"></i> 
+                                            <span class="hidden-sm ml-1">Add Balance</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="quick-sms-fab">
+                                        <a class="create_new icon-menu badge-primary text-white" href="#">
+                                            <i class="fa fa-car"></i>
+                                            <span class="hidden-sm ml-1">Add Balance</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="py-0 dropdown-toggle icon-menu" data-toggle="dropdown">
+                                            <img alt=" No Logo" class="rounded-circle h-w-50" src="https://ismsplus.sslwireless.com/uploaded_files/company/logo/com-logo-1611390605.png" width="45" alt="">
+                                        </a>
+
+                                        <div class="dropdown-menu animated flipInY user-profile">
+                                            <a href="#">
+                                                <div class="d-flex p-3 align-items-center">
+
+                                                    <div class="drop-right">
+                                                        <h4>
+                                                            <div class="drop-left d-inline-block">
+                                                                <div id="profileImage">AD</div>
+                                                            </div>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="drop-right">
+                                                        Abdul Momen Ltd
+                                                        <p class="user-name">laizu.brand@amlbd.com</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <div class="bg-success d-flex p-3 align-items-center">
+
+                                                <div class="drop-right">
+                                                    <h4>
+                                                        <div class="drop-left d-inline-block">
+                                                            <div id="">
+                                                                <img id="profileImage" src="http://hris.sslwireless.com/employee-doc/image/thumbnail/1009-1567930750_907.jpg">
+                                                            </div>
+                                                        </div>
+                                                    </h4>
+                                                </div>
+                                                <div class="drop-right">
+                                                    KAM: Quazi Ahsanul Kabir
+                                                    <p class="user-name">ahsanul.kabir@sslwireless.com</p>
+                                                    <p>01615801216</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="m-t-10 p-3 drop-list">
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="isms::Panel#smallModal" data-toggle="modal"
+                                                           data-target="#smallModal">
+                                                            <i class="fa fa-key"></i>
+                                                            Change Password
+                                                        </a>
+
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <div>
+                                                            <a href="#" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                                <i class="fa fa-power"></i> Logout
+                                                            </a>
+
+                                                            <form id="logout-form" action="#" method="POST"
+                                                                  style="display: none;">
+                                                                <input type="hidden" name="_token" value="lfvjCpS7ZDk3gAlLviUcmlgKutlDusdzjEv3MDuw">
+                                                            </form>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="leftsidebar" class="sidebar">
+            <div class="sidebar-scroll">
+                <nav id="leftsidebar-nav" class="sidebar-nav">
+                    <ul id="main-menu" class="metismenu">
+                        <li class="nav-item dashboard">
+                            <a href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                                                        
+                        <li class="nav-item contact active">
+                            <a href="#">
+                                <i class="fa fa-plus"></i>
+                                <span>Contact Book</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item sms-list send-sms-status">
+                            <a href="#" class="has-arrow">
+                                <!-- <i class="material-icons" style="font-size:20px;">check_box</i> -->
+                                <i class="material-icons" style="font-size: 18px;">add</i>
+                                <span>SMS Lists</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse sms-list-submenu">
+                                <li class="nav-item im-send-sms">
+                                    <a href="#">
+                                        <span>Social Campaign List</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item schedule active">
+                                    <a href="#">
+                                        <span>SMS Campaign List</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item send-sms-voice-list">
+                                    <a href="#">
+                                        <span>Voice Campaign List</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item quick_sms">
+                                    <a href="#">
+                                        <span>Quick SMS</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        
+                        <li class="nav-item client-management">
+                            <a href="#" class="has-arrow">
+                                <!-- <i class="fa fa-car"></i> -->
+                                <i class="material-icons" style="font-size: 18px;">privacy_tip</i>
+                                <span>Client Management</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse client-management-submenu">                           
+                                <li class="nav-item user-management">
+                                    <a href="#">
+                                        <span>User Management</span>
+                                    </a>
+                                </li>
+                                                                 
+                            </ul>
+                        </li>
+                                        
+                        <li class="nav-item sms-history">
+                            <a href="#">
+                                <i class="material-icons" style="font-size: 18px;">room</i>
+                                <span>Customer Care</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div>
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-8 col-sm-12">
+                                <h2>Contact Book</h2>
+                            </div>
+                            <div class="col-lg-7 col-md-4 col-sm-12 text-right">
+                                <ul class="breadcrumb justify-content-end">
+                                    <li class="breadcrumb-item"><a href="https://ismsplus.sslwireless.com/home"><i class="icon-home"></i></a></li>
+                                    <li class="breadcrumb-item active">Contact Group</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w_social3">
+                        <ul class="nav clearfix">
+
+                            <li class="col-lg-2 col-md-4 col-6 nav-item">
+                                <a class="nav-link add-group">
+                                    <div class="card bg-primary text-white font-13" data-toggle="modal"
+                                         data-target="#addNewContactGroupModal">
+                                        <!-- <div class="icon"><i class="fa-2x icon icon-plus "></i></div> -->
+                                        <div class="icon"><i class="material-icons">cloud</i></div>
+                                        <div class="content">
+                                            <div class="text">Create New Group</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="col-lg-2 col-md-4 col-6 nav-item mb-3">
+                                <a href="#all" class="group_id nav-link  group_id active show" data-toggle="tab" data-id=""
+                                   data-text="All Contact">
+
+                                    <div class="card bg-light font-13">
+                                        <!-- <div class="icon"><i class="fa-2x icon icon-user-following"></i></div> -->
+                                        <div class="icon"><i class="material-icons" style="font-size:60px;color:red;">apps</i></div>
+                                        <div class="content">
+                                            <div class="text">All Contact</div>
+                                            <div class="small number">0 Contacts</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Contact List <small class="group-name"> - All Contact</small></h5>
+                        </div>
+
+                        <div class="body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <a href="#" class="btn btn-success m-b-15 contact_csv">
+                                        <i class="material-icons" style="font-size: 14px;">apps</i>
+                                        <span>Download CSV</span>
+                                    </a>
+                                </div>
+                                <div class="float-right">
+                                    <button class="btn btn-primary mr-1" type="button" data-toggle="modal" data-target="#addContact">
+                                        <i class="material-icons">add</i>
+                                        Add New Contact
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#uploadModal">
+                                        <!-- <i class="material-icons">apps</i> -->
+                                        <i class="fa fa-car"></i>
+                                        Upload Bulk Contact
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped" id="list">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Mobile No.</th>
+                                            <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Designation</th>
+                                            <th class="border-top-0">Organizations</th>
+                                            <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>454</td>
+                                            <td>fhf</td>
+                                            <td>jhgj</td>
+                                            <td>hkhj</td>
+                                            <td>jkl</td>
+                                            <td>hjk</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="assets/js/libscripts.bundle.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/vendorscripts.bundle.js"></script>
+    <script src="assets/js/mainscripts.bundle.js"></script>
+</body>
+</html>

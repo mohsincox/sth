@@ -1,0 +1,209 @@
+// index.js component
+
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
+import { Form, Select, Row, Col, Divider, Tabs } from 'antd';
+
+import { DateRange } from './DateRange'
+// import { setDateRange, searchByUser } from '../../actions/userReportActions'
+
+import { UserDetailsReport } from './UserDetailsReport'
+
+import { changeName } from '../../actions/evaluationActions'
+
+class EvaluationReport extends Component {
+
+    componentDidMount() {
+        // this.props.dispatch(setDateRange())
+        // this.props.dispatch(searchByUser())
+    }
+
+    render() {
+
+        // const { handleSubmit } = props
+
+        const { abc, dispatch } = this.props
+
+        return (
+            <div>
+                <h1>Sadik</h1>
+                <h1>{ abc.name }</h1>
+                <h1>{ abc.address }</h1>
+
+                <button onClick={ () => dispatch( changeName('Dhaka') )}>Click Here</button>
+
+                {/* <Row gutter={24}>
+                    <Col span={24}>
+                        <DateRange {...this.props}/>
+                    </Col>
+                </Row>
+
+                <Divider />
+
+                <Row gutter={24} >
+                    <Col span={24}>
+                        <UserDetailsReport {...this.props}/>
+                    </Col>
+                </Row> */}
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => ({
+    users: state.userReducer,
+    // evaluationReducer: state.evaluationReducer,
+    abc: state.evaluationReducer,
+})
+
+const WrappedComponent = Form.create({ name: 'EvaluationReport' })(EvaluationReport);
+
+export default withRouter(connect(mapStateToProps)(WrappedComponent))
+
+
+
+
+
+
+
+
+
+
+// action
+
+
+import { notification } from 'antd';
+import moment from 'moment'
+import axios from 'axios'
+
+import { get, post, put, deleteMethod, postWithoutToken } from '../functions'
+import { BrowserRouter, browserHistory } from 'react-router-dom'
+
+//-- Define action names
+export const EVALUATION_CHANGE_SEARCH_VALUE = "EVALUATION_CHANGE_SEARCH_VALUE"
+export const EVALUATION_RESULT = "EVALUATION_RESULT"
+
+
+const openNotificationWithIcon = (type, message, description) => {
+    notification[type]({
+        message: message,
+        description: description
+    });
+};
+
+export const changeName = (value) => (dispatch, getState) => {
+
+    dispatch({
+        type: 'MOHSIN_CHANGE_NAME',
+        payload: {
+            name: 'Talha Moshin',
+            value: value
+        }
+    })
+}
+
+// Change Search Field
+export const changeSearchField = (val, fieldName = "startDate") => (dispatch, getState) => {
+
+    const { searchBy } = getState().evaluationReducer
+
+    dispatch({
+        type: 'EVALUATION_CHANGE_SEARCH_VALUE',
+        payload: {
+            searchBy: {
+                ...searchBy,
+                [fieldName]: val
+            }
+        }
+    })
+}
+
+//-- Search Result
+export const searchResult = () => (dispatch, getState) => {
+
+    const { searchBy } = getState().evaluationReducer
+
+    const { evaluationName, startDate, endDate, } = searchBy
+
+    let queryString = ''
+
+    if (evaluationName) {
+        queryString +=  'evaluationName=' + evaluationName
+    }
+    
+    if (startDate) {
+        queryString +=  '&startDate=' + moment(startDate).format("YYYY-MMM-DD")
+        queryString +=  '&endDate=' + moment(endDate).format("YYYY-MMM-DD")
+    }
+
+    const searchUrl = `/evaluation/get-all-marks?${queryString}`
+
+    get(searchUrl)
+        .then(data => {
+            dispatch({
+                type: EVALUATION_RESULT,
+                payload: {
+                    evaluationResult: data
+                }
+            })
+        })
+        .catch(err => console.log(err))
+}
+
+
+
+
+
+
+// reducer
+
+
+import {
+    EVALUATION_CHANGE_SEARCH_VALUE,
+    EVALUATION_RESULT
+} from '../actions/evaluationActions'
+
+import moment from 'moment'
+
+const startDate = moment().startOf('month')
+const endDate = moment().endOf('month')
+const dateFormat = 'YYYY-MMM-DD';
+
+//-- Initialize State
+const initialState = {
+    name: 'Mohsin',
+    address: 'DOHS',
+    searchBy: {
+        evaluationName: '2019-Q1',
+        startDate: moment(startDate, dateFormat),
+        endDate: moment(endDate, dateFormat)
+    },
+    evaluationResult: []
+}
+
+const evaluationReducer = (state = initialState, action) => {
+
+    switch (action.type) {
+
+        case 'MOHSIN_CHANGE_NAME':
+            return Object.assign({}, state, {
+                name: action.payload.name
+            })
+
+        case EVALUATION_CHANGE_SEARCH_VALUE:
+            return Object.assign({}, state, {
+                searchBy: action.payload.searchBy
+            })
+
+        case EVALUATION_RESULT:
+            return Object.assign({}, state, {
+                evaluationResult: action.payload.evaluationResult
+            })
+    }
+
+    return state;
+}
+
+export default evaluationReducer;

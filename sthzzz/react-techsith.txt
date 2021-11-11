@@ -1,0 +1,3322 @@
+Tutorial: 1 ------------------------- React JS Introduction and Setup for Absolute Beginners
+
+Tutorial: 2 ------------------------- JSX intro | React tutorial series
+
+JSX: JavaScript XML
+
+
+Tutorial: 3 ------------------------- React Class vs Functional Component | ReactJS tutorial Series Part 3
+
+class App extends Component {
+	render(){
+		return (
+			<div>
+				<Users title="Users List" />
+			</div>
+		)
+	}
+}
+
+class Users extends Component {
+	render(){
+		return (
+			<div>
+				<h1>{this.props.title}</h1>
+				<User></User>
+				<User age="20">Iqbal</User>
+				<User age="30">Liton</User>
+			</div>
+		)
+	}
+}
+
+const User = (props) => {
+	let age = props.age ? props.age : 'NA';
+	if(props.children) {
+		return ( <div>Name: {props.children} | Age: {props.age} </div> )
+	} else {
+		return <div>Invalid Entry</div>
+	}
+}
+
+Note: not use functional component to manage state.
+Functional component does not define state
+Functional component is state less component
+
+Container component is class component
+
+
+Tutorial: 4 ------------------------- React JS State and Props | setState with Virtual DOM | React.JS tutorial Series Part 4
+
+for dynamic "state" & "props" are used
+"state" does it from inside
+"props" does it from outside
+
+//App.js
+
+import React, { Component } from 'react';
+import Users from './users/Users';
+
+class App extends Component {
+	render(){
+		return (
+			<div>
+				<Users title="Users List" />
+			</div>
+		)
+	}
+}
+
+export default App;
+
+
+// users/Users.js
+
+import React, { Component } from 'react';
+import User from './User';
+
+class Users extends Component {
+    state = {
+        users: [
+            {name:"John", age:20},
+            {name:"Jill", age:30},
+            {name:"Peter", age:40},
+        ],
+        title:"Users ListZZ"
+    };
+
+    makeYounger = () => {
+        this.setState({
+            users: [
+                {name:"John", age:10},
+                {name:"Jill", age:20},
+                {name:"Peter", age:30},
+            ] 
+        })
+
+        console.log(this.state.users)
+        // setState not effect, age:20,30,40
+    }
+
+	render(){
+		return (
+			<div>
+                <button onClick={this.makeYounger}>Make Younger</button>
+                <br/>
+				<h1>{this.props.title}</h1>
+				<User age={this.state.users[0].age}>{this.state.users[0].name}</User>
+				<User age={this.state.users[1].age}>{this.state.users[1].name}</User>
+				<User age={this.state.users[2].age}>{this.state.users[2].name}</User>
+				
+			</div>
+		)
+	}
+}
+
+export default Users
+
+---------------------------------------------
+
+// for dynamic
+
+	makeYounger = () => {
+        const newState = this.state.users.map((user) => {
+            const tempUser = user;
+            tempUser.age -= 10;
+            return tempUser;
+        });
+        this.setState({
+            newState
+        });
+
+        console.log(this.state.users)
+        // setState effect, age:10,20,30
+    }
+
+    //render
+    			<h1>{this.props.title}</h1>
+                {
+                    this.state.users.map((user) => {
+                        return <User age={user.age}>{user.name}</User>
+                    })
+                }
+
+
+// users/User.js
+
+import React from 'react';
+
+const User = (props) => {
+	let age = props.age ? props.age : 'NA';
+	if(props.children) {
+		return ( <div>Name: {props.children} | Age: {props.age} </div> )
+	} else {
+		return <div>Invalid Entry</div>
+	}
+}
+
+export default User;
+
+
+Tutorial: 5 ------------------------- React Events And Two-way Data Binding Tutorial
+
+// App.js
+
+// Static changeName
+
+import React, { Component } from 'react';
+
+class App extends Component {
+    state = {
+        name: 'techsith'
+    }
+
+    changeName = () => {
+        this.setState({
+            name: 'Awesome Techsith'
+        })
+    }
+
+	render(){
+		return (
+			<div>
+				<button onClick={this.changeName}>Change State</button>
+                <div>{this.state.name}</div>
+			</div>
+		)
+	}
+}
+
+export default App;
+
+------------------------------------
+
+// Anonymous Function & bind
+
+import React, { Component } from 'react';
+
+class App extends Component {
+    state = {
+        name: 'techsith'
+    }
+
+    changeName = (newName) => {
+        this.setState({
+            name: newName
+        })
+    }
+
+	render(){
+		return (
+			<div>
+				<button onClick={() => this.changeName('Awesome Techsith :(')}>Change State using Anonymous Function</button>
+				<button onClick={this.changeName.bind(this, 'Awesome Techsith :)')}>Change State using Bind Function</button>
+                <div>{this.state.name}</div>
+			</div>
+		)
+	}
+}
+
+export default App;
+
+// input 
+
+import React, { Component } from 'react';
+
+class App extends Component {
+    state = {
+        name: 'techsith'
+    }
+
+    changeName = (newName) => {
+        this.setState({
+            name: newName
+        })
+    }
+
+    changeNameFromInput = (event) => {
+        this.setState({
+            name:event.target.value
+        })
+    }
+
+	render(){
+		return (
+			<div>
+				<button onClick={() => this.changeName('Awesome Techsith :(')}>Change State using Anonymous Function</button>
+				<button onClick={this.changeName.bind(this, 'Awesome Techsith :)')}>Change State using Bind Function</button>
+                <br/> <br/>
+                <input type="type" onChange={this.changeNameFromInput}/>
+                <br/> <br/>
+                <div>{this.state.name}</div>
+			</div>
+		)
+	}
+}
+
+export default App;
+
+
+// Two-way Data Binding
+
+import React, { Component } from 'react';
+
+class App extends Component {
+    state = {
+        name: 'techsith'
+    }
+
+    changeName = (newName) => {
+        this.setState({
+            name: newName
+        })
+    }
+
+    changeNameFromInput = (event) => {
+        this.setState({
+            name:event.target.value
+        })
+    }
+
+	render(){
+		return (
+			<div>
+				<button onClick={() => this.changeName('Awesome Techsith :(')}>Change State using Anonymous Function</button>
+				<button onClick={this.changeName.bind(this, 'Awesome Techsith :)')}>Change State using Bind Function</button>
+                <br/> <br/>
+                <input type="type" onChange={this.changeNameFromInput} value={this.state.name}/> {* Two-way Data Binding *}
+                <br/> <br/>
+                <div>{this.state.name}</div>
+			</div>
+		)
+	}
+}
+
+export default App;
+
+
+
+Tutorial: 6 ------------------------- React components communication tutorial | parent to child | siblings | grand parents to grand child
+
+// App.js & child.js
+
+// App.js
+
+import React, { Component } from 'react';
+import './App.css';
+import Child from './components/parentToChild/child';
+
+class App extends Component {
+  state = {
+    title:'placeholder title'
+  }
+
+  changeTheWorld = (newTitle) => {
+      this.setState({title:newTitle});
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Child doWhatever={this.changeTheWorld.bind(this, 'New Test')} title={this.state.title} />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+// child.js
+
+import React from 'react';
+
+const child = (props) => {
+    return (
+        <div>
+            <button onClick={props.doWhatever}>{props.title}</button>
+        </div>
+    )
+}
+
+export default child;
+
+---------------------------
+
+// App.js
+
+import React, { Component } from 'react';
+import './App.css';
+import Parent from './components/parentToChild/parent';
+
+class App extends Component {
+  state = {
+    title:'placeholder title'
+  }
+
+  changeTheWorld = (newTitle) => {
+      this.setState({title:newTitle});
+  }
+
+  render() {
+    return (
+      <div className="App">
+         <Parent changeTheWorldEvent={this.changeTheWorld.bind(this, 'new world')} 
+         keepTheWorldSameEvent={this.changeTheWorld.bind(this, 'same world')}
+         title={this.state.title}/>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+// components/parentToChild/parent.js
+
+import React from 'react';
+import Child from './child';
+//sibling communication
+const parent = (props) => {
+    return(
+        <div>
+            <Child doWhatever={props.changeTheWorldEvent} title={props.title}/>
+            <Child doWhatever={props.keepTheWorldSameEvent} title={props.title}/>
+         </div>
+    )
+}
+
+export default parent;
+
+
+// components/parentToChild/child.js
+
+import React from 'react';
+
+const child = (props) => {
+    return (
+        <div>
+            <button onClick={props.doWhatever}>{props.title}</button>
+        </div>
+    )
+}
+
+export default child;
+
+
+Tutorial: 7 ------------------------- React lists and keys tutorial | update delete list elements using unique key
+
+// Delete
+// App.js
+
+import React, { Component } from 'react';
+import User from './components/User'
+
+class App extends Component {
+    state = {
+        users: [
+            {name: 'john', age: 20},
+            {name: 'peter', age: 30},
+            {name: 'jill', age: 40}
+        ]
+    }
+
+    deleteUser = (index, e) => {
+        const users = Object.assign([], this.state.users);
+        users.splice(index, 1);
+        this.setState({users:users})
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {
+                        this.state.users.map((user, index) => {
+                            return (
+                                <User
+                                    age={user.age}
+                                    delEvent={this.deleteUser.bind(this, index)}
+                                >{user.name}</User>)
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default App;
+
+// components/User.js
+
+import React from 'react';
+
+const User = (props) => {
+    return (
+        <li>
+            <span>name: {props.children}, age: {props.age}</span>
+            <button onClick={props.delEvent}>Delete</button>
+        </li>
+    )
+}
+
+export default User;
+
+--------------------------------------------
+
+// Unique id warnning remove
+// App.js
+
+import React, { Component } from 'react';
+import User from './components/User'
+
+class App extends Component {
+    state = {
+        users: [
+            {id:'aaa', name: 'john', age: 20},
+            {id:'bbb', name: 'peter', age: 30},
+            {id:'ccc', name: 'jill', age: 40}
+        ]
+    }
+
+    deleteUser = (index, e) => {
+        const users = Object.assign([], this.state.users);
+        users.splice(index, 1);
+        this.setState({users:users})
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {
+                        this.state.users.map((user, index) => {
+                            return (
+                                <User
+                                    age={user.age}
+                                    key={user.id}
+                                    delEvent={this.deleteUser.bind(this, index)}
+                                >{user.name}</User>)
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default App;
+
+--------------------------------------------
+
+//import UniqueId from 'react-html-id'
+// App.js
+
+import React, { Component } from 'react';
+import User from './components/User';
+import UniqueId from 'react-html-id';
+
+class App extends Component {
+    constructor() {
+        super();
+        UniqueId.enableUniqueIds(this);
+        this.state = {
+            users: [
+                {id:this.nextUniqueId(), name: 'john', age: 20},
+                {id:this.nextUniqueId(), name: 'peter', age: 30},
+                {id:this.nextUniqueId(), name: 'jill', age: 40}
+            ]
+        }
+        console.log(this.state);
+    }
+
+    deleteUser = (index, e) => {
+        const users = Object.assign([], this.state.users);
+        users.splice(index, 1);
+        this.setState({users:users})
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {
+                        this.state.users.map((user, index) => {
+                            return (
+                                <User
+                                    age={user.age}
+                                    key={user.id}
+                                    delEvent={this.deleteUser.bind(this, index)}
+                                >{user.name}</User>)
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default App;
+
+--------------------------------------------
+
+// Two way Binding
+// components/User.js
+
+import React from 'react';
+
+const User = (props) => {
+    return (
+        <li>
+            <span>name: {props.children}, age: {props.age}</span>
+            <input onChange={props.changeEvent} value={props.children} />
+            <button onClick={props.delEvent}>Delete</button>
+        </li>
+    )
+}
+
+export default User;
+
+--------------------------------------------
+
+// edit
+// App.js
+import React, { Component } from 'react';
+import User from './components/User';
+import UniqueId from 'react-html-id';
+
+class App extends Component {
+    constructor() {
+        super();
+        UniqueId.enableUniqueIds(this);
+        this.state = {
+            users: [
+                {id:this.nextUniqueId(), name: 'john', age: 20},
+                {id:this.nextUniqueId(), name: 'peter', age: 30},
+                {id:this.nextUniqueId(), name: 'jill', age: 40}
+            ]
+        }
+        console.log(this.state);
+    }
+
+    deleteUser = (index, e) => {
+        const users = Object.assign([], this.state.users);
+        users.splice(index, 1);
+        this.setState({users:users})
+    }
+
+    changeUserName = (id, e) => {
+        const index = this.state.users.findIndex((user) => {
+            return user.id === id
+        });
+
+        const user = Object.assign({}, this.state.users[index]);
+
+        user.name = e.target.value;
+
+        const users = Object.assign([], this.state.users);
+
+        users[index] = user;
+
+        this.setState({users:users});
+
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {
+                        this.state.users.map((user, index) => {
+                            return (
+                                <User
+                                    age={user.age}
+                                    key={user.id}
+                                    delEvent={this.deleteUser.bind(this, index)}
+                                    changeEvent={this.changeUserName.bind(this, user.id)}
+                                >{user.name}</User>)
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default App;
+
+
+Tutorial: 8 ------------------------- React Fragments Tutorial
+
+// App.js
+// <> </> not recomended
+import React, { Component } from 'react';
+
+const Temp = () => {
+    return (
+        <>
+            <div>Hi</div>
+            <div>Hello</div>
+        </>
+    )
+}
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Temp/>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+---------------------------------------
+
+// App.js
+// Fragment
+
+import React, { Component, Fragment } from 'react';
+
+const Temp = () => {
+    return (
+        <Fragment>
+            <div>Hi</div>
+            <div>Hello</div>
+        </Fragment>
+    )
+}
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Temp/>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+---------------------------------------
+
+// App.js
+// Fragment, Output: <div>hi</div>
+
+import React, { Component, Fragment } from 'react';
+
+const Temp = (props) => {
+    return (
+        <Fragment>
+            {
+                props.greetings === 'hi'
+                ? <Fragment>&lt;div&gt;{props.greetings}&lt;/div&gt;</Fragment>
+                : props.greetings
+            }
+        </Fragment>
+    )
+}
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Temp greetings="hi" />
+            </div>
+        );
+    }
+}
+
+export default App;
+
+
+Tutorial: 9 ------------------------- React Component Lifecycle Hooks / Methods
+
+// App.js
+// Output in console is given bellow, 1st, 2nd, 3rd, 4th
+
+// constructor				1st
+// componentWillMount		2nd
+// render					3rd
+// componentDidMount		4th
+
+import React, { Component } from 'react';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+--------------------------------------
+
+// Output in console is given bellow, 1st - 8th (hooks for initial rendering)
+
+// constructor				1st
+// componentWillMount		2nd
+// render					3rd
+// child constructor		4th
+// child componentWillMount	5th
+// child render				6th
+// child componentDidMount	7th
+// componentDidMount		8th
+
+// App.js
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+// child.js
+
+import React, { Component } from 'react';
+
+class Child extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john child'
+        }
+        console.log('child constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('child componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('child componentDidMount');
+    }
+
+    render() {
+        console.log('child render')
+        return (
+            <div>
+                <h3>Child Name: {this.props.name}</h3>
+                <h3>Child Name Local: {this.state.name}</h3>
+            </div>
+        );
+    }
+}
+
+export default Child;
+
+--------------------------------
+
+// constructor				1st
+// componentWillMount		2nd
+// render					3rd
+// child constructor		4th
+// child componentWillMount	5th
+// child render				6th
+// child componentDidMount	7th
+// componentDidMount		8th
+
+// after click in 'Change State' button john will be jill (hooks running in only 'render' and 'child render')
+
+// render					1st
+// child render				2nd
+
+// App.js
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    changeState() {
+        this.setState({
+            name: 'jill'
+        });
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+                <button onClick={this.changeState.bind(this)} >Change State</button>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+--------------------------------------
+
+// App.js
+
+// after click in 'Change State' button
+
+// render							1st
+// child componentWillReceiveProps	2nd
+// child render						3nd
+
+// App componentWillReceiveProps does not work because
+// no props in main conponent (App) componentWillReceiveProps
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps');
+    }
+
+    changeState() {
+        this.setState({
+            name: 'jill'
+        });
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+                <button onClick={this.changeState.bind(this)} >Change State</button>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+
+// child.js
+
+import React, { Component } from 'react';
+
+class Child extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john child'
+        }
+        console.log('child constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('child componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('child componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('child componentWillReceiveProps');
+    }
+
+    render() {
+        console.log('child render')
+        return (
+            <div>
+                <h3>Child Name: {this.props.name}</h3>
+                <h3>Child Name Local: {this.state.name}</h3>
+            </div>
+        );
+    }
+}
+
+export default Child;
+
+-----------------------------------------
+
+// after click in 'Change State' button
+
+// shouldComponentUpdate				1st
+// render 								2nd
+// child componentWillReceiveProps		3nd
+// child shouldComponentUpdate			4th
+// child render 						5th
+
+// App.js
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    changeState() {
+        this.setState({
+            name: 'jill'
+        });
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+                <button onClick={this.changeState.bind(this)} >Change State</button>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+// child.js
+
+import React, { Component } from 'react';
+
+class Child extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john child'
+        }
+        console.log('child constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('child componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('child componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('child componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('child shouldComponentUpdate');
+        return true;
+    }
+
+    render() {
+        console.log('child render')
+        return (
+            <div>
+                <h3>Child Name: {this.props.name}</h3>
+                <h3>Child Name Local: {this.state.name}</h3>
+            </div>
+        );
+    }
+}
+
+export default Child;
+
+// App.js
+
+	shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return false;
+    }
+
+// after click in 'Change State' button
+
+// shouldComponentUpdate  	1st
+
+-----------------------------------------
+
+// App.js
+
+	shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+// child.js
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('child shouldComponentUpdate');
+        return false;
+    }
+
+// after click in 'Change State' button
+// child name will not jill, it is old name jhon
+// Name: jill
+// Child Name: john
+
+// shouldComponentUpdate			1st
+// render 							2nd
+// child componentWillReceiveProps 	3rd
+// child shouldComponentUpdate		4th
+
+// child render will not execute
+
+---------------------------------------
+16:30
+// after click in 'Change State' button
+// componentWillUpdate semiler to componentWillMount, don't do setState, because it will update another state and loop will continue
+
+// shouldComponentUpdate
+// componentWillUpdate
+// render
+// child componentWillReceiveProps
+// child shouldComponentUpdate
+// child componentWillUpdate
+// child render
+
+// App.js
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
+    }
+
+    changeState() {
+        this.setState({
+            name: 'jill'
+        });
+    }
+
+    render() {
+        console.log('render')
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+                <button onClick={this.changeState.bind(this)} >Change State</button>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+// child.js
+
+import React, { Component } from 'react';
+
+class Child extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john child'
+        }
+        console.log('child constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('child componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('child componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('child componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('child shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUpdate() {
+        console.log('child componentWillUpdate');
+    }
+
+    render() {
+        console.log('child render')
+        return (
+            <div>
+                <h3>Child Name: {this.props.name}</h3>
+                <h3>Child Name Local: {this.state.name}</h3>
+            </div>
+        );
+    }
+}
+
+export default Child;
+
+-----------------------------------------
+
+// after click in 'Unmount Child' button
+// return (<div/>);
+
+shouldComponentUpdate
+componentWillUpdate
+render
+child componentWillUnmount
+prevProps {}
+prevState {name: "john", innerWidth: 957}
+componentDidUpdate
+
+// App.js
+
+import React, { Component } from 'react';
+import Child from './child';
+
+class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john'
+        }
+        console.log('constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth > 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('prevProps', prevProps);
+        console.log('prevState', prevState);
+        console.log('componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+    }
+
+    changeState() {
+        this.setState({
+            name: 'jill'
+        });
+    }
+
+    unmountChild() {
+        this.setState({name: 'robert'})
+    }
+
+    render() {
+        console.log('render')
+        if(this.state.name === 'robert') {
+            return (<div/>);
+        }
+        return (
+            <div>
+                <h3>Name: {this.state.name}</h3>
+                <h3>innerWidth: {this.state.innerWidth}</h3>
+                <Child name={this.state.name}/>
+                <button onClick={this.changeState.bind(this)} >Change State</button>
+                <button onClick={this.unmountChild.bind(this)}>Unmount Child</button>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+// child.js
+
+import React, { Component } from 'react';
+
+class Child extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            name: 'john child'
+        }
+        console.log('child constructor');
+    }
+
+    componentWillMount() {
+        if(window.innerWidth < 600) {
+            this.setState({innerWidth:window.innerWidth});
+        }
+        console.log('child componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('child componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+        console.log('child componentWillReceiveProps');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('child shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUpdate() {
+        console.log('child componentWillUpdate');
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('child prevProps', prevProps);
+        console.log('child prevState', prevState);
+        console.log('child componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        console.log('child componentWillUnmount');
+    }
+
+    render() {
+        console.log('child render')
+        return (
+            <div>
+                <h3>Child Name: {this.props.name}</h3>
+                <h3>Child Name Local: {this.state.name}</h3>
+            </div>
+        );
+    }
+}
+
+export default Child;
+
+
+Tutorial: 10 ------------------------- React Pure Components Tutorial
+
+// PureComponent is not recomended , PureComponent does Shallow Compare, obj compare, be careful in parent and child component state in props passing
+
+// Component
+// App.js
+
+import React, { Component } from 'react';
+
+const Temp = (props) => {
+    console.log('render Temp')
+    return (<div>{props.val}</div>)
+}
+
+class App extends Component {
+    state = {
+        val: 0
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: this.state.val+2}
+            });
+        }, 2000)
+    }
+
+    render() {
+        console.log('render App')
+        
+        return (
+            <div>
+                <Temp val={this.state.val} />
+            </div>
+        );
+    }
+}
+
+export default App;
+
+----------------------------------------------
+
+// val always 1 so not rerender in shouldComponentUpdate(), return false
+// Component
+// App.js
+
+import React, { Component } from 'react';
+
+const Temp = (props) => {
+    console.log('render Temp')
+    return (<div>{props.val}</div>)
+}
+
+class App extends Component {
+    state = {
+        val: 1
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: 1}
+            });
+        }, 2000)
+    }
+
+    shouldComponentUpdate(nextProp, nextState) {
+        console.log('nextState ', nextState);
+        console.log('currentState ', this.state);
+        return (this.state.val ===  nextState.val ? false : true);
+    }
+
+    render() {
+        console.log('render App')
+        
+        return (
+            <div>
+                <Temp val={this.state.val} />
+            </div>
+        );
+    }
+}
+
+export default App;
+
+// return true in shouldComponentUpdate() hook, val is changing and rerendering
+	componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: this.state.val+2}
+            });
+        }, 2000)
+    }
+// or
+
+	componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: Math.random()}
+            });
+        }, 2000)
+    }
+-------------------------------------------------
+
+// main concept:--------------------------
+
+// By using Component, always rendering
+// output every 2s in console -> render App & render Temp
+// App.js
+
+import React, { Component } from 'react';
+
+const Temp = (props) => {
+    console.log('render Temp')
+    return (<div>{props.val}</div>)
+}
+
+class App extends Component {
+    state = {
+        val: 1
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: 1}
+            });
+        }, 2000)
+    }
+
+    render() {
+        console.log('render App')
+        
+        return (
+            <div>
+                <Temp val={this.state.val} />
+            </div>
+        );
+    }
+}
+
+export default App;
+
+/ By using PureComponent, only one time rendering
+// output only one time in console -> render App & render Temp
+// App.js
+
+import React, { PureComponent } from 'react';
+
+const Temp = (props) => {
+    console.log('render Temp')
+    return (<div>{props.val}</div>)
+}
+
+class App extends PureComponent {
+    state = {
+        val: 1
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState(() => {
+                return {val: 1}
+            });
+        }, 2000)
+    }
+
+    render() {
+        console.log('render App')
+        
+        return (
+            <div>
+                <Temp val={this.state.val} />
+            </div>
+        );
+    }
+}
+
+export default App;
+
+
+
+
+Tutorial: 11 ------------------------- React Router Complete Guide (Route, Link, NavLink, Redirect, Prompt )
+
+// "exact" used for remove match in "/" & "/about"
+// "strict" used for not same as "/about" & "/about/"
+// path="/user" call component
+
+// App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = () => {
+    return ( <h1>Welcome User</h1> )
+}
+
+class App extends Component {
+
+    render() {
+        
+        return (
+            <Router>
+                <div>
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user" exact strict component={User}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+-----------------------------------------------------------
+
+// http://localhost:3000/user/John
+// output: Welcome User: John
+
+const User = ({match}) => {
+    return ( <h1>Welcome User: {match.params.username}</h1> )
+}
+
+<Route path="/user/:username" exact strict component={User}/>
+
+----------------------------------------------------------
+
+// Link
+// App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = ({match}) => {
+    return ( <h1>Welcome User: {match.params.username}</h1> )
+}
+
+class App extends Component {
+
+    render() {
+        
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/user/John">User John</Link>
+                        </li>
+                        <li>
+                            <Link to="/user/Peter">User Peter</Link>
+                        </li>
+                    </ul>
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user/:username" exact strict component={User}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+---------------------------------------------------------
+
+// NavLink, activeStyle
+// App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = ({match}) => {
+    return ( <h1>Welcome User: {match.params.username}</h1> )
+}
+
+class App extends Component {
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact activeStyle={
+                                { color: 'green' }
+                            }>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" exact activeStyle={
+                                { color: 'green' }
+                            }>About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/John" exact activeStyle={
+                                { color: 'green' }
+                            }>User John</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/Peter" exact activeStyle={
+                                { color: 'green' }
+                            }>User Peter</NavLink>
+                        </li>
+                    </ul>
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user/:username" exact strict component={User}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+-------------------------------------------------------
+// Log In then click User button
+// App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, NavLink, Redirect } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = (params) => {
+    return ( <h1>Welcome User: {params.username}</h1> )
+}
+
+class App extends Component {
+    state = {
+        loggedIn: false
+    }
+
+    loginHandle = () => {
+        this.setState({loggedIn: true})
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact activeStyle={
+                                { color: 'green' }
+                            }>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" exact activeStyle={
+                                { color: 'green' }
+                            }>About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/John" exact activeStyle={
+                                { color: 'green' }
+                            }>User John</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/Peter" exact activeStyle={
+                                { color: 'green' }
+                            }>User Peter</NavLink>
+                        </li>
+                    </ul>
+                    
+                    <input type="button" value="Log In" onClick={this.loginHandle.bind(this)}/>
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user/:username" exact strict render={({match}) => (
+                        this.state.loggedIn ? (<User username={match.params.username} />) : (<Redirect to='/' />)
+                    )}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+----------------------------------------------------------
+
+// Log In & Log Out
+// App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, NavLink, Redirect } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = (params) => {
+    return ( <h1>Welcome User: {params.username}</h1> )
+}
+
+class App extends Component {
+    state = {
+        loggedIn: false
+    }
+
+    loginHandle = () => {
+        this.setState(prevState => ({
+            loggedIn: !prevState.loggedIn
+        }))
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact activeStyle={
+                                { color: 'green' }
+                            }>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" exact activeStyle={
+                                { color: 'green' }
+                            }>About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/John" exact activeStyle={
+                                { color: 'green' }
+                            }>User John</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/Peter" exact activeStyle={
+                                { color: 'green' }
+                            }>User Peter</NavLink>
+                        </li>
+                    </ul>
+                    
+                    <input type="button" value={this.state.loggedIn ? 'Log Out' : 'Log In'} onClick={this.loginHandle.bind(this)}/>
+                    
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user/:username" exact strict render={({match}) => (
+                        this.state.loggedIn ? (<User username={match.params.username} />) : (<Redirect to='/' />)
+                    )}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+-------------------------------------------------------
+
+// Prompt
+// App.js 
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
+const User = (params) => {
+    return ( <h1>Welcome User: {params.username}</h1> )
+}
+
+class App extends Component {
+    state = {
+        loggedIn: false
+    }
+
+    loginHandle = () => {
+        this.setState(prevState => ({
+            loggedIn: !prevState.loggedIn
+        }))
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact activeStyle={
+                                { color: 'green' }
+                            }>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" exact activeStyle={
+                                { color: 'green' }
+                            }>About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/John" exact activeStyle={
+                                { color: 'green' }
+                            }>User John</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/user/Peter" exact activeStyle={
+                                { color: 'green' }
+                            }>User Peter</NavLink>
+                        </li>
+                    </ul>
+
+                    <Prompt 
+                        when={!this.state.loggedIn}
+                        // message="Are you sure?" // checking 2nd time Promps, to remove next 'message' condition
+                        message={(location) => {
+                            return location.pathname.startsWith('/user') ? 'Are you sure?' : true
+                        }}
+                    />
+                    
+                    <input type="button" value={this.state.loggedIn ? 'Log Out' : 'Log In'} onClick={this.loginHandle.bind(this)}/>
+                    
+                    <Route path="/" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome Home</h1> )
+                        }
+                    }/>
+                    <Route path="/about" exact strict render={
+                        ()=> {
+                            return ( <h1>Welcome About</h1> )
+                        }
+                    }/>
+                    <Route path="/user/:username" exact strict render={({match}) => (
+                        this.state.loggedIn ? (<User username={match.params.username} />) : (<Redirect to='/' />)
+                    )}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default App;
+
+
+Tutorial: 12 ------------------------- React Refs and DOM
+
+// App.js
+
+import React, { Component } from 'react';
+import './App.css';
+
+
+const MyInput = (props) => {
+  return (<input
+    type="text"
+    ref={props.inputRef} />)
+}
+
+const FuncCustomComp = (props) => {
+
+  let textRef = null;
+    
+   const handleClick = () => {
+     alert(`yey, input val is ${textRef.value}`)
+   }
+    return (
+      <div style={styles.myInput}>
+        <MyInput inputRef={(input) => { textRef = input; }}/>
+        <input
+          type="button"
+          value="show input"
+          onClick={handleClick}
+        />
+      </div>
+    ); 
+}
+
+
+class App extends Component {
+
+  onKeyUp = (passed, e) => {
+    if (e.keyCode == 13) {
+      console.log(passed)
+      switch (passed) {
+        case 'firstName':
+          this.lastName.focus();
+          break;
+        case 'lastName':
+          this.age.focus();
+          break;
+        case 'age':
+          this.submit.focus();
+          break;
+        default:
+          this.submit.focus();
+      }
+    }
+  }
+  onSubmit = () => {
+    alert(`yey submited! ${this.firstName.value}, ${this.lastName.value} `);
+  }
+  render() {
+    return (
+      <div className="App">
+
+        <div>
+          <FuncCustomComp/>
+        </div>
+
+        <div>
+          <span>First Name: </span>
+          <input
+            type="text"
+            onKeyUp={this.onKeyUp.bind(this, 'firstName')}
+            ref={(input) => { this.firstName = input; }} />
+        </div>
+        <div>
+          <span>Last Name: </span>
+          <input
+            type="text"
+            onKeyUp={this.onKeyUp.bind(this, 'lastName')}
+            ref={(input) => { this.lastName = input; }} />
+        </div>
+        <div>
+          <span>Age: </span>
+          <input
+            type="text"
+            onKeyUp={this.onKeyUp.bind(this, 'age')}
+            ref={(input) => { this.age = input; }} />
+        </div>
+        <div>
+        <input
+          type="submit"
+          value="Submit"
+          onClick={this.onSubmit}
+          ref={(input) => { this.submit = input; }}
+        />
+         </div>
+      </div>
+    );
+  }
+}
+const styles = {
+  myInput : {
+    'margin' : '20px'
+  }
+}
+
+export default App;
+
+
+Tutorial: 13 ------------------------- React Typechecking with PropTypes
+
+// App.js
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+const Test = (props) => {
+    return (
+        <div>
+            <h1>{props.str}</h1>
+            <h1>{(props.bool ? 'bool' : 'no bool')}</h1>
+            <h1>{props.strOrNum}</h1>
+            <div>
+                {
+                    props.ary.map((val) => {
+                        return (<li key={val}>{val}</li>)
+                    })
+                }
+            </div>
+            <div>
+                {
+                    props.aryOfObj.map((val) => {
+                        return (<li key={val.age}>{val.name}</li>)
+                    })
+                }
+            </div>
+            <h1>{props.children}</h1>
+        </div>
+    )
+}
+
+Test.propTypes = {
+    str: PropTypes.string,
+    bool: PropTypes.bool,
+    strOrNum: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    ary:PropTypes.arrayOf(PropTypes.number),
+    aryOfObj:PropTypes.arrayOf(PropTypes.shape(
+        {
+            name: PropTypes.string,
+            age: PropTypes.number
+        }
+    )),
+    children: PropTypes.string
+}
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Test
+                    str={'Techsith'}
+                    bool
+                    strOrNum={10}
+                    ary={[1, 2, 3]}
+                    aryOfObj={[{name: 'john', age: 10, }, {name: 'peter', age: 20, }]}
+                >
+                    Children
+                </Test>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+
+Tutorial: 14 ------------------------- React Flow Tutorial ( Static Type Checking Props, State and set Default Props )
+
+// need to watch 14 // finished
+
+Tutorial: 15 ------------------------- React TypeScript Tutorial ( Setup, Installation, Static Type Checking )
+
+
+Tutorial: 16 -------------------------
+Tutorial: 17 ------------------------- Redux Introduction | How Redux works | Redux fundamentals
+
+Tutorial: 18 ------------------------- Redux simple example | Redux Tutorial | Redux for beginners
+
+// npm init
+// npm install redux
+// ADD 1 age
+// node reduxtest.js    // in terminal
+// output: { age: 22 }
+
+const { createStore } = require('redux');
+
+const initialState = {
+    age: 21
+};
+
+const myReducer = ( state = initialState,  action) => {
+    const newState = {...state};
+    
+    if(action.type === 'ADD') {
+        newState.age += 1;
+    }
+
+    return newState;
+}
+
+const store = createStore(myReducer);
+
+store.dispatch({type: 'ADD'});
+
+console.log(store.getState());
+// { age: 22 }
+
+-----------------------------------------------------
+
+const { createStore } = require('redux');
+
+const initialState = {
+    age: 21
+};
+
+const myReducer = ( state = initialState,  action) => {
+    const newState = {...state};
+    
+    if(action.type === 'ADD') {
+        newState.age += 1;
+    }
+
+    if(action.type === 'SUBSTRACT') {
+        newState.age -= 1;
+    }
+
+    return newState;
+}
+
+const store = createStore(myReducer);
+
+console.log('Initial State: ' + JSON.stringify(store.getState()));
+store.dispatch({type: 'ADD'});
+console.log('After Add: ' + JSON.stringify(store.getState()));
+store.dispatch({type: 'SUBSTRACT'});
+console.log('After Subtract: ' + JSON.stringify(store.getState()));
+
+// Output
+// Initial State: {"age":21}
+// After Add: {"age":22}
+// After Subtract: {"age":21}
+
+-----------------------------------------------------
+
+const { createStore } = require('redux');
+
+const initialState = {
+    age: 21
+};
+
+const myReducer = ( state = initialState,  action) => {
+    const newState = {...state};
+    
+    if(action.type === 'ADD') {
+        newState.age += 1;
+    }
+
+    if(action.type === 'SUBSTRACT') {
+        newState.age -= 1;
+    }
+
+    return newState;
+}
+
+const store = createStore(myReducer);
+
+store.subscribe(() => {
+    console.log('State Change: ' + JSON.stringify(store.getState()));
+})
+
+store.dispatch({type: 'ADD'});
+store.dispatch({type: 'ADD'});
+store.dispatch({type: 'ADD'});
+store.dispatch({type: 'SUBSTRACT'});
+
+// Output:
+// State Change: {"age":22}
+// State Change: {"age":23}
+// State Change: {"age":24}
+// State Change: {"age":23}
+
+------------------------------------------------
+
+// payload
+
+const { createStore } = require('redux');
+
+const initialState = {
+    age: 21
+};
+
+const myReducer = ( state = initialState,  action) => {
+    const newState = {...state};
+    
+    if(action.type === 'ADD') {
+        newState.age += action.val;
+    }
+
+    if(action.type === 'SUBSTRACT') {
+        newState.age -= action.val;
+    }
+
+    return newState;
+}
+
+const store = createStore(myReducer);
+
+store.subscribe(() => {
+    console.log('State Change: ' + JSON.stringify(store.getState()));
+})
+
+store.dispatch({type: 'ADD', val: 10});
+store.dispatch({type: 'SUBSTRACT', val: 5});
+
+// Output
+// State Change: {"age":31}
+// State Change: {"age":26}
+
+
+Tutorial: 19 ------------------------- React Redux tutorial | simple example | Part 3
+
+// ADD & SUBSTRACT by using normal function
+
+import React, { Component } from "react";
+
+class App extends Component {
+   state = {
+      age: 21
+   }
+
+   onAgeUp = () => {
+      this.setState({
+         ...this.state,
+         age: ++this.state.age
+      })
+   }
+
+   onAgeDown = () => {
+      this.setState({
+         ...this.state,
+         age: --this.state.age
+      })
+   }
+
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.state.age}</span>
+            </div>
+            <button onClick={this.onAgeUp}>Age UP</button>
+            <button onClick={this.onAgeDown}>Age Down</button>
+         </div>
+      );
+   }
+}
+
+export default App;
+
+
+------------------------------------------------------
+
+// ADD & SUBSTRACT by using Redux
+// index.js
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from '../src/reducer/index';
+import App from '../src/App';
+
+const store = createStore(
+   reducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+   
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch({ type: "AGE_UP" }),
+      onAgeDown: () => dispatch({ type: "AGE_DOWN" })
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+
+ // src/reduce.index.js
+
+ const initialState = {
+   age:20
+};
+
+const reducer = (state=initialState, action) => {
+   const newState = {...state};
+
+   switch(action.type){
+       case 'AGE_UP': 
+           newState.age++;
+           break;
+       
+       case 'AGE_DOWN': 
+           newState.age--;
+           break;
+   }
+   return newState;
+};
+
+export default reducer;
+
+---------------------------------------
+
+// AGE_UP 10 value pass
+// AGE_DOWN 5 value pass
+
+// App.js
+
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch({ type: "AGE_UP", value: 10 }),
+      onAgeDown: () => dispatch({ type: "AGE_DOWN", value: 5 })
+   };
+};
+
+
+
+// src/reduce.index.js
+
+switch(action.type){
+   case 'AGE_UP': 
+       newState.age += action.value;
+       break;
+   
+   case 'AGE_DOWN': 
+       newState.age -= action.value;
+       break;
+} 
+
+
+Tutorial: 20 ------------------------- React Redux Update State Immutable way Tutorial | Part - 4
+
+// Output same as Tutorial 19
+// file change in reducer/index.js
+
+// index.js
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from '../src/reducer/index';
+import App from '../src/App';
+
+const store = createStore(
+   reducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch({ type: "AGE_UP", value: 10 }),
+      onAgeDown: () => dispatch({ type: "AGE_DOWN", value: 5 })
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+
+// src/reduce/index.js
+
+const initialState = {
+   age:20,
+   history: []
+};
+
+const reducer = (state=initialState, action) => {
+    const newState = {...state};
+
+    switch(action.type){
+        case 'AGE_UP': 
+        //    newState.age += action.value;
+            return {
+                ...state,
+                age: state.age + action.value,
+                history: state.history.concat({age: state.age + action.value})
+            }
+            break;
+       
+        case 'AGE_DOWN': 
+        //    newState.age -= action.value;
+            return {
+                ...state,
+                age: state.age - action.value,
+                history: state.history.concat({age: state.age - action.value})
+            }
+            break;
+    }
+    return newState;
+};
+
+export default reducer;
+
+-------------------------------------------------------
+
+// history item delete
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+
+   render() {
+      return (
+
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+            <hr/>
+            <div>History</div>
+            <div>
+               <ul>
+                  {
+                     this.props.history.map(el => (
+                        <li
+                           key={el.id}
+                           onClick={() => this.props.onDelItem(el.id)}
+                        >
+                           { el.age }
+                        </li>
+                     ))
+                  }
+               </ul>
+            </div>
+
+         </div>
+         
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age,
+      history: state.history
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch({ type: "AGE_UP", value: 10 }),
+      onAgeDown: () => dispatch({ type: "AGE_DOWN", value: 5 }),
+      onDelItem: (id) => dispatch({ type: "DEL_ITEM", key: id })
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+
+ // src/reduce/index.js
+
+ const initialState = {
+   age:20,
+   history: []
+};
+
+const reducer = (state=initialState, action) => {
+    const newState = {...state};
+
+    switch(action.type){
+        case 'AGE_UP':
+            return {
+                ...state,
+                age: state.age + action.value,
+                history: state.history.concat({id: Math.random(), age: state.age + action.value})
+            }
+            break;
+       
+        case 'AGE_DOWN':
+            return {
+                ...state,
+                age: state.age - action.value,
+                history: state.history.concat({id: Math.random(), age: state.age - action.value})
+            }
+            break;
+        
+        case 'DEL_ITEM':
+            return {
+                ...state,
+                history: state.history.filter(el => el.id !== action.key)
+            }
+            break;
+    }
+    return newState;
+};
+
+export default reducer;
+
+
+Tutorial: 21 ------------------------- Redux Combine Multiple Reducers Tutorial | React Redux Series Part 5
+
+// Output a+b result, a=3, b=5 for B update output: a=3, b=8
+
+// index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './store/reducer';
+
+
+const store = createStore(
+   reducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+
+   render() {
+      return (
+         <div>
+            <div className="col">
+               <div><span>A: </span><span>{this.props.a}</span></div>
+               <button onClick={this.props.updateA}>Update A</button>
+            </div>
+            <div className="col">
+               <div><span>B: </span><span>{this.props.b}</span></div>
+               <button onClick={this.props.updateB}>Update B</button>
+            </div>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = (store) => {
+   return {
+      a: store.a,
+      b: store.b
+   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+      updateA: () => dispatch({type: 'UPDATE_A'}),
+      updateB: () => dispatch({type: 'UPDATE_B'})
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// store/reducer.js
+
+const initialState = {
+    a: 1,
+    b: 1
+};
+
+const reducer = (state = initialState, action) => {
+    if(action.type === 'UPDATE_A') {
+        return {
+            ...state,
+            a: state.a + state.b
+        }
+    }
+
+    if(action.type === 'UPDATE_B') {
+        return {
+            ...state,
+            b: state.a + state.b
+        }
+    }
+
+    return state;
+};
+
+export default reducer;
+
+---------------------------------------------
+
+// combineReducers
+// 2 reducers: reducerA & reducerB
+
+//index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import reducerA from './store/reducerA';
+import reducerB from './store/reducerB';
+
+const rootReducer = combineReducers({
+   rA: reducerA,
+   rB: reducerB
+});
+
+const store = createStore(
+   rootReducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+
+   render() {
+      return (
+         <div>
+            <div className="col">
+               <div><span>A: </span><span>{this.props.a}</span></div>
+               <button onClick={() => this.props.updateA(this.props.b)}>Update A</button>
+            </div>
+            <div className="col">
+               <div><span>B: </span><span>{this.props.b}</span></div>
+               <button onClick={() => this.props.updateB(this.props.a)}>Update B</button>
+            </div>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = (store) => {
+   return {
+      a: store.rA.a,
+      b: store.rB.b
+   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+      updateA: (b) => dispatch({type: 'UPDATE_A', b:b}),
+      updateB: (a) => dispatch({type: 'UPDATE_B', a:a})
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+// store/reducerA.js
+
+const initialState = {
+    a: 1
+};
+
+const reducerA = (state = initialState, action) => {
+    if(action.type === 'UPDATE_A') {
+        return {
+            ...state,
+            a: state.a + action.b
+        }
+    }
+
+    return state;
+};
+
+export default reducerA;
+
+
+// store/reducerB.js
+
+const initialState = {
+    b: 1
+};
+
+const reducer = (state = initialState, action) => {
+   
+    if(action.type === 'UPDATE_B') {
+        return {
+            ...state,
+            b: action.a + state.b
+        }
+    }
+
+    return state;
+};
+
+export default reducer;
+
+
+Tutorial: 22 ------------------------- Redux Middleware Example Tutorial | React Redux Series Part 6
+
+// index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducer from './store/reducer';
+
+const logAction = store => {
+   return next => {
+      return action => {
+         const result = next(action);
+         console.log(`Caught in the middleware ${JSON.stringify(result)}`);
+         return result;
+      };
+   };
+};
+
+const store = createStore(
+   reducer,
+   applyMiddleware(logAction),
+)
+
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+class App extends Component {
+   
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch({ type: "AGE_UP", value: 10 }),
+      onAgeDown: () => dispatch({ type: "AGE_DOWN", value: 5 })
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+ // src/store/reducer.js
+
+ const initialState = {
+    age:20
+};
+
+const reducer = (state=initialState, action) => {
+    const newState = {...state};
+
+    switch(action.type){
+        case 'AGE_UP': 
+            newState.age += action.value;
+            break;
+        
+        case 'AGE_DOWN': 
+            newState.age -= action.value;
+            break;
+    }
+    return newState;
+};
+
+export default reducer;
+
+Tutorial: 23 ------------------------- Redux-thunk Middleware | React Redux Series Part 7
+
+// index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './store/reducer';
+
+
+const store = createStore(
+   reducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionCreator from "./store/action/actions"
+
+class App extends Component {
+   
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch(actionCreator.ageUp(5)),
+      onAgeDown: () => dispatch(actionCreator.ageDown(2))
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+
+// src/store/action/actions.js
+
+export const ageUp = (val) => {
+    return { type: "AGE_UP", value: val };
+};
+
+export const ageDown = (val) => {
+    return { type: "AGE_DOWN", value: val };
+};
+
+
+// src/store/reducer.js
+
+const initialState = {
+    age:20
+};
+
+const reducer = (state=initialState, action) => {
+    const newState = {...state};
+
+    switch(action.type){
+        case 'AGE_UP': 
+            newState.age += action.value;
+            break;
+        
+        case 'AGE_DOWN': 
+            newState.age -= action.value;
+            break;
+    }
+    return newState;
+};
+
+export default reducer;
+
+-----------------------------------------------------
+
+// User of "thunk" in index.js
+
+import thunk from "redux-thunk";
+
+const store = createStore(
+   reducer,
+   applyMiddleware(thunk),
+)
+
+// index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducer from './store/reducer';
+import thunk from "redux-thunk";
+
+const store = createStore(
+   reducer,
+   applyMiddleware(thunk),
+)
+
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+-----------------------------------------------------------
+
+// for Asynchronous
+// after 5 sec ageUp will change
+
+// src/store/action/actions.js
+
+export const ageUpAsnc = (val) => {
+    return { type: "AGE_UP", value: val };
+};
+
+export const ageUp = val => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(ageUpAsnc(val))
+        }, 5000)
+    }
+}
+
+export const ageDown = (val) => {
+    return { type: "AGE_DOWN", value: val };
+};
+
+---------------------------------------------------
+
+// Complete redux-thunk
+
+// index.js
+
+import React from 'react';
+import App from '../src/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducer from './store/reducer';
+import thunk from "redux-thunk";
+
+const store = createStore(
+   reducer,
+   applyMiddleware(thunk),
+)
+
+render(
+   <Provider store = {store}>
+      <App />
+   </Provider>, document.getElementById('root')
+)
+
+// App.js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionCreator from "./store/action/actions";
+import logo from "./logo.svg";
+import "./App.css";
+
+class App extends Component {
+   
+   render() {
+      return (
+         <div>
+            <div>
+               your age: <span>{this.props.age}</span>
+            </div>
+            <button onClick={this.props.onAgeUp}>Age UP</button>
+            <button onClick={this.props.onAgeDown}>Age Down</button>
+            {this.props.loading && <img src={logo} className="App-logo" />}
+         </div>
+      );
+   }
+}
+
+const mapStateToProps = state => {
+   return {
+      age: state.age,
+      loading: state.loading
+   };
+ };
+ 
+const mapDispachToProps = dispatch => {
+   return {
+      onAgeUp: () => dispatch(actionCreator.ageUp(5)),
+      onAgeDown: () => dispatch(actionCreator.ageDown(2))
+   };
+};
+
+export default connect(
+   mapStateToProps,
+   mapDispachToProps
+ )(App);
+
+
+ // action.js
+
+ export const loading = () => {
+    return {
+        type: "LOADING"
+    }
+}
+
+export const ageUpAsnc = (val) => {
+    return { type: "AGE_UP", value: val };
+};
+
+export const ageUp = val => {
+    return dispach => {
+        dispach(loading());
+        setTimeout(() => {
+            // val++;
+            dispach(ageUpAsnc(val))
+        }, 5000)
+    }
+}
+
+export const ageDown = (val) => {
+    return { type: "AGE_DOWN", value: val };
+};
+
+
+// reducer.js
+
+const initialState = {
+    age:20
+};
+
+const reducer = (state=initialState, action) => {
+    const newState = {...state};
+
+    switch(action.type){
+        case 'AGE_UP': 
+            newState.age += action.value;
+            newState.loading = false;
+            break;
+        
+        case 'AGE_DOWN': 
+            newState.age -= action.value;
+            break;
+        
+        case 'LOADING':
+            newState.loading = true;
+            // break;
+    }
+    return newState;
+};
+
+export default reducer;
+
+
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------
+Tutorial: 4-------------------------

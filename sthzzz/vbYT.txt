@@ -1,0 +1,237 @@
+https://www.youtube.com/watch?v=5jDW2x0a4Ck&ab_channel=MarlonDionglay 
+				another: vicidial-express: https://www.youtube.com/watch?v=PXd04AwXhek&ab_channel=AbdullahITWala
+
+
+
+
+https://www.youtube.com/watch?v=5jDW2x0a4Ck&ab_channel=MarlonDionglay 
+Marlon Dionglay
+Vicibox V9 installation with SSL
+
+follow the instruction on the screen
+
+click Yes
+wait to finish
+
+=============================
+
+username; root
+password: vicidial
+
+
+en-US = ok
+us=ok
+
+exit
+yes
+utc time =ok
+
+create new password
+
+login to root
+
+=============================
+
+
+yast lan
+
+change ip address to static
+
+IP address
+
+IP: 45.77.23.74
+Netm: 255.255.254.0 
+GT:  45.77.22.1 
+
+i use google DNS
+8.8.8.8
+8.8.4.4
+
+go to routing
+
+ 45.77.22.1 
+
+press OK
+
+
+
+done configuring IP address with dns
+
+go to the next procedure
+
+
+
+
+
+=============================
+
+
+vicibox-install
+
+insert IP address
+
+IP: 45.77.23.74
+
+Vicidial install = Y
+exper install =Y
+IP vicidial = Y
+database = y
+slave = N
+default = y
+web server = y
+redirect = y for me
+php admin = N
+telephone server = y
+archieve = y
+firewall -y
+
+installation = yes
+best to review before installation
+
+
+wait to finish
+
+
+==============================
+
+
+Reboot
+
+
+=============================
+
+login to root again
+
+=============================
+
+login to root again
+
+let's go the cpanel
+
+zone editor
+
+done adding IP from cpanel
+
+
+A 45.77.23.74 vicidial.voicehold.net
+
+domain: vicidial.voicehold.net
+email: marloncdionglay@gmail.com
+
+done adding to the zone editor 
+let finish the installation
+
+let login to putty or securecrt
+
+
+
+
+
+
+
+
+
+
+
+
+
+final installation
+
+zypper up 
+let wait to finish
+
+
+
+
+continue Y
+
+wait to finish
+
+
+
+
+
+
+
+
+
+============================
+install SSL
+
+root: zypper in certbot
+
+press Y
+
+
+
+edit the ff
+
+nano /etc/certbot/cli.ini
+
+
+uncomment
+
+# server = https://acme-v01.api.letsencrypt.org/...
+
+
+acme-v02 this is inportant
+
+save and quit
+
+
+
+
+
+
+
+root: vicibox-certbot
+
+domain: vicidial.voicehold.net
+email: marloncdionglay@gmail.com
+
+
+
+
+
+
+
+
+  Do you want to continue using the above settings? (N/y) : y
+  Do you want to run certbot now to generate a certificate? (N/y) :Y
+
+
+(Y)es/(N)o: Y
+
+
+  Do you want to enable the new SSL certificate in Apache/Asterisk? (N/y) : Y
+
+
+
+
+nano /etc/apache2/vhosts.d/1111-default.conf
+
+
+
+uncomment here
+
+### To force everything to SSL uncomment the following
+        #RewriteEngine On
+        #RewriteCond %{HTTPS} off
+        #RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+save and quir
+
+let start apache
+
+service apache2 restart
+
+
+let check the browser
+
+
+Done installation vicibox 9 with SSL 
+
+thanks
+
+
+==============================

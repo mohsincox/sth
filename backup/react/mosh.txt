@@ -1,0 +1,19 @@
+npm i -g create-react-app
+npm i -g create-react-app@1.5.2
+
+D:\react>create-react-app react-app
+
+react-app creating in react folder
+
+D:\react>create-react-app counter-app
+
+npm i bootstrap@4.1.1
+
+
+imageUrl: "https://picsum.photos/100"
+<img src={this.state.imageUrl} alt="" />
+
+in javascript
+true && false	res: false
+true && 'Hi'	res: 'Hi'
+true && 'Hi' && 1	res: 1

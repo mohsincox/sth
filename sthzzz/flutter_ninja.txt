@@ -1,0 +1,205 @@
+T:7
+
+Stateless VS Stateful
+
+Stateless Widgets: the state of the widget  cannot change over time
+
+Stateful Widgets: the state of the widget can change over time
+
+T:8 - Images & Assets ---------------------
+
+	  body: Center(
+        child: Image(
+          image: NetworkImage('https://www.popsci.com/resizer/1_f_AWUzo6BSm6Oclmjxnt48Flo=/760x722/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/PBXSKSVB5WVZBXKA75OZ3Z524U.jpg'),
+        ),
+      ),
+
+      body: Center(
+        child: Image.network('https://www.popsci.com/resizer/1_f_AWUzo6BSm6Oclmjxnt48Flo=/760x722/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/PBXSKSVB5WVZBXKA75OZ3Z524U.jpg'),
+      ),
+
+
+pubspaec.yaml --------
+  
+  assets:
+    - assets/space-1.jpg
+    - assets/space-2.jpg
+
+  or
+
+  assets:
+    - assets/
+
+    ----------------
+
+	  body: Center(
+        child: Image(
+          image: AssetImage('assets/space-1.jpg'),
+        ),
+      ),
+
+      or
+
+      body: Center(
+        child: Image.asset('assets/space-1.jpg'),
+      ),
+
+
+T:9 - Buttons & Icons -----------------------
+
+T:10 - Containers & Padding
+
+const EdgeInsets.fromLTRB(this.left, this.top, this.right, this.bottom);
+
+padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0);
+
+margin: EdgeInsets.all(20.0),
+
+
+T:11 - Rows --------------------
+
+
+T:12 - Columns --------------------
+
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MaterialApp(
+  home: Home(),
+));
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('my first app'),
+          centerTitle: true,
+          backgroundColor: Colors.red[600]
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Container(
+              color: Colors.cyan,
+              padding: EdgeInsets.all(30.0),
+              child: Text('inside container')
+          ),
+          Container(
+              color: Colors.amber,
+              padding: EdgeInsets.all(10.0),
+              child: Text('inside container')
+          ),
+          Container(
+              color: Colors.pinkAccent,
+              padding: EdgeInsets.all(30.0),
+              child: Text('inside container')
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red[600],
+        child: Text('click'),
+      ),
+    );
+  }
+}
+
+
+17 - Lists of Data --------------------
+
+		children: quotes.map((quote) => Text(quote)).toList(),
+
+		or
+		
+        children: quotes.map((quote) {
+          return Text(quote);
+        }).toList(),
+
+
+24 - Widget Lifecycle
+
+Stateless Widgets: -----
+
+* State does not change over time
+* build funtion only runs once
+
+
+Stateful Widgets: ------
+
+* State CAN change over time
+* setState() triggers the build function
+
+
+Stateful Widgets: ------
+
+initState():
+* Called only once when the widget is created
+* Subscribe to streams or any object that could change our widget data
+
+Build():
+* Builds the widget tree
+* A build is triggered every time we use setState()
+
+Dispose():
+* When the widget/state object is removed
+
+
+28 - WorldTime Custom Class
+
+if we use 'await' function must be 'async'
+
+
+32 - Loaders / Spinners ------------------------
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_spinkit: ^4.1.2
+
+
+pages/loading.dart
+
+import 'package:flutter/material.dart';
+import 'package:myapp/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';			// dependency
+
+class Loading extends StatefulWidget {
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+
+  void setupWorldTime() async {
+    WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Berlin');
+    await instance.getTime();
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupWorldTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue[900],
+      body: Center(
+//        child: SpinKitRotatingCircle(
+        child: SpinKitFadingCube(
+          color: Colors.white,
+          size: 80.0,
+        ),
+      )
+    );
+  }
+}
+

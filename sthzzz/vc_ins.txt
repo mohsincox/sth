@@ -1,0 +1,141 @@
+Step1.
+	Download vicibox serve ISO from URL:
+
+Step2.
+	Attatch ISO file to the server and boot from boot it.
+
+Step3.
+	Setup initial configuration such as hostname, ip addr, subnetmask, gateway, dns, timezone etc.
+
+
+	We will login as root with default password "vicidial"
+
+
+	"Applying first reboot setting"
+
+	"yast lan" command for setting up Network 							********
+
+
+	Network Settings (window)
+	"Edit" button click
+
+	own: statically assigned ip address
+	192.168.100.179    255.255.255.0   
+
+	
+
+	then Arrow Key for Hardware
+
+	routing
+	Default IPv4 Gateway    Device
+	192.168.100.6           eth0 
+
+	ping 8.8.8.8
+
+	Address 149.28.41.166
+	Netmask 255.255.254.0
+	Getway 149.28.40.1
+	DNS 8.8.8.8
+
+
+	Host:..
+	Device eth0
+
+	ping google.com
+
+Step4.
+	Updating package by typing command "zypper up -y" 					********
+
+	Once update is done will reboot the server
+
+	command "reboot"
+
+Step5.
+	Install vicibox or vicidial by typing command "vicibox-express"  	********
+
+	username: root
+	password: vicidial
+	
+	// Vicibox Express mode activated
+	...
+	Local IP Address: 149.28.41.166
+
+	install...: Y
+
+vicidial/admin.php
+	default username: 6666
+	password: 1234				new1234
+	
+
+phpMyAdmin
+	username: cron
+	password: 1234
+
+	"alt i" press for ip configure
+
+	server1 8.8.8.8
+	server2 4.4.4.4
+
+http://192.168.100.179
+phpMyAdmin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+My
+
+Username: root
+Password: vicidial
+
+"Applying first reboot setting"
+
+	"yast lan" command for setting up Network
+
+
+	Network Settings (window)
+	"Edit" button click
+
+	own: statically assigned ip address
+	192.168.100.179    255.255.255.0   
+
+	
+
+	[Next]
+
+	routing
+	Default IPv4 Gateway    Device
+	192.168.100.6           eth0 
+
+	ping 8.8.8.8
+
+Install vicibox or vicidial by typing command "vicibox-express"
+
+
+vicidial/admin.php
+	default username: 6666
+	password: 1234				new1234
+
+
+for 192.168.100.179/phpMyAdmin
+
+ln -s /usr/share/phpMyAdmin /srv/www/htdocs/
+
+
+asterisk -r
+asterisk -cvvvvv

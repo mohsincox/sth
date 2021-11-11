@@ -1,0 +1,221 @@
+E:\xampp\htdocs\laravel56passport>php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client secret: 04EKDxRSjlcw4SrIKeLlsDbfHSELFrgYWueoXmpt
+Password grant client created successfully.
+Client ID: 2
+Client secret: ddjfdIDik3ZAP0aiSEANGLidtw2zsBrsUndfuNM5
+
+
+
+
+http://localhost:8000/api/auth/signup				POST
+
+header:-
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+
+{
+    "name": "Mohsin",
+    "email": "mohsin@myolbd.com",
+    "password": "123456",
+    "password_confirmation": "123456"
+}
+
+
+
+http://localhost:8000/api/auth/login				POST
+
+header:-
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+
+{
+    "email": "mohsin@myolbd.com",
+    "password": "123456",
+    "remember_me": true
+}
+
+
+res:
+
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBkOTU3NWNhYzVkMmQ0MjIwYjFhNzFhMzU1MDNjY2JiY2Y2ODY0YjRkMmQzMWVjYWI3YmE2MDhjYmFjNmJlNDNjZmI3MThhMzBmMGYzOGQxIn0.eyJhdWQiOiIxIiwianRpIjoiMGQ5NTc1Y2FjNWQyZDQyMjBiMWE3MWEzNTUwM2NjYmJjZjY4NjRiNGQyZDMxZWNhYjdiYTYwOGNiYWM2YmU0M2NmYjcxOGEzMGYwZjM4ZDEiLCJpYXQiOjE2MDA5Mjc5NzgsIm5iZiI6MTYwMDkyNzk3OCwiZXhwIjoxNjMyNDYzOTc4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FkwkuvncoESaK5n7QYTGlLfkIL00jyeK0F-oUpI_t2Gb7ludz_a8zN7CensqTfIFeSZVisGCSiabF5Wg0Rm_0GfycHS-eB0l8iF-8C3Pvw90jF7Ng5tZD-4h3iaDASUSp5M9Oe_d9f-sOjBzISjOssLvnKcHeHcFGVt9eq_BvyyIoDyMQ5W9z8QP9d-Jh2rYS-JiomxI8oUyKULzPyg_GHGdKxXNDCYQ7u5_ZtLXiTsmIQbUummtkreBdjO30p6UtCP712ZHukbHDI3fotuzny3dK394jseBTQiLP6-bGNMcud8FH4YFBGruKZiSjRmt_A8vtZ2EXtxz4FWMYYm9Z0zXUyIo7JiabUGnjEXKFnBx8M-PPC3QUReQ9GEzc9erjeutaoQQ6tarLXGgFmkz2QNtfGdfR1nD7A7wiHtcyKnDyB1XKpNORXXsbTp1G_wOjDS2sr1ons3g9r2v65QXEMFXH0SeL7ia2vJaTjVAfxEdb8_fPRaEzQ9mKFLPgSv6epIqdFKvzTpcZYZE2q9dJFdLA9jNiRXtjUrmDSxekyAxAJdRGPlJzqxjGcFBjhTwzqUwfPMEr3G3MQPMDNZNIUiw2h3wVG87EJwYihpV98HaC8at-O86H5D0mDaKNmbEW7Q5_ESwKiEDHRkpMCD88YcAlcqOgUDeJaVBHJexUWU",
+    "token_type": "Bearer",
+    "expires_at": "2020-10-01 06:12:58"
+}
+
+
+// Get the authenticated User
+http://localhost:8000/api/auth/user					GET
+
+header:-
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBkOTU3NWNhYzVkMmQ0MjIwYjFhNzFhMzU1MDNjY2JiY2Y2ODY0YjRkMmQzMWVjYWI3YmE2MDhjYmFjNmJlNDNjZmI3MThhMzBmMGYzOGQxIn0.eyJhdWQiOiIxIiwianRpIjoiMGQ5NTc1Y2FjNWQyZDQyMjBiMWE3MWEzNTUwM2NjYmJjZjY4NjRiNGQyZDMxZWNhYjdiYTYwOGNiYWM2YmU0M2NmYjcxOGEzMGYwZjM4ZDEiLCJpYXQiOjE2MDA5Mjc5NzgsIm5iZiI6MTYwMDkyNzk3OCwiZXhwIjoxNjMyNDYzOTc4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FkwkuvncoESaK5n7QYTGlLfkIL00jyeK0F-oUpI_t2Gb7ludz_a8zN7CensqTfIFeSZVisGCSiabF5Wg0Rm_0GfycHS-eB0l8iF-8C3Pvw90jF7Ng5tZD-4h3iaDASUSp5M9Oe_d9f-sOjBzISjOssLvnKcHeHcFGVt9eq_BvyyIoDyMQ5W9z8QP9d-Jh2rYS-JiomxI8oUyKULzPyg_GHGdKxXNDCYQ7u5_ZtLXiTsmIQbUummtkreBdjO30p6UtCP712ZHukbHDI3fotuzny3dK394jseBTQiLP6-bGNMcud8FH4YFBGruKZiSjRmt_A8vtZ2EXtxz4FWMYYm9Z0zXUyIo7JiabUGnjEXKFnBx8M-PPC3QUReQ9GEzc9erjeutaoQQ6tarLXGgFmkz2QNtfGdfR1nD7A7wiHtcyKnDyB1XKpNORXXsbTp1G_wOjDS2sr1ons3g9r2v65QXEMFXH0SeL7ia2vJaTjVAfxEdb8_fPRaEzQ9mKFLPgSv6epIqdFKvzTpcZYZE2q9dJFdLA9jNiRXtjUrmDSxekyAxAJdRGPlJzqxjGcFBjhTwzqUwfPMEr3G3MQPMDNZNIUiw2h3wVG87EJwYihpV98HaC8at-O86H5D0mDaKNmbEW7Q5_ESwKiEDHRkpMCD88YcAlcqOgUDeJaVBHJexUWU
+
+res:-
+
+{
+    "id": 1,
+    "name": "Mohsin",
+    "email": "mohsin@myolbd.com",
+    "created_at": "2020-09-24 06:03:41",
+    "updated_at": "2020-09-24 06:03:41"
+}
+
+
+
+http://localhost:8000/api/auth/logout					GET
+
+header:-
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBkOTU3NWNhYzVkMmQ0MjIwYjFhNzFhMzU1MDNjY2JiY2Y2ODY0YjRkMmQzMWVjYWI3YmE2MDhjYmFjNmJlNDNjZmI3MThhMzBmMGYzOGQxIn0.eyJhdWQiOiIxIiwianRpIjoiMGQ5NTc1Y2FjNWQyZDQyMjBiMWE3MWEzNTUwM2NjYmJjZjY4NjRiNGQyZDMxZWNhYjdiYTYwOGNiYWM2YmU0M2NmYjcxOGEzMGYwZjM4ZDEiLCJpYXQiOjE2MDA5Mjc5NzgsIm5iZiI6MTYwMDkyNzk3OCwiZXhwIjoxNjMyNDYzOTc4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FkwkuvncoESaK5n7QYTGlLfkIL00jyeK0F-oUpI_t2Gb7ludz_a8zN7CensqTfIFeSZVisGCSiabF5Wg0Rm_0GfycHS-eB0l8iF-8C3Pvw90jF7Ng5tZD-4h3iaDASUSp5M9Oe_d9f-sOjBzISjOssLvnKcHeHcFGVt9eq_BvyyIoDyMQ5W9z8QP9d-Jh2rYS-JiomxI8oUyKULzPyg_GHGdKxXNDCYQ7u5_ZtLXiTsmIQbUummtkreBdjO30p6UtCP712ZHukbHDI3fotuzny3dK394jseBTQiLP6-bGNMcud8FH4YFBGruKZiSjRmt_A8vtZ2EXtxz4FWMYYm9Z0zXUyIo7JiabUGnjEXKFnBx8M-PPC3QUReQ9GEzc9erjeutaoQQ6tarLXGgFmkz2QNtfGdfR1nD7A7wiHtcyKnDyB1XKpNORXXsbTp1G_wOjDS2sr1ons3g9r2v65QXEMFXH0SeL7ia2vJaTjVAfxEdb8_fPRaEzQ9mKFLPgSv6epIqdFKvzTpcZYZE2q9dJFdLA9jNiRXtjUrmDSxekyAxAJdRGPlJzqxjGcFBjhTwzqUwfPMEr3G3MQPMDNZNIUiw2h3wVG87EJwYihpV98HaC8at-O86H5D0mDaKNmbEW7Q5_ESwKiEDHRkpMCD88YcAlcqOgUDeJaVBHJexUWU
+
+res:-
+
+{
+    "message": "Successfully logged out"
+}
+
+
+
+
+mobile:
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+I/flutter (27158): Response status: 200
+I/flutter (27158): Response body: {"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjA3NTQyMDU5ZTBhZmU2NTkwNWRmMDU0NDZmZWRiZGY2YzUyNDNjZjI4MmIyYjYyMTNlMmYwZTc4ODQ1ZGI1ZTg3NmMzZDNiNjg1OWE2N2YzIn0.eyJhdWQiOiIxIiwianRpIjoiMDc1NDIwNTllMGFmZTY1OTA1ZGYwNTQ0NmZlZGJkZjZjNTI0M2NmMjgyYjJiNjIxM2UyZjBlNzg4NDVkYjVlODc2YzNkM2I2ODU5YTY3ZjMiLCJpYXQiOjE2MDI5Mjk4MzYsIm5iZiI6MTYwMjkyOTgzNiwiZXhwIjoxNjM0NDY1ODM2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ivvqCdxdw340DBecSlmXmPVeQKncDZdje1V5TvJX0mw0fofcS9stDsEMRaSjfrIgxaN3c3-LYOvFd20bEN-AyIv6TvTruhQBmAF9qYIhOu8QJ3JmipCjDEzSXTSZLB_KoYNlX83YwBAE3Xpu5WtimEQKmwLiIb2m1ij0qJxpn0UDXquynRToKA67eqd60LyMLBdiK2g_s57yc2pPAtvHV_0zUn2cAye34D8otVzKGWBSn5eOA08PVNPTR9Yhjo8SCDvuvuKo9zuQ77khDgY9sI6b8Wr3mCXmgTp2-SOdZSCiGLKRd2ctJijkk_RvvP8yu6ehRECYyXo-th_EnAu6r7U9QkCgEBBJyXny2frd1aErpXYRh21k0pNJKiXt1X3KC2ry8B_JPcwrOJsyJFj-XZy6AAUQCV_VWu362hk86ukWDrIuJ0Yq3k9Zc7ESBq_jtMGThrdYiZ2xXdOi-Ni_zi03oydCgDBzaimkRuwTyBwLAg9DSLw5Ro6_9XDlZesyycq56-iEg7mauxeYS6MZkHFY8EmeSZCL8OXboFahxK3XNDARdbXNaLWv7RfXGA7X_Dgp1CKKIYe98BHUEDHciALwtpR
+
+
+
+
+
+
+
+
+
+
+
+
+JWT:--------------------------------------------------
+
+http://192.168.100.75:8000/api/register
+
+body
+x-www-form-urlencoded
+
+KEY         VALUE
+name        Mohsin
+email       mohsin@myolbd.com
+password    123456789
+
+{
+    "status": "ok",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjEwMC43NTo4MDAwXC9hcGlcL3JlZ2lzdGVyIiwiaWF0IjoxNjAzMDg0ODI4LCJleHAiOjE2MDMwODg0MjgsIm5iZiI6MTYwMzA4NDgyOCwianRpIjoiR08xYWpBYmVNTjQyaGMzYyIsInN1YiI6NCwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.cKtzMirvm8gOEJiTcUc5jyYyrPusCmno478flrxqtN4"
+}
+
+
+
+http://192.168.100.75:8000/api/login
+
+body
+x-www-form-urlencoded
+
+KEY         VALUE
+email       mohsin@myolbd.com
+password    123456789
+
+
+{
+    "status": "OK",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjEwMC43NTo4MDAwXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAzMDg1MzA2LCJleHAiOjE2MDMwODg5MDYsIm5iZiI6MTYwMzA4NTMwNiwianRpIjoiekZkZ2FtdWtwWnlTazhOSiIsInN1YiI6NCwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.W15PM5EhZpwlKv8Y8NFxI_nK-HZLSLiRE_wAvTx43bQ"
+}
+
+
+
+
+
+
+
+
+Sanctum:----------------------------------------
+
+// https://www.twilio.com/blog/build-restful-api-php-laravel-sanctum
+
+http://localhost/laravel70sanctum/public/api/register                   POST
+
+body
+x-www-form-urlencoded
+
+KEY         VALUE
+name        Mohsin
+email       mohsin@myolbd.com
+password    123456
+
+
+{
+    "access_token": "1|HEh7h3zj65ZOq8HNq5RxNhsEpmtpmPKSRbbV2Bsz",
+    "token_type": "Bearer"
+}
+
+
+
+http://localhost/laravel70sanctum/public/api/login                   POST
+
+body
+x-www-form-urlencoded
+
+KEY         VALUE
+email       mohsin@myolbd.com
+password    123456
+
+{
+    "access_token": "2|TqL1lcKjZUKukZbdis6cMtJWEbPYBY3jSOBbYuIL",
+    "token_type": "Bearer"
+}
+
+
+
+http://localhost/laravel70sanctum/public/api/me                     GET
+
+Response:
+1           same
+
+
+http://localhost/laravel70sanctum/public/api/mes                    GET
+
+Response:
+... Route [login] not defined ...
+
+
+
+
+http://localhost/laravel70sanctum/public/api/me                    GET
+
+Authorization
+
+Bearer Token
+Token: 1|HEh7h3zj65ZOq8HNq5RxNhsEpmtpmPKSRbbV2Bsz
+
+Response:
+1           same
+
+
+http://localhost/laravel70sanctum/public/api/mes                    GET
+
+Authorization
+
+Bearer Token
+Token: 1|HEh7h3zj65ZOq8HNq5RxNhsEpmtpmPKSRbbV2Bsz
+
+
+Response:
+{
+    "id": 1,
+    "name": "Mohsin",
+    "email": "mohsin@myolbd.com",
+    "email_verified_at": null,
+    "created_at": "2021-06-24T12:56:15.000000Z",
+    "updated_at": "2021-06-24T12:56:15.000000Z"
+}

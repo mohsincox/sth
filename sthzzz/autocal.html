@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<table id="table" border="0">
+	    <thead>
+	        <th>Price</th><th>Quantity</th><th>Total</th>
+	    </thead>
+		<tbody>
+			<tr>
+			    <td><input class="price" type = "text"></input></td>
+			    <td><input class="quantity" type = "text"></input></td>
+			    <td><input class="total" type = "text"></input></td>
+			</tr>
+		</tbody>
+	</table>
+<a href="#" id="add">Add New</a>
+<a href="#" id="remove">Remove</a>
+
+<script type="text/javascript">
+	$(function(){
+  		$('a#add').click(function(){
+    		$('#table > tbody').append('<tr><td><input class ="price" type = "text"></input></td><td><input class ="quantity" type = "text"></input></td><td><input class ="total" type = "text"></input></td></tr>');  
+   		});
+  		$('a#remove').click(function(){
+  			$('#table > tbody > tr:last').remove();
+  		});
+
+
+  		$('#table').delegate('input.total' , 'blur', function(){
+    var row = $(this).closest('tr');
+    $(this).val(
+            $('.quantity', row).val()*
+            $('.price', row).val()
+    );
+});
+
+
+  // 		$('a#calc').click(function(){
+		//     $('#table tr').each(function() {
+		//         $(this).find('.total').val(
+		//             parseFloat($(this).find('.quantity').val())*
+		//             parseFloat($(this).find('.price').val())
+		//         );
+		//     })
+		// })
+
+
+	});
+</script>
+
+</body>
+</html>

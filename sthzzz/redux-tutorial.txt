@@ -1,0 +1,272 @@
+00:00 - 06:00
+
+// src/index.js
+
+import { createStore } from 'redux';
+
+function reducer(state, action) {
+    if(action.type === 'changeState') {
+        console.log(action.payload.newState);
+    }
+
+    return 'State';
+}
+
+const store = createStore(reducer);
+
+console.log(store.getState());
+
+const action = {
+    type: 'changeState',
+    payload: {
+        newState: 'New state'
+    }
+};
+
+store.dispatch(action);
+
+ReactDOM.render(<App />, document.getElementById('root'))
+
+
+06:00 - 07:00
+
+// src/index.js
+
+function productsReducer(state = [], action) {
+    return state;
+}
+
+function userReducer(state = '', action) {
+    return state;
+}
+
+const allReducers = combineReducers({
+    products: productsReducer,
+    user: userReducer
+});
+
+const store = createStore(allReducers);
+
+console.log(store.getState());
+
+// output: {products: Array(0), user: ""}
+
+
+07:00 - 08:00
+
+// src/index.js
+
+const store = createStore(allReducers, {
+    products: [{ name: 'iPhone' }],
+    user: 'Michael'
+});
+// output: {products: Array(1), user: "Michael"}
+
+
+08:00 - 10:00
+
+// src/index.js
+
+function userReducer(state = '', action) {
+    switch(action.type) {
+        case 'updateUser':
+            return action.payload;
+    }
+    
+    return state;
+}
+
+const updateUserAction = {
+    type: 'updateUser',
+    payload: {
+        user: 'John'
+    }
+};
+
+store.dispatch(updateUserAction)
+
+// output: user(pin):"John" 
+// not Michael
+
+
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    console.log(this.props);		// output: {products: Array(1), user: "Michael", dispatch: ƒ}
+
+    return (
+      <div className="App">
+        <h1>Redux Tutorial</h1>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps) (App);
+
+
+// but Error in default code
+// TypeError: Cannot read property 'props' of undefined
+
+function App() {
+  console.log(this.props) // TypeError: Cannot read property 'props' of undefined
+  return (
+    <div className="App">
+      <h1>Redux Tutorial</h1>
+    </div>
+  );
+}
+
+
+
+09:00 - 17:33
+
+// state update 'user' change 'Michael' to 'Sammy' by click
+
+// src/index.js
+
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import productsReducer from './reducers/products-reducer';
+import userReducer from './reducers/user-reducer';
+
+const allReducers = combineReducers({
+    products: productsReducer,
+    user: userReducer
+});
+
+const store = createStore(
+    allReducers, {
+        products: [{ name: 'iPhone' }],
+        user: 'Michael'
+    },
+    window.devToolsExtension && window.devToolsExtension()
+);
+
+ReactDOM.render(<Provider store={ store }><App /></Provider>, document.getElementById('root'));
+
+
+// src/App.js
+
+import { connect } from 'react-redux';
+import { updateUser } from './actions/user-actions';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onUpdateUser = this.onUpdateUser.bind(this);
+  }
+
+  onUpdateUser() {
+    this.props.onUpdateUser('Sammy');
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Redux Tutorial</h1>
+        <div onClick={ this.onUpdateUser }>Update user</div>
+        { this.props.user}	// 'Michael' to 'Sammy' by click
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  products: state.products,
+  user: state.user
+})
+
+const mapActionsToProps = {
+  onUpdateUser: updateUser
+}
+
+export default connect(mapStateToProps, mapActionsToProps) (App);
+
+
+// src/reducers/user-reducer.js
+
+import { UPDATE_USER } from '../actions/user-actions';
+
+export default function userReducer(state = '', { type, payload }) {
+    switch(type) {
+        case UPDATE_USER:
+            return payload.user;
+        default:
+            return state;
+    }
+}
+
+
+// src/actions/user-actions.js
+
+export const UPDATE_USER = 'users:updateUser';
+
+export function updateUser(newUser) {
+    return {
+        type: UPDATE_USER,
+        payload: {
+            user: newUser
+        }
+    }
+}
+
+
+
+18:03
+// state update (real time): 'Michael' 'user' change by Enter name
+
+onUpdateUser(event) {
+    this.props.onUpdateUser(event.target.value);
+  }
+
+render() {
+    return (
+      <div className="App">
+        <h1>Redux Tutorial</h1>
+        <input onChange={this.onUpdateUser} />	//input
+        { this.props.user}
+      </div>
+    );
+  }
+
+
+21:55
+
+// src/index.js
+
+ReactDOM.render(<Provider store={ store }><App aRandomProps="whatever" /></Provider>, document.getElementById('root'));
+
+
+// src/App.js
+
+import { bindActionCreators } from 'redux';
+
+const mapStateToProps = (state, props) => {
+  
+  return {
+    products: state.products,
+    user: state.user,
+    userPlusProp: `${state.user} ${props.aRandomProps}`
+  }
+};
+
+const mapActionsToProps = (dispatch, props) => {
+  console.log(props)
+  return bindActionCreators({
+    onUpdateUser: updateUser
+  }, dispatch);
+}
+
+const mergeProps = (propsFromState, propsFormDispatch, ownProps) => {
+  console.log(propsFromState, propsFormDispatch, ownProps)
+  return {}
+}
+
+export default connect(mapStateToProps, mapActionsToProps, mergeProps) (App);

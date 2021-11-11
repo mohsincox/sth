@@ -1,0 +1,94 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<% if (message != '') { %>
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> <%= message %>
+    </div>
+    <!-- <p><%= message %></p> -->
+<% } %>
+    
+
+<main>
+    <div class="jumbotron">
+        <h2>This is great Nodejs</h2>
+        <p>Customor Table Data</p>
+                  
+        <table id="example" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% customers.forEach(function(customer) { %>
+                    <tr>
+                        <td><%= customer.id %></td>
+                        <td><%= customer.name %></td>
+                        <td><%= customer.address %></td>
+                        <td>
+                            <a href="/edit/<%= customer.id %>" class="btn btn-primary btn-xs">Edit</a>
+                        </td>
+                        <td>
+                            <!-- <a href="/delete/<%= customer.id %>" class="btn btn-danger btn-xs">Delele</a> -->
+                            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<%= customer.id %>">Delete</button>
+                        </td>
+                    </tr>
+                    
+                    <div class="modal fade" id="myModal<%= customer.id %>" role="dialog">
+                        <div class="modal-dialog">
+                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                              <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                              <a href="/delete/<%= customer.id %>" class="btn btn-danger">Delele</a>
+                            </div>
+                          </div>
+                          
+                        </div>
+                    </div>
+
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<script>
+    ShowCurrentTime();
+
+	function ShowCurrentTime() {
+    	var dt = new Date().toLocaleTimeString();
+  		console.log(dt);
+   		window.setTimeout("ShowCurrentTime()", 1000);
+    }
+</script>

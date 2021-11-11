@@ -1,0 +1,187 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style2.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/custom.css" />
+<!-- VERSION: 2.12-493c     BUILD: 160706-1438 -->
+<!-- BROWSER: 770 x 500      x  -->
+
+    <script type="text/javascript">
+
+	<!-- 
+	var BrowseWidth = 0;
+	var BrowseHeight = 0;
+
+	function browser_dimensions() 
+		{
+	BrowseWidth = window.innerWidth;
+		BrowseHeight = window.innerHeight;
+
+		document.vicidial_form.JS_browser_width.value = BrowseWidth;
+		document.vicidial_form.JS_browser_height.value = BrowseHeight;
+		}
+
+	// ################################################################################
+	// Send Request for allowable campaigns to populate the campaigns pull-down
+		function login_allowable_campaigns() 
+			{
+		//	alert(document.vicidial_form.JS_browser_width.value + '|' + BrowseWidth + '|' + document.vicidial_form.JS_browser_height.value + '|' + BrowseHeight);
+			var xmlhttp=false;
+			/*@cc_on @*/
+			/*@if (@_jscript_version >= 5)
+			// JScript gives us Conditional compilation, we can cope with old IE versions.
+			// and security blocked creation of the objects.
+			 try {
+			  xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+			 } catch (e) {
+			  try {
+			   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			  } catch (E) {
+			   xmlhttp = false;
+			  }
+			 }
+			@end @*/
+			if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+				{
+				xmlhttp = new XMLHttpRequest();
+				}
+			if (xmlhttp) 
+				{ 
+				logincampaign_query = "&user=" + document.vicidial_form.VD_login.value + "&pass=" + document.vicidial_form.VD_pass.value + "&ACTION=LogiNCamPaigns&format=html";
+				xmlhttp.open('POST', 'vdc_db_query.php'); 
+				xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+				xmlhttp.send(logincampaign_query); 
+				xmlhttp.onreadystatechange = function() 
+					{ 
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+						{
+						Nactiveext = null;
+						Nactiveext = xmlhttp.responseText;
+					//	alert(logincampaign_query);
+					//	alert(xmlhttp.responseText);
+						document.getElementById("LogiNCamPaigns").innerHTML = Nactiveext;
+                        document.getElementById("LogiNReseT").innerHTML = "<input type=\"button\" value=\"Refresh Campaign List\" onclick=\"login_allowable_campaigns()\" />";
+						document.getElementById("VD_campaign").focus();
+						}
+					}
+				delete xmlhttp;
+				}
+			}
+	// -->
+	</script>
+
+	<title>Agent panel</title>
+</head>
+    <body onresize="browser_dimensions();" onload="browser_dimensions();" style="background: url(images/IFIC_landing.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: 100% 100%;">
+    <table width="100%" style='border-radius:2px;'><tr><td></td>
+	<!-- INTERNATIONALIZATION-LINKS-PLACEHOLDER-VICIDIAL -->
+    </tr></table>
+	<div style='margin: auto; padding-top: 12%; margin-top: 20px;'><center>
+	</br></br>
+	<table width="600px" cellpadding="3" cellspacing="0"><tr >
+	<td align="center" style="height: 60px; width: 100px; background-color: #087201; align: center;" onclick="MyAgentPanelDivShow();">
+	<font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:20px;font-weight:bolder;color:#FFFFFF;'>Agent</font></td>
+	<td align="center" style="height: 60px; width: 100px; background-color: #bc3a3c;" onclick="MyAdminPanelDivShow();">
+	<font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:20px;font-weight:bolder;color:#FFFFFF;'>Admin</font></td>
+<!-- 	<td align="center" style="height: 60px; width: 80px; background-color: black;">
+	<a href="../iadmin/login.php" target="blank" style="text-decoration: none;"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:20px;font-weight:bolder;color:#FFFFFF;'>Administrator</font></a></td> -->
+	</tr></table>
+	</br></br>
+	<div id="myAgentLoginBox"> <!-- Start Agent or admin login box-->
+	  <form name="vicidial_form" id="vicidial_form" action="http://103.147.182.214/iagent/idialer.php" method="post">
+    <input type="hidden" name="DB" id="DB" value="0" />
+    <input type="hidden" name="JS_browser_height" id="JS_browser_height" value="" />
+    <input type="hidden" name="JS_browser_width" id="JS_browser_width" value="" />
+    <input type="hidden" name="admin_test" id="admin_test" value="" />
+	<table width="480px" cellpadding="3" cellspacing="0"><tr >
+    <td align="center" colspan="6" valign="middle" > <font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:20px;font-weight:bolder;color:#000000;'>Login panel for Agent</font> </td>
+    </tr>
+    <tr><td align="left" colspan="6"><font size="1"> &nbsp; </font></td></tr>
+    <tr><td align="center"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;font-weight:bolder;color:#000000;'>Phone Login</font> </td>
+	<td align="center"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;font-weight:bolder;color:#000000;'>Phone Password</font>  </td>
+	<td align="center"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;font-weight:bolder;color:#000000;'>Employee ID</font>  </td>
+	<td align="center"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;font-weight:bolder;color:#000000;'>Login Password</font></td>
+	<td align="center" valign="top"><font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;font-weight:bolder;color:#000000;'>Campaign</font>  </td>
+	<td></td>
+	</tr>
+	<tr>
+    <td align="left"><input type="text" name="phone_login" size="10" maxlength="20" value="" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>
+    <td align="left"><input type="password" name="phone_pass" size="10" maxlength="20" value="" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>   
+    <td align="left"><input type="text" name="VD_login" size="10" maxlength="20" value="" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>   
+    <td align="left"><input type="password" name="VD_pass" size="10" maxlength="20" value="" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>
+    <td align="left"><font class="skb_text"><span id="LogiNCamPaigns" style='width:100px;'><select size="1" style="width: 100px; height: 25px; border-radius: 5px;border: 2px solid #73AD21;width:150px;height:30px;" name="VD_campaign" id="VD_campaign" onfocus="login_allowable_campaigns()">
+<option value=""></option>
+</select>
+</span></td>
+	<td align="right" style="width: 20px;"><span><img src='images/reload.png' style='width:15px;height:15px;float:right;' onclick="login_allowable_campaigns()"></span></font></td>
+	</tr>
+    <tr>
+    <td align="center" colspan="6"><input type="submit" name="SUBMIT" value="SUBMIT" style='width:150px;height:50px; background-color: #18b70c;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;font-weight:bolder;color:#000000;'/> &nbsp;</td></tr>
+    <tr><td align="left" colspan="6"><font class="body_tiny"><br /> &nbsp; &nbsp; &nbsp; </font></td></tr>
+	
+	</table>
+	</form>
+	</div>
+	
+	<!-- End Agent Div -->
+	
+	<div id="myAdminLoginBox" style="visibility: hidden; position: relative; top: -192px;">
+	<form name="vicidial_form_admin" id="vicidial_form_admin" action="http://103.147.182.214/iagent/idialer.php" method="post">
+		<table width="480px" cellpadding="3" cellspacing="0">
+			<tr >
+				<td align="center" colspan="2" valign="middle" >
+					<font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:20px;font-weight:bolder;color:#000000;'>Login panel for Admin</font>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" colspan="2">
+					<font size="1"> &nbsp; </font>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:15px;font-weight:bolder;color:#000000;'>User Login</font>
+				</td>
+				<td align="center">
+					<font style='font-family:Verdana, Arial, Helvetica, sans-serif;font-size:15px;font-weight:bolder;color:#000000;'>User Password</font>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<input type="text" name="username" size="10" maxlength="20" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>   
+    <td align="center"><input type="password" name="password" size="10" maxlength="20" style='border-radius: 5px;border: 2px solid #73AD21;width:150px;height:25px;'/></td>
+	</tr>
+    <tr>
+    <td align="center" colspan="2"><input type="submit" name="SUBMIT_Admin" value="SUBMIT" onclick="ChangeFormSubmitDirection();" style='width:150px;height:50px; background-color: #73AD21;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;font-weight:bolder;color:#000000;'/> &nbsp;</td></tr>
+    <tr><td align="left" colspan="2"><font class="body_tiny"><br /> &nbsp; &nbsp; &nbsp; </font></td></tr> 
+		
+	</table>
+	</form>
+	</div>
+	</center>
+	
+	</div>	
+    
+	<script>
+		function MyAgentPanelDivShow(){
+		document.getElementById('myAdminLoginBox').style.visibility='hidden';
+		document.getElementById('myAgentLoginBox').style.visibility='visible';
+	}
+	function MyAdminPanelDivShow(){
+		document.getElementById('myAdminLoginBox').style.visibility='visible';
+		document.getElementById('myAgentLoginBox').style.visibility='hidden';
+	}
+	function ChangeFormSubmitDirection(){
+		document.getElementById('vicidial_form_admin').action="../wallboard/";
+	}
+	</script>
+	<div align='center' style='width:100%;height:22px;background-color:rgba(0,0,0,.7);border:1px;border-radius:2px;position:fixed;bottom:0px;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;font-weight:bolder;padding-top:3px;color:#FFFFFF'>-: Copyright @ I Help BD,2020 :-</div></body>
+
+</html>
+

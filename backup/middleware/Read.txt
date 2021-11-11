@@ -1,0 +1,53 @@
+CheckTest.php
+
+public function handle($request, Closure $next)
+    {
+        if (Auth::user()->is_active == 0 ) {
+            Auth::logout();
+
+            return redirect('/login');
+        }
+
+        // if ($request->type != 2) {
+        //     return response()->json('Please enter valid type');
+        // }
+
+        return $next($request);
+    }
+
+
+Kernel.php
+
+protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'checkTest' => \App\Http\Middleware\CheckTest::class,
+    ];
+
+
+routes.php
+
+// Route::get("check-md",["uses"=>"HomeController@checkMD","middleware"=>"checkTest"]);
+// Route::get("/home",["uses"=>"HomeController@index","middleware"=>"checkTest"]);
+Route::get('/home', 'HomeController@index')->middleware(['checkTest']);
+
+
+HomeController.php
+
+public function checkMD()
+    {
+        dd('checkMD');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }

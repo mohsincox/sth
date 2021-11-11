@@ -1,0 +1,293 @@
+CSD Consumer detail API:
+Url: http://27.147.132.90/e.api/api/consumer-details/get-consumer-details?mobileNo=01730340633
+ 
+Authorization Header:
+[
+{
+"key":"Authorization",
+"value":"Basic TXlPdXRzb3VyY2luZ0xpbWl0ZWQ6VHhMPXk5Sw=="
+}
+]
+
+For Igloo
+SWdsb29JY2VDcmVhbTpteW9sYmRhbWxiZA==
+
+
+
+
+Url: http://10.168.35.226/transcomticket/index.php/api?startDate=2018-09-01&endDate=2018-09-30
+Http Verb: GET
+Headers: Authorization Basic dGVsLnRyYW5zY29tYmQuY29tOlR4TD04OTA=
+Or
+Username: tel.transcombd.com
+Password: TxL=890
+
+
+
+
+
+phone_number: "01743891798",
+agent: "test",
+consumer_name: "20/8, Sekh Shashori Road",
+consumer_age: "31 - 35 years",
+consumer_gender: "Female",
+division_id: "2",
+district_id: "10",
+police_station_id: "78",
+address: "",
+profession: "Private Service",
+number_of_child: "2",
+total_family_member: "2",
+child1_DOB: "2019-08-08",
+child2_DOB: "",
+child3_DOB: "",
+child_name: "",
+edu_qualification: "",
+product_used: "",
+brand_id: "",
+product: "",
+interested_in_crm: "",
+interested_in_fnm: "",
+call_category: "",
+verbatim: ""
+
+
+
+
+
+
+
+
+{
+    "Success": false,
+    "Message": "Mobile number not found",
+    "StatusCode": 0
+}
+
+
+
+
+{
+    "ConsumerInfo": {
+        "ConsumerId": 29091,
+        "ConsumerCode": "DGC-108307",
+        "ConsumerName": "Md.Saidujjaman Sajib",
+        "Address": "3/7 ,Borobag,Mirpur-2",
+        "MobileNo": "01676260176",
+        "PhoneNo": "",
+        "Email": "n@a",
+        "AlternativeCellNo": null,
+        "LastUpdateDate": null,
+        "UpdateUserId": null,
+        "IsVerified": null
+    },
+    "CustomerHistory": [
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ",
+            "TranType": "Service",
+            "WHCode": "CSD",
+            "SalesType": "Other",
+            "TranNo": "I1906027",
+            "TranDate": "2019-04-30T17:17:54.51+06:00",
+            "ProductCode": "70051",
+            "ProductName": "Samsung Inverter AC AR18MVFHGWK2RG 1.5 Ton",
+            "Qty": 1,
+            "Amount": 0.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DMP",
+            "SalesType": "Retail",
+            "TranNo": "DMP-2019-0734",
+            "TranDate": "2019-04-30T00:00:00+06:00",
+            "ProductCode": "70066",
+            "ProductName": "Samsung Inverter AC AR18MVFHGWKZ 1.5 Ton",
+            "Qty": 1,
+            "Amount": 95900.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DGC",
+            "SalesType": "Retail",
+            "TranNo": "DGC-2017-2693",
+            "TranDate": "2017-08-30T00:00:00+06:00",
+            "ProductCode": "830075",
+            "ProductName": "Transtec Freezer TFX-212 Black GL",
+            "Qty": 1,
+            "Amount": 25990.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DMK",
+            "SalesType": "B2C",
+            "TranNo": "DMK-2019-0024",
+            "TranDate": "2019-01-08T00:00:00+06:00",
+            "ProductCode": "580001",
+            "ProductName": "Sanford Hair Straightner SF9654HST",
+            "Qty": 1,
+            "Amount": 1750.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DMP",
+            "SalesType": "Retail",
+            "TranNo": "DMP-2018-1290",
+            "TranDate": "2018-06-26T00:00:00+06:00",
+            "ProductCode": "4338009",
+            "ProductName": "Samsung LED TV UA43M5500ARSER",
+            "Qty": 1,
+            "Amount": 63900.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DMP",
+            "SalesType": "Retail",
+            "TranNo": "DMP-2018-1301",
+            "TranDate": "2018-06-26T00:00:00+06:00",
+            "ProductCode": "4338009",
+            "ProductName": "Samsung LED TV UA43M5500ARSER",
+            "Qty": 1,
+            "Amount": 63900.0
+        },
+        {
+            "ConsumerID": 29091,
+            "Company": "TEL",
+            "System": "CJ.POS",
+            "TranType": "Sales",
+            "WHCode": "DMP",
+            "SalesType": "Retail",
+            "TranNo": "DMP-2018-1302",
+            "TranDate": "2018-06-26T00:00:00+06:00",
+            "ProductCode": "4338009",
+            "ProductName": "Samsung LED TV UA43M5500ARSER",
+            "Qty": 1,
+            "Amount": 63900.0
+        }
+    ]
+}
+
+
+gd46fg6#%$^#5
+
+
+http://websms.rankstelecom.com
+user name = nte 
+Password = Anoortkn10203040
+
+Company Name: IGLOO ICE CREAM
+Stakeholder or SID: iglooEng
+User: igloo
+Password : 95a?tkn4A92
+URL: http://isms.sslwireless.com/
+
+http://sms.sslwireless.com/pushapi/dynamic/server.php?user=igloo&pass=95a?4A92&sid=iglooEng&sms=TestByMohsin&msisdn=01758214966&csmsid=123456789
+
+https://livedemo00.template-help.com/wt_prod-21217/
+
+https://www.templatemonster.com/demo/69536.html
+
+https://www.templatemonster.com/demo/80168.html
+
+https://igloobd.com/pay/?i=
+
+https://sandbox.sslcommerz.com/manage/
+
+
+https://webdamn.com/export-html-table-data-to-excel-csv-text-with-jquery-php-and-mysql/
+
+
+https://merchant.sslcommerz.com/
+igloobd@ssl
+Igloo20@App
+
+19 Sep 2019
+id 1117
+
+// phone_number duplicate remove work for less data
+DELETE t1 FROM profiles t1
+        INNER JOIN
+    profiles t2 
+WHERE
+    t1.id > t2.id AND t1.phone_number = t2.phone_number;
+
+
+
+//duplicate Count
+SELECT `phone_number`, COUNT(phone_number) FROM profiles GROUP BY phone_number HAVING COUNT(phone_number) > 1
+
+
+// without increment ID coloum should be matched
+CREATE TABLE temp LIKE profiles;
+
+INSERT INTO temp 
+    SELECT DISTINCT * FROM profiles;
+
+DROP TABLE profiles;
+
+RENAME TABLE temp TO profiles;
+
+
+
+
+//correct duplicate count
+SELECT 
+    `phone_number`, 
+    COUNT(`phone_number`)
+FROM
+    profiles
+GROUP BY `phone_number`
+HAVING COUNT(`phone_number`) > 1;
+
+
+
+http://thelazylog.com/removing-duplicate-entries-from-large-table-in-mysql/
+
+// // image_set_id duplicate remove work for large data
+-- Create temporary table
+CREATE TABLE temp_table LIKE table1;
+
+-- Add constraint
+ALTER TABLE temp_table ADD UNIQUE(category, image_set_id);
+
+-- Copy data
+INSERT IGNORE INTO temp_table SELECT * FROM table1;
+
+-- Rename and drop
+RENAME TABLE table1 TO old_table1, temp_table TO table1;
+DROP TABLE old_table1;
+
+
+
+
+INSERT INTO table1 SELECT 0, col1, col2, col3, ... FROM table2;
+
+CREATE TABLE temp_table LIKE myguests;
+INSERT INTO temp_table SELECT 0, firstname, lastname, email FROM myguests
+
+
+
+
+INSERT INTO profiles_mohsin SELECT 0, phone_number, agent, consumer_name, consumer_age, consumer_dob, consumer_gender, marital_status, division_id, district_id, police_station_id, address, alternative_phone_number, profession, sec, number_of_child, total_family_member, child1_DOB, child2_DOB, child3_DOB, prefered_brand, brand_id, product, activity_campaign_name, activity_date, interested_in_crm, kids_age, created_by, updated_by, deleted_by, deleted_at, created_at, updated_at FROM profiles
+
+
+https://dba.stackexchange.com/questions/60521/how-are-auto-increment-keys-handled-in-insert-select-from
+
+
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
