@@ -1,0 +1,31 @@
+SELECT
+    id,
+    name,
+    sup.length - ord.length AS 'stock'
+FROM
+    product
+# Computes the number of items arrived
+INNER JOIN (
+    SELECT
+        productId,
+        SUM(quantity) AS 'length'
+    FROM
+        supplying
+    WHERE
+        arrived IS TRUE
+    GROUP BY
+        productId
+) AS sup ON sup.productId = product.id
+# Computes the number of order
+INNER JOIN (
+    SELECT
+        productId,
+        SUM(quantity) AS 'length'
+    FROM
+        product_order
+    GROUP BY
+        productId
+) AS ord ON ord.productId = product.id
+
+
+# Only 'supplying' table data (which exist in stock) are not shown in this query, only show those data which exist in both table 'supplying' & 'product_order' tables
